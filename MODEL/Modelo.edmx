@@ -1,0 +1,746 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alimento">
+          <Key>
+            <PropertyRef Name="idAlimento" />
+          </Key>
+          <Property Name="idAlimento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="potasio" Type="varchar" MaxLength="10" />
+          <Property Name="hierro" Type="varchar" MaxLength="10" />
+          <Property Name="acidoFolico" Type="varchar" MaxLength="10" />
+          <Property Name="vitmaminaA" Type="varchar" MaxLength="10" />
+          <Property Name="fibra" Type="varchar" MaxLength="10" />
+          <Property Name="pesoBruto" Type="varchar" MaxLength="10" />
+          <Property Name="pesoNeto" Type="varchar" MaxLength="10" />
+          <Property Name="energia" Type="varchar" MaxLength="10" />
+          <Property Name="protenia" Type="varchar" MaxLength="10" />
+          <Property Name="lipidos" Type="varchar" MaxLength="10" />
+          <Property Name="hidratosDC" Type="varchar" MaxLength="10" />
+          <Property Name="cargaGlic" Type="varchar" MaxLength="50" />
+          <Property Name="indiceGlic" Type="varchar" MaxLength="10" />
+          <Property Name="unidad" Type="varchar" MaxLength="10" />
+          <Property Name="cantidadSu" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Cita">
+          <Key>
+            <PropertyRef Name="idCita" />
+          </Key>
+          <Property Name="idCita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="observaciones" Type="varchar" MaxLength="500" />
+          <Property Name="fecha" Type="date" />
+          <Property Name="hora" Type="time" Precision="7" />
+          <Property Name="idUsuario" Type="int" />
+          <Property Name="id_medico" Type="int" />
+          <Property Name="activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="DietaInfo">
+          <Key>
+            <PropertyRef Name="idInfo" />
+          </Key>
+          <Property Name="idInfo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imcInicial" Type="varchar" MaxLength="100" />
+          <Property Name="imcActual" Type="varchar" MaxLength="100" />
+          <Property Name="peso" Type="varchar" MaxLength="100" />
+          <Property Name="altura" Type="varchar" MaxLength="100" />
+          <Property Name="naf" Type="varchar" MaxLength="100" />
+          <Property Name="resultado" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="idGenero" />
+          </Key>
+          <Property Name="idGenero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="genero" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Medico">
+          <Key>
+            <PropertyRef Name="idMedico" />
+          </Key>
+          <Property Name="idMedico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="aPaterno" Type="varchar" MaxLength="50" />
+          <Property Name="aMaterno" Type="varchar" MaxLength="50" />
+          <Property Name="telefono" Type="varchar" MaxLength="12" />
+          <Property Name="correo" Type="varchar" MaxLength="100" />
+          <Property Name="contrasena" Type="varchar" MaxLength="50" />
+          <Property Name="puesto" Type="varchar" MaxLength="20" />
+          <Property Name="activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Mensaje">
+          <Key>
+            <PropertyRef Name="idMensaje" />
+          </Key>
+          <Property Name="idMensaje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="250" />
+          <Property Name="correo" Type="varchar" MaxLength="100" />
+          <Property Name="telefono" Type="varchar" MaxLength="12" />
+          <Property Name="mensaje" Type="varchar" MaxLength="500" />
+          <Property Name="activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Platillo">
+          <Key>
+            <PropertyRef Name="idPlatillo" />
+          </Key>
+          <Property Name="idPlatillo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="descripcion" Type="varchar" MaxLength="500" />
+          <Property Name="imagen" Type="image" />
+          <Property Name="activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Platillo_Alimento">
+          <Key>
+            <PropertyRef Name="idPlatillo_Alimento" />
+          </Key>
+          <Property Name="idPlatillo_Alimento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPlatillo" Type="int" />
+          <Property Name="idAlimento" Type="int" />
+        </EntityType>
+        <EntityType Name="PMensaje">
+          <Key>
+            <PropertyRef Name="idPMensaje" />
+          </Key>
+          <Property Name="idPMensaje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUsuario" Type="int" />
+          <Property Name="idMedico" Type="int" />
+          <Property Name="mensaje" Type="varchar" MaxLength="500" />
+          <Property Name="activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="aPaterno" Type="varchar" MaxLength="50" />
+          <Property Name="aMaterno" Type="varchar" MaxLength="50" />
+          <Property Name="correo" Type="varchar" MaxLength="100" />
+          <Property Name="telefono" Type="varchar" MaxLength="12" />
+          <Property Name="contrasena" Type="varchar" MaxLength="50" />
+          <Property Name="nacimiento" Type="date" />
+          <Property Name="activo" Type="bit" />
+          <Property Name="idInfo" Type="int" />
+          <Property Name="idGenero" Type="int" />
+        </EntityType>
+        <Association Name="FK__Cita__id_medico__1A69E950">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="idMedico" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="id_medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cita__idUsuario__1975C517">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Platillo___idAli__7EC1CEDB">
+          <End Role="Alimento" Type="Self.Alimento" Multiplicity="0..1" />
+          <End Role="Platillo_Alimento" Type="Self.Platillo_Alimento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alimento">
+              <PropertyRef Name="idAlimento" />
+            </Principal>
+            <Dependent Role="Platillo_Alimento">
+              <PropertyRef Name="idAlimento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Platillo___idPla__7DCDAAA2">
+          <End Role="Platillo" Type="Self.Platillo" Multiplicity="0..1" />
+          <End Role="Platillo_Alimento" Type="Self.Platillo_Alimento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Platillo">
+              <PropertyRef Name="idPlatillo" />
+            </Principal>
+            <Dependent Role="Platillo_Alimento">
+              <PropertyRef Name="idPlatillo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PMensaje__idMedi__12C8C788">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="PMensaje" Type="Self.PMensaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="idMedico" />
+            </Principal>
+            <Dependent Role="PMensaje">
+              <PropertyRef Name="idMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PMensaje__idUsua__11D4A34F">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="PMensaje" Type="Self.PMensaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="PMensaje">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__idGener__0EF836A4">
+          <End Role="Genero" Type="Self.Genero" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genero">
+              <PropertyRef Name="idGenero" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idGenero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__idInfo__0E04126B">
+          <End Role="DietaInfo" Type="Self.DietaInfo" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DietaInfo">
+              <PropertyRef Name="idInfo" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idInfo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoModelStoreContainer">
+          <EntitySet Name="Alimento" EntityType="Self.Alimento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cita" EntityType="Self.Cita" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DietaInfo" EntityType="Self.DietaInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genero" EntityType="Self.Genero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medico" EntityType="Self.Medico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mensaje" EntityType="Self.Mensaje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Platillo" EntityType="Self.Platillo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Platillo_Alimento" EntityType="Self.Platillo_Alimento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PMensaje" EntityType="Self.PMensaje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cita__id_medico__1A69E950" Association="Self.FK__Cita__id_medico__1A69E950">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cita__idUsuario__1975C517" Association="Self.FK__Cita__idUsuario__1975C517">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Platillo___idAli__7EC1CEDB" Association="Self.FK__Platillo___idAli__7EC1CEDB">
+            <End Role="Alimento" EntitySet="Alimento" />
+            <End Role="Platillo_Alimento" EntitySet="Platillo_Alimento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Platillo___idPla__7DCDAAA2" Association="Self.FK__Platillo___idPla__7DCDAAA2">
+            <End Role="Platillo" EntitySet="Platillo" />
+            <End Role="Platillo_Alimento" EntitySet="Platillo_Alimento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PMensaje__idMedi__12C8C788" Association="Self.FK__PMensaje__idMedi__12C8C788">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="PMensaje" EntitySet="PMensaje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PMensaje__idUsua__11D4A34F" Association="Self.FK__PMensaje__idUsua__11D4A34F">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="PMensaje" EntitySet="PMensaje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__idGener__0EF836A4" Association="Self.FK__Usuario__idGener__0EF836A4">
+            <End Role="Genero" EntitySet="Genero" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__idInfo__0E04126B" Association="Self.FK__Usuario__idInfo__0E04126B">
+            <End Role="DietaInfo" EntitySet="DietaInfo" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ProyectoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Alimentoes" EntityType="ProyectoModel.Alimento" />
+          <EntitySet Name="Citas" EntityType="ProyectoModel.Cita" />
+          <EntitySet Name="DietaInfoes" EntityType="ProyectoModel.DietaInfo" />
+          <EntitySet Name="Generoes" EntityType="ProyectoModel.Genero" />
+          <EntitySet Name="Medicos" EntityType="ProyectoModel.Medico" />
+          <EntitySet Name="Mensajes" EntityType="ProyectoModel.Mensaje" />
+          <EntitySet Name="Platilloes" EntityType="ProyectoModel.Platillo" />
+          <EntitySet Name="Platillo_Alimento" EntityType="ProyectoModel.Platillo_Alimento" />
+          <EntitySet Name="PMensajes" EntityType="ProyectoModel.PMensaje" />
+          <EntitySet Name="sysdiagrams" EntityType="ProyectoModel.sysdiagram" />
+          <EntitySet Name="Usuarios" EntityType="ProyectoModel.Usuario" />
+          <AssociationSet Name="FK__Platillo___idAli__7EC1CEDB" Association="ProyectoModel.FK__Platillo___idAli__7EC1CEDB">
+            <End Role="Alimento" EntitySet="Alimentoes" />
+            <End Role="Platillo_Alimento" EntitySet="Platillo_Alimento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cita__id_medico__1A69E950" Association="ProyectoModel.FK__Cita__id_medico__1A69E950">
+            <End Role="Medico" EntitySet="Medicos" />
+            <End Role="Cita" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cita__idUsuario__1975C517" Association="ProyectoModel.FK__Cita__idUsuario__1975C517">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Cita" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__idInfo__0E04126B" Association="ProyectoModel.FK__Usuario__idInfo__0E04126B">
+            <End Role="DietaInfo" EntitySet="DietaInfoes" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__idGener__0EF836A4" Association="ProyectoModel.FK__Usuario__idGener__0EF836A4">
+            <End Role="Genero" EntitySet="Generoes" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PMensaje__idMedi__12C8C788" Association="ProyectoModel.FK__PMensaje__idMedi__12C8C788">
+            <End Role="Medico" EntitySet="Medicos" />
+            <End Role="PMensaje" EntitySet="PMensajes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Platillo___idPla__7DCDAAA2" Association="ProyectoModel.FK__Platillo___idPla__7DCDAAA2">
+            <End Role="Platillo" EntitySet="Platilloes" />
+            <End Role="Platillo_Alimento" EntitySet="Platillo_Alimento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PMensaje__idUsua__11D4A34F" Association="ProyectoModel.FK__PMensaje__idUsua__11D4A34F">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="PMensaje" EntitySet="PMensajes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Alimento">
+          <Key>
+            <PropertyRef Name="idAlimento" />
+          </Key>
+          <Property Name="idAlimento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="potasio" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="hierro" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="acidoFolico" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="vitmaminaA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fibra" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="pesoBruto" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="pesoNeto" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="energia" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="protenia" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="lipidos" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="hidratosDC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cargaGlic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="indiceGlic" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="unidad" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cantidadSu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Platillo_Alimento" Relationship="ProyectoModel.FK__Platillo___idAli__7EC1CEDB" FromRole="Alimento" ToRole="Platillo_Alimento" />
+        </EntityType>
+        <EntityType Name="Cita">
+          <Key>
+            <PropertyRef Name="idCita" />
+          </Key>
+          <Property Name="idCita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="observaciones" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+          <Property Name="hora" Type="Time" Precision="7" />
+          <Property Name="idUsuario" Type="Int32" />
+          <Property Name="id_medico" Type="Int32" />
+          <Property Name="activo" Type="Boolean" />
+          <NavigationProperty Name="Medico" Relationship="ProyectoModel.FK__Cita__id_medico__1A69E950" FromRole="Cita" ToRole="Medico" />
+          <NavigationProperty Name="Usuario" Relationship="ProyectoModel.FK__Cita__idUsuario__1975C517" FromRole="Cita" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="DietaInfo">
+          <Key>
+            <PropertyRef Name="idInfo" />
+          </Key>
+          <Property Name="idInfo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imcInicial" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="imcActual" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="peso" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="altura" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="naf" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="resultado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuarios" Relationship="ProyectoModel.FK__Usuario__idInfo__0E04126B" FromRole="DietaInfo" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="idGenero" />
+          </Key>
+          <Property Name="idGenero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="genero1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuarios" Relationship="ProyectoModel.FK__Usuario__idGener__0EF836A4" FromRole="Genero" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Medico">
+          <Key>
+            <PropertyRef Name="idMedico" />
+          </Key>
+          <Property Name="idMedico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="aPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="aMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="puesto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+          <NavigationProperty Name="Citas" Relationship="ProyectoModel.FK__Cita__id_medico__1A69E950" FromRole="Medico" ToRole="Cita" />
+          <NavigationProperty Name="PMensajes" Relationship="ProyectoModel.FK__PMensaje__idMedi__12C8C788" FromRole="Medico" ToRole="PMensaje" />
+        </EntityType>
+        <EntityType Name="Mensaje">
+          <Key>
+            <PropertyRef Name="idMensaje" />
+          </Key>
+          <Property Name="idMensaje" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="mensaje1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Platillo">
+          <Key>
+            <PropertyRef Name="idPlatillo" />
+          </Key>
+          <Property Name="idPlatillo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="activo" Type="Boolean" />
+          <NavigationProperty Name="Platillo_Alimento" Relationship="ProyectoModel.FK__Platillo___idPla__7DCDAAA2" FromRole="Platillo" ToRole="Platillo_Alimento" />
+        </EntityType>
+        <EntityType Name="Platillo_Alimento">
+          <Key>
+            <PropertyRef Name="idPlatillo_Alimento" />
+          </Key>
+          <Property Name="idPlatillo_Alimento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPlatillo" Type="Int32" />
+          <Property Name="idAlimento" Type="Int32" />
+          <NavigationProperty Name="Alimento" Relationship="ProyectoModel.FK__Platillo___idAli__7EC1CEDB" FromRole="Platillo_Alimento" ToRole="Alimento" />
+          <NavigationProperty Name="Platillo" Relationship="ProyectoModel.FK__Platillo___idPla__7DCDAAA2" FromRole="Platillo_Alimento" ToRole="Platillo" />
+        </EntityType>
+        <EntityType Name="PMensaje">
+          <Key>
+            <PropertyRef Name="idPMensaje" />
+          </Key>
+          <Property Name="idPMensaje" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUsuario" Type="Int32" />
+          <Property Name="idMedico" Type="Int32" />
+          <Property Name="mensaje" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+          <NavigationProperty Name="Medico" Relationship="ProyectoModel.FK__PMensaje__idMedi__12C8C788" FromRole="PMensaje" ToRole="Medico" />
+          <NavigationProperty Name="Usuario" Relationship="ProyectoModel.FK__PMensaje__idUsua__11D4A34F" FromRole="PMensaje" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="aPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="aMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nacimiento" Type="DateTime" Precision="0" />
+          <Property Name="activo" Type="Boolean" />
+          <Property Name="idInfo" Type="Int32" />
+          <Property Name="idGenero" Type="Int32" />
+          <NavigationProperty Name="Citas" Relationship="ProyectoModel.FK__Cita__idUsuario__1975C517" FromRole="Usuario" ToRole="Cita" />
+          <NavigationProperty Name="DietaInfo" Relationship="ProyectoModel.FK__Usuario__idInfo__0E04126B" FromRole="Usuario" ToRole="DietaInfo" />
+          <NavigationProperty Name="Genero" Relationship="ProyectoModel.FK__Usuario__idGener__0EF836A4" FromRole="Usuario" ToRole="Genero" />
+          <NavigationProperty Name="PMensajes" Relationship="ProyectoModel.FK__PMensaje__idUsua__11D4A34F" FromRole="Usuario" ToRole="PMensaje" />
+        </EntityType>
+        <Association Name="FK__Platillo___idAli__7EC1CEDB">
+          <End Type="ProyectoModel.Alimento" Role="Alimento" Multiplicity="0..1" />
+          <End Type="ProyectoModel.Platillo_Alimento" Role="Platillo_Alimento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alimento">
+              <PropertyRef Name="idAlimento" />
+            </Principal>
+            <Dependent Role="Platillo_Alimento">
+              <PropertyRef Name="idAlimento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cita__id_medico__1A69E950">
+          <End Type="ProyectoModel.Medico" Role="Medico" Multiplicity="0..1" />
+          <End Type="ProyectoModel.Cita" Role="Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="idMedico" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="id_medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cita__idUsuario__1975C517">
+          <End Type="ProyectoModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+          <End Type="ProyectoModel.Cita" Role="Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__idInfo__0E04126B">
+          <End Type="ProyectoModel.DietaInfo" Role="DietaInfo" Multiplicity="0..1" />
+          <End Type="ProyectoModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DietaInfo">
+              <PropertyRef Name="idInfo" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idInfo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__idGener__0EF836A4">
+          <End Type="ProyectoModel.Genero" Role="Genero" Multiplicity="0..1" />
+          <End Type="ProyectoModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genero">
+              <PropertyRef Name="idGenero" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idGenero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PMensaje__idMedi__12C8C788">
+          <End Type="ProyectoModel.Medico" Role="Medico" Multiplicity="0..1" />
+          <End Type="ProyectoModel.PMensaje" Role="PMensaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="idMedico" />
+            </Principal>
+            <Dependent Role="PMensaje">
+              <PropertyRef Name="idMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Platillo___idPla__7DCDAAA2">
+          <End Type="ProyectoModel.Platillo" Role="Platillo" Multiplicity="0..1" />
+          <End Type="ProyectoModel.Platillo_Alimento" Role="Platillo_Alimento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Platillo">
+              <PropertyRef Name="idPlatillo" />
+            </Principal>
+            <Dependent Role="Platillo_Alimento">
+              <PropertyRef Name="idPlatillo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PMensaje__idUsua__11D4A34F">
+          <End Type="ProyectoModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+          <End Type="ProyectoModel.PMensaje" Role="PMensaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="PMensaje">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectoModelStoreContainer" CdmEntityContainer="ProyectoEntities">
+          <EntitySetMapping Name="Alimentoes">
+            <EntityTypeMapping TypeName="ProyectoModel.Alimento">
+              <MappingFragment StoreEntitySet="Alimento">
+                <ScalarProperty Name="cantidadSu" ColumnName="cantidadSu" />
+                <ScalarProperty Name="unidad" ColumnName="unidad" />
+                <ScalarProperty Name="indiceGlic" ColumnName="indiceGlic" />
+                <ScalarProperty Name="cargaGlic" ColumnName="cargaGlic" />
+                <ScalarProperty Name="hidratosDC" ColumnName="hidratosDC" />
+                <ScalarProperty Name="lipidos" ColumnName="lipidos" />
+                <ScalarProperty Name="protenia" ColumnName="protenia" />
+                <ScalarProperty Name="energia" ColumnName="energia" />
+                <ScalarProperty Name="pesoNeto" ColumnName="pesoNeto" />
+                <ScalarProperty Name="pesoBruto" ColumnName="pesoBruto" />
+                <ScalarProperty Name="fibra" ColumnName="fibra" />
+                <ScalarProperty Name="vitmaminaA" ColumnName="vitmaminaA" />
+                <ScalarProperty Name="acidoFolico" ColumnName="acidoFolico" />
+                <ScalarProperty Name="hierro" ColumnName="hierro" />
+                <ScalarProperty Name="potasio" ColumnName="potasio" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idAlimento" ColumnName="idAlimento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Citas">
+            <EntityTypeMapping TypeName="ProyectoModel.Cita">
+              <MappingFragment StoreEntitySet="Cita">
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="id_medico" ColumnName="id_medico" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="idCita" ColumnName="idCita" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DietaInfoes">
+            <EntityTypeMapping TypeName="ProyectoModel.DietaInfo">
+              <MappingFragment StoreEntitySet="DietaInfo">
+                <ScalarProperty Name="resultado" ColumnName="resultado" />
+                <ScalarProperty Name="naf" ColumnName="naf" />
+                <ScalarProperty Name="altura" ColumnName="altura" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="imcActual" ColumnName="imcActual" />
+                <ScalarProperty Name="imcInicial" ColumnName="imcInicial" />
+                <ScalarProperty Name="idInfo" ColumnName="idInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Generoes">
+            <EntityTypeMapping TypeName="ProyectoModel.Genero">
+              <MappingFragment StoreEntitySet="Genero">
+                <ScalarProperty Name="genero1" ColumnName="genero" />
+                <ScalarProperty Name="idGenero" ColumnName="idGenero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicos">
+            <EntityTypeMapping TypeName="ProyectoModel.Medico">
+              <MappingFragment StoreEntitySet="Medico">
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="puesto" ColumnName="puesto" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="aMaterno" ColumnName="aMaterno" />
+                <ScalarProperty Name="aPaterno" ColumnName="aPaterno" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idMedico" ColumnName="idMedico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mensajes">
+            <EntityTypeMapping TypeName="ProyectoModel.Mensaje">
+              <MappingFragment StoreEntitySet="Mensaje">
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="mensaje1" ColumnName="mensaje" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idMensaje" ColumnName="idMensaje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Platilloes">
+            <EntityTypeMapping TypeName="ProyectoModel.Platillo">
+              <MappingFragment StoreEntitySet="Platillo">
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idPlatillo" ColumnName="idPlatillo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Platillo_Alimento">
+            <EntityTypeMapping TypeName="ProyectoModel.Platillo_Alimento">
+              <MappingFragment StoreEntitySet="Platillo_Alimento">
+                <ScalarProperty Name="idAlimento" ColumnName="idAlimento" />
+                <ScalarProperty Name="idPlatillo" ColumnName="idPlatillo" />
+                <ScalarProperty Name="idPlatillo_Alimento" ColumnName="idPlatillo_Alimento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PMensajes">
+            <EntityTypeMapping TypeName="ProyectoModel.PMensaje">
+              <MappingFragment StoreEntitySet="PMensaje">
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="mensaje" ColumnName="mensaje" />
+                <ScalarProperty Name="idMedico" ColumnName="idMedico" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idPMensaje" ColumnName="idPMensaje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ProyectoModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="ProyectoModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="idGenero" ColumnName="idGenero" />
+                <ScalarProperty Name="idInfo" ColumnName="idInfo" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="nacimiento" ColumnName="nacimiento" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="aMaterno" ColumnName="aMaterno" />
+                <ScalarProperty Name="aPaterno" ColumnName="aPaterno" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,89 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="VIEW.Master" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <title></title>
+    <link href="include/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="include/css/Estilos.css" rel="stylesheet" />
+    <link type="text/css" href="Include/fontawesome/css/all.css" rel="stylesheet" />
+    <link href="include/css/textCss.css" rel="stylesheet" />
+    <script src="include/vendor/jquery/jquery.min.js"></script>
+    <script src="include/js/jquery-3.4.1.min.js"></script>
+    <script src="include/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="include/js/JavaScript.js"></script>
+</head>
+<body>
+
+    <form id="form2" runat="server">
+          <nav class="navbar navbar-expand-lg navbar-dark nav-color fixed-top">
+            <div class="container">
+                <img src="include/img/logo.png" width="40px" alt="Alternate Text" />
+                <a class="navbar-brand nav-text pl-1 pt-2" href="inicio.aspx"> NutriWellness</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link nav-text" href="inicio.aspx">Inicio
+                      <span class="sr-only">(current)</span>
+                    </a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link nav-text" href="Servicios.aspx">Servicios</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link nav-text" href="Contacto.aspx">Contacto</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link nav-text" href="Login.aspx">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Acceder
+                        </a>
+                    </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+          <!-- Header -->
+          <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+          <!-- Footer -->
+          <footer class="py-5 mt-5  bg-footer">
+            <div class="container">
+                <div class="row text-center">
+                    <!--<div class="col-md-8 text-center">
+                        <img src="include/img/logo.png" width="300px" alt="Alternate Text" />
+                    </div>-->
+                    <div class="col-md-4">
+                        <a href="https://www.facebook.com/">
+                            <i class="fab fa-facebook-square ico-footer m-2"></i>
+                        </a>
+                        
+                        
+                    </div>
+                    <div class="col-md-4">
+                        <a href="#">
+                            <i class="fas fa-envelope-open-text ico-footer m-2"></i>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="https://www.instagram.com/">
+                            <i class="fab fa-instagram ico-footer m-2"></i>
+                        </a>
+                    </div>
+                </div>
+              <p class="m-0 text-center text-white">&copy; Derechos de autor - Perla Medina 2020</p>
+            </div>
+          </footer>
+    </form>
+</body>
+</html>

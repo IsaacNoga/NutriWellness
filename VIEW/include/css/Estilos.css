@@ -1,0 +1,68 @@
+
+body {
+    padding-top: 56px;
+    
+}
+
+.nav-color {
+    background-color: #86d295b5;
+}
+
+.nav-text {
+    color: #41273b !important;
+    font-weight: 500;
+}
+.backg-1 {
+    background-image: url(../img/bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.header-text-1 {
+    color: #ffffff61;
+    font-weight: bolder;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #167521;
+}
+
+.header-text-2 {
+    color: white;
+    font-weight: bolder;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #167521;
+    font-size: 2rem;
+}
+
+.bg-footer {
+    background-color: #41273b;
+}
+
+.ico-footer {
+    font-size: 50px;
+    color: #9dcd98;
+}
+
+.ico-log {
+    font-size: 15px;
+    color: #46AB52;
+}
+
+.registro {
+    color: #167521;
+    font-size: 30px;
+}
+.registro:hover{
+    color:#005B0B;
+    font-size:35px;
+}
+
+.ico-redes {
+    font: Montserrat;
+    font-size: 40px;
+    color: #9dcd98;
+    text-shadow: -1px -1px 0 #2E8939, 1px -1px 0 #2E8939, -1px 1px 0 #2E8939, 1px 1px 0 #2E8939;
+}
+
+.ico-redes:hover{
+     text-shadow: -1px -1px 0 #41273b, 1px -1px 0 #41273b, -1px 1px 0 #41273b, 1px 1px 0 #41273b;
+}

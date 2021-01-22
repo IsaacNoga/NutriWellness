@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="574f8b95f85b411a9be1bea0c8dfcdd5" Name="Diagram1">
+        <EntityTypeShape EntityType="ProyectoModel.Alimento" Width="1.5" PointX="5.75" PointY="11.75" />
+        <EntityTypeShape EntityType="ProyectoModel.Cita" Width="1.5" PointX="5.25" PointY="3.625" />
+        <EntityTypeShape EntityType="ProyectoModel.DietaInfo" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ProyectoModel.Genero" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="ProyectoModel.Medico" Width="1.5" PointX="3" PointY="9.5" />
+        <EntityTypeShape EntityType="ProyectoModel.Mensaje" Width="1.5" PointX="10.75" PointY="1.75" />
+        <EntityTypeShape EntityType="ProyectoModel.Platillo" Width="1.5" PointX="5.75" PointY="7.875" />
+        <EntityTypeShape EntityType="ProyectoModel.Platillo_Alimento" Width="1.5" PointX="8" PointY="8" />
+        <EntityTypeShape EntityType="ProyectoModel.PMensaje" Width="1.5" PointX="8.25" PointY="3.875" />
+        <EntityTypeShape EntityType="ProyectoModel.sysdiagram" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ProyectoModel.Usuario" Width="1.5" PointX="3" PointY="3.125" />
+        <AssociationConnector Association="ProyectoModel.FK__Platillo___idAli__7EC1CEDB" />
+        <AssociationConnector Association="ProyectoModel.FK__Cita__id_medico__1A69E950" />
+        <AssociationConnector Association="ProyectoModel.FK__Cita__idUsuario__1975C517" />
+        <AssociationConnector Association="ProyectoModel.FK__Usuario__idInfo__0E04126B" />
+        <AssociationConnector Association="ProyectoModel.FK__Usuario__idGener__0EF836A4" />
+        <AssociationConnector Association="ProyectoModel.FK__PMensaje__idMedi__12C8C788" />
+        <AssociationConnector Association="ProyectoModel.FK__Platillo___idPla__7DCDAAA2" />
+        <AssociationConnector Association="ProyectoModel.FK__PMensaje__idUsua__11D4A34F" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

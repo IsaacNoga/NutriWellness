@@ -1,0 +1,43 @@
+﻿.cbase {
+    color: #9dcd98;
+}
+
+.cbase-claro {
+    color: #9dcd98;
+}
+
+.cbase-oscuro {
+    color: #00953a;
+}
+
+.cOscuro-claro {
+    color: #41273b;
+}
+
+.cOscuro-dark{
+    color:#005B0B;
+}
+
+.h1 {
+    font: 'Montserrat', Helvetica, Arial, Verdana, sans-serif;
+}
+
+.h2 {
+    font: 'Montserrat', Helvetica, Arial, Verdana, sans-serif;
+}
+
+.h3 {
+    font: 'Montserrat', Helvetica, Arial, Verdana, sans-serif;
+}
+
+.h4 {
+    font: 'Montserrat', Helvetica, Arial, Verdana, sans-serif;
+}
+
+.p {
+    font: 'Montserrat', Helvetica, Arial, Verdana, sans-serif;
+}
+
+.redes {
+    background-color: #00953a;
+}
