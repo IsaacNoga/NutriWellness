@@ -10,7 +10,7 @@
     <form runat="server">
         <div class="row">
             <div class="col-2">
-                <asp:Label Text="Cliente" ID="lblCliente" runat="server" />
+                <asp:Label Text="Paciente" ID="lblCliente" runat="server" />
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ProyectoConnectionString %>" SelectCommand="SELECT * FROM [Usuario]"></asp:SqlDataSource>
                 <asp:DropDownList cssClass="custom-select" runat="server" ID="ddlUsuarios" AutoPostBack="true" DataSourceID="SqlDataSource1" DataTextField="Nombre" DataValueField="idUsuario">
                 </asp:DropDownList>
@@ -50,13 +50,29 @@
         </div>
         <div class="row mt-2">
             <div class="col-2">
-                <asp:Button id="btnAgregar" CssClass="form-control" Text="Agregar" runat="server" OnClick="btnAgregar_Click" />
+                <asp:Button id="btnAgregar" CssClass="btn btn-primary mt-3" Text="Agregar" runat="server" OnClick="btnAgregar_Click" />
             </div>
             <div class="col-3">
-                <div id="mensaje" visible="false" runat="server" class="alert alert-success mt-1" role="alert">
-                    ¡La cita se generó correctamente!
+                <div id="mensaje" visible="false" runat="server" class="alert alert-success mt-3" role="alert">  
+                    <div class="row">
+                    <div class="col-10 mt-1">
+                        <asp:Label Text="¡La cita se generó correctamente!" runat="server" ID="Label1"/>
+                    </div>
+                        <div class="col-2">
+                            <asp:Button Text="Cerrar" CssClass="btn   btn-dark" runat="server" ID="Button1" OnClick="btnError_Click" />
+                        </div>
+                    </div>
                 </div>
-                <div id="mensajeError" visible="false" class="alert mt-3 alert-danger mt-1" runat="server" role="alert"></div>
+                <div id="mensajeError" visible="false" class="alert mt-3 alert-danger mt-1" runat="server" role="alert">
+                    <div class="row">
+                        <div class="col-10">
+                            <asp:Label Text="" runat="server" ID="lblError"/>
+                        </div>
+                        <div class="col-2">
+                            <asp:Button Text="Cerrar" CssClass="btn  btn-dark" runat="server" ID="btnError" OnClick="btnError_Click" />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="input-group input-group-sm mb-3 col-9 mt-5">

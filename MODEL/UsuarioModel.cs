@@ -69,7 +69,7 @@ namespace MODEL
             }
             catch (Exception ex)
             {
-                throw new Exception("Hubo un error en la capa del Modelo: " + ex.Message.ToString());
+                throw new Exception("Error: " + ex.Message.ToString());
             }
 
         }

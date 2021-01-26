@@ -36,5 +36,6 @@ namespace MODEL
         public virtual DbSet<PMensaje> PMensajes { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<PlanNutri> PlanNutris { get; set; }
     }
 }

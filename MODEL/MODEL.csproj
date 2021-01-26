@@ -53,6 +53,7 @@
     <Compile Include="Alimento.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="AlimentosModel.cs" />
     <Compile Include="Cita.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -60,6 +61,7 @@
     <Compile Include="DietaInfo.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="DietaInfoModel.cs" />
     <Compile Include="Genero.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -85,6 +87,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Modelo.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="PlanModel.cs" />
+    <Compile Include="PlanNutri.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Platillo.cs">
       <DependentUpon>Modelo.tt</DependentUpon>

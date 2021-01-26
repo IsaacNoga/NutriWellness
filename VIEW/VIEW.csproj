@@ -75,8 +75,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Contacto.aspx" />
+    <Content Include="Control\Alimentos.aspx" />
     <Content Include="Control\cDashBoard.aspx" />
     <Content Include="Control\Citas.aspx" />
+    <Content Include="Control\DietaUsuario.aspx" />
     <Content Include="Control\Mensajes.aspx" />
     <Content Include="Control\Platillos.aspx" />
     <Content Include="Control\Usuarios.aspx" />
@@ -125,6 +127,7 @@
     <Content Include="include\assets\js\plugins\sweetalert2.js" />
     <Content Include="include\css\Estilos.css" />
     <Content Include="include\css\Login.css" />
+    <Content Include="include\css\Panel.css" />
     <Content Include="include\css\Registro.css" />
     <Content Include="include\css\textCss.css" />
     <Content Include="include\fontawesome\css\all.css" />
@@ -1811,6 +1814,7 @@
     <Content Include="Registro.aspx" />
     <Content Include="Servicios.aspx" />
     <Content Include="User\Citas.aspx" />
+    <Content Include="User\Plan.aspx" />
     <Content Include="User\Platillos.aspx" />
     <Content Include="User\uDashBoard.aspx" />
     <Content Include="Web.config" />
@@ -1830,6 +1834,13 @@
     <Compile Include="Contacto.aspx.designer.cs">
       <DependentUpon>Contacto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Control\Alimentos.aspx.cs">
+      <DependentUpon>Alimentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\Alimentos.aspx.designer.cs">
+      <DependentUpon>Alimentos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Control\cDashBoard.aspx.cs">
       <DependentUpon>cDashBoard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1843,6 +1854,13 @@
     </Compile>
     <Compile Include="Control\Citas.aspx.designer.cs">
       <DependentUpon>Citas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\DietaUsuario.aspx.cs">
+      <DependentUpon>DietaUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\DietaUsuario.aspx.designer.cs">
+      <DependentUpon>DietaUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Control\Mensajes.aspx.cs">
       <DependentUpon>Mensajes.aspx</DependentUpon>
@@ -1921,6 +1939,13 @@
     </Compile>
     <Compile Include="User\Citas.aspx.designer.cs">
       <DependentUpon>Citas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\Plan.aspx.cs">
+      <DependentUpon>Plan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\Plan.aspx.designer.cs">
+      <DependentUpon>Plan.aspx</DependentUpon>
     </Compile>
     <Compile Include="User\Platillos.aspx.cs">
       <DependentUpon>Platillos.aspx</DependentUpon>

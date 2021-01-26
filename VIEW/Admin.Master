@@ -38,6 +38,18 @@
                   <p>Pacientes</p>
                 </a>
             </li>
+            <li class="nav-item  ">
+                <a class="nav-link" href="/Control/DietaUsuario.aspx">
+                  <i class="material-icons">menu_book</i>
+                  <p>Dieta</p>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a class="nav-link" href="/Control/Alimentos.aspx">
+                  <i class="material-icons">local_dining</i>
+                  <p>Alimentos</p>
+                </a>
+            </li>
             <li class="nav-item   ">
                 <a class="nav-link" href="/Control/Platillos.aspx">
                   <i class="material-icons">restaurant</i>

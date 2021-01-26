@@ -14,13 +14,8 @@ namespace MODEL
     
     public partial class DietaInfo
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DietaInfo()
-        {
-            this.Usuarios = new HashSet<Usuario>();
-        }
-    
         public int idInfo { get; set; }
+        public Nullable<int> idUsuario { get; set; }
         public string imcInicial { get; set; }
         public string imcActual { get; set; }
         public string peso { get; set; }
@@ -28,7 +23,6 @@ namespace MODEL
         public string naf { get; set; }
         public string resultado { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Usuario> Usuarios { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }

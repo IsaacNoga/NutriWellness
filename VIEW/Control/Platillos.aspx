@@ -32,7 +32,16 @@
                     <asp:Image ImageUrl="~/Include/img/noImage.png" Width="350" ID="imgPreview" runat="server" />
                 </div>
             </div>
-            <div id="mensajeError" visible="false" class="alert mt-3 alert-danger mt-1" runat="server" role="alert"></div>
+            <div id="mensajeError" visible="false" class="alert mt-3 alert-danger mt-1" runat="server" role="alert">
+            <div class="row">
+                    <div class="col-10">
+                        <asp:Label Text="" runat="server" ID="lblError"/>
+                    </div>
+                    <div class="col-2">
+                        <asp:Button Text="Cerrar" CssClass="btn  btn-dark" runat="server" ID="btnError" OnClick="btnError_Click" />
+                    </div>
+                </div>
+            </div>
             <div class="row mt-5">
                 <div class="input-group input-group-sm mb-3 col-9">
                   <div class="input-group-prepend">

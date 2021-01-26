@@ -36,8 +36,15 @@
             </div>
         </div>
         <div id="mensajeError" visible="false" class="alert mt-3 alert-danger mt-1" runat="server" role="alert">
-            Correo y/o contraseña Invalida
-        </div>
+                        <div class="row">
+                            <div class="col-11">
+                                <asp:Label Text="Correo y/o contraseña Invalida" runat="server" ID="lblError"/>
+                            </div>
+                            <div class="col-1">
+                                <asp:Button Text="Cerrar" CssClass="btn btn-outline-danger" runat="server" ID="btnError" OnClick="btnError_Click" />
+                            </div>
+                        </div>
+                    </div>
         <div class="mt-4">
 		    <div class="d-flex justify-content-center links">
                 <p>¿No tienes cuenta?</p>

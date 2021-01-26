@@ -41,19 +41,27 @@
                         </div>
                     </div>
                     <div class="form-row mb-4">
-                        <div class="input-group col-md-4">
+                        <div class="input-group col-md-3">
+                            <div class="input-group-append">
+							    <span class="input-group-text"><label>Genero</label></span>
+							</div>
+                             <asp:DropDownList cssClass="custom-select" runat="server" ID="ddlGenero" AutoPostBack="true" DataSourceID="SqlDataSource1" DataTextField="genero" DataValueField="idGenero">
+                            </asp:DropDownList>
+                              <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ProyectoConnectionString %>" SelectCommand="SELECT * FROM [Genero]"></asp:SqlDataSource>
+                        </div>
+                        <div class="input-group col-md-3">
                             <div class="input-group-append">
 							    <span class="input-group-text"><label>Correo</label></span>
 							</div>
                             <asp:TextBox ID="txtCorreo" CssClass="form-control" placeholder="ejemplo@gmail.com" runat="server"></asp:TextBox>
                         </div>
-                        <div class="input-group col-md-4">
+                        <div class="input-group col-md-3">
                             <div class="input-group-append">
 							    <span class="input-group-text"><label>Contraseña</label></span>
 							</div>
                             <asp:TextBox ID="txtContrasena" CssClass="form-control" TextMode="Password" runat="server"></asp:TextBox>
                         </div>
-                        <div class="input-group col-md-4">
+                        <div class="input-group col-md-3">
                             <div class="input-group-append">
 							    <span class="input-group-text"><label>Telefono</label></span>
 							</div>
@@ -62,11 +70,29 @@
                     </div>
                     <asp:Button ID="btnGuardar" class="btn btn-danger " runat="server" Text="Registrarse!" OnClick="btnGuardar_Click" />
                     <div id="mensaje" visible="false" runat="server" class="alert alert-success mt-3" role="alert">
-                        Registrad@!
+                        
+                        <div class="row">
+                            <div class="col-11 mt-1">
+                                <asp:Label Text="Registrad@ correctamente!" runat="server" ID="Label1"/>
+                            </div>
+                            <div class="col-1">
+                                <asp:Button Text="Cerrar" CssClass="btn  btn-outline-success" runat="server" ID="Button1" OnClick="btnError_Click" />
+                            </div>
+                        </div>
                     </div>
-                    <div id="mensajeError" visible="false" class="alert mt-3 alert-danger mt-1" runat="server" role="alert"></div>
+                    <div id="mensajeError" visible="false" class="alert mt-3 alert-danger mt-1" runat="server" role="alert">
+                        <div class="row">
+                            <div class="col-11">
+                                <asp:Label Text="xDD" runat="server" ID="lblError"/>
+                            </div>
+                            <div class="col-1">
+                                <asp:Button Text="Cerrar" CssClass="btn btn-outline-danger" runat="server" ID="btnError" OnClick="btnError_Click" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 </asp:Content>

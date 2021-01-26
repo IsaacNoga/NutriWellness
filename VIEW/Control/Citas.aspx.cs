@@ -33,15 +33,11 @@ namespace VIEW.Control
 
                 CitaControlador.InsertarCita(nuevaCita);
                 mensaje.Visible = true;
-                string javaScript = "OcultarMensaje();";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", javaScript, true);
             }
             catch (Exception ex )
             {
-                mensajeError.InnerText = ex.Message;
+                lblError.Text = ex.Message;
                 mensajeError.Visible = true;
-                string javaScript = "OcultarMensajeError();";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", javaScript, true);
             }
         }
 
@@ -66,10 +62,8 @@ namespace VIEW.Control
             }
             catch (Exception ex)
             {
+                lblError.Text = ex.Message;
                 mensajeError.Visible = true;
-                mensajeError.InnerText = ex.Message;
-                string javaScript = "OcultarMensajeError();";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", javaScript, true);
             }
         }
 
@@ -125,11 +119,15 @@ namespace VIEW.Control
             }
             catch (Exception ex)
             {
+                lblError.Text = ex.Message;
                 mensajeError.Visible = true;
-                mensajeError.InnerText = ex.Message;
-                string javaScript = "OcultarMensajeError();";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", javaScript, true);
             }
+        }
+
+        protected void btnError_Click(object sender, EventArgs e)
+        {
+            mensajeError.Visible = false;
+            mensaje.Visible = false;
         }
     }
 }

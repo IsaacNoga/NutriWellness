@@ -5,25 +5,27 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="574f8b95f85b411a9be1bea0c8dfcdd5" Name="Diagram1">
-        <EntityTypeShape EntityType="ProyectoModel.Alimento" Width="1.5" PointX="5.75" PointY="11.75" />
-        <EntityTypeShape EntityType="ProyectoModel.Cita" Width="1.5" PointX="5.25" PointY="3.625" />
-        <EntityTypeShape EntityType="ProyectoModel.DietaInfo" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ProyectoModel.Genero" Width="1.5" PointX="0.75" PointY="4.25" />
-        <EntityTypeShape EntityType="ProyectoModel.Medico" Width="1.5" PointX="3" PointY="9.5" />
-        <EntityTypeShape EntityType="ProyectoModel.Mensaje" Width="1.5" PointX="10.75" PointY="1.75" />
-        <EntityTypeShape EntityType="ProyectoModel.Platillo" Width="1.5" PointX="5.75" PointY="7.875" />
-        <EntityTypeShape EntityType="ProyectoModel.Platillo_Alimento" Width="1.5" PointX="8" PointY="8" />
-        <EntityTypeShape EntityType="ProyectoModel.PMensaje" Width="1.5" PointX="8.25" PointY="3.875" />
-        <EntityTypeShape EntityType="ProyectoModel.sysdiagram" Width="1.5" PointX="10.75" PointY="4.75" />
-        <EntityTypeShape EntityType="ProyectoModel.Usuario" Width="1.5" PointX="3" PointY="3.125" />
+        <EntityTypeShape EntityType="ProyectoModel.Alimento" Width="1.5" PointX="7.75" PointY="9.375" />
+        <EntityTypeShape EntityType="ProyectoModel.Cita" Width="1.5" PointX="8.25" PointY="5" />
+        <EntityTypeShape EntityType="ProyectoModel.DietaInfo" Width="1.5" PointX="5.25" PointY="11.5" />
+        <EntityTypeShape EntityType="ProyectoModel.Genero" Width="1.5" PointX="0.75" PointY="5.5" />
+        <EntityTypeShape EntityType="ProyectoModel.Medico" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="ProyectoModel.Mensaje" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="ProyectoModel.Platillo" Width="1.5" PointX="7.75" PointY="15.5" />
+        <EntityTypeShape EntityType="ProyectoModel.Platillo_Alimento" Width="1.5" PointX="10" PointY="10.625" />
+        <EntityTypeShape EntityType="ProyectoModel.PMensaje" Width="1.5" PointX="5.25" PointY="5.125" />
+        <EntityTypeShape EntityType="ProyectoModel.sysdiagram" Width="1.5" PointX="2.75" PointY="1.125" />
+        <EntityTypeShape EntityType="ProyectoModel.Usuario" Width="1.5" PointX="3" PointY="4.5" />
         <AssociationConnector Association="ProyectoModel.FK__Platillo___idAli__7EC1CEDB" />
-        <AssociationConnector Association="ProyectoModel.FK__Cita__id_medico__1A69E950" />
-        <AssociationConnector Association="ProyectoModel.FK__Cita__idUsuario__1975C517" />
-        <AssociationConnector Association="ProyectoModel.FK__Usuario__idInfo__0E04126B" />
-        <AssociationConnector Association="ProyectoModel.FK__Usuario__idGener__0EF836A4" />
-        <AssociationConnector Association="ProyectoModel.FK__PMensaje__idMedi__12C8C788" />
+        <AssociationConnector Association="ProyectoModel.FK__Cita__id_medico__5B438874" />
+        <AssociationConnector Association="ProyectoModel.FK__Cita__idUsuario__5A4F643B" />
+        <AssociationConnector Association="ProyectoModel.FK__DietaInfo__idUsu__53A266AC" />
+        <AssociationConnector Association="ProyectoModel.FK__Usuario__idGener__4924D839" />
+        <AssociationConnector Association="ProyectoModel.FK__PMensaje__idMedi__4CF5691D" />
         <AssociationConnector Association="ProyectoModel.FK__Platillo___idPla__7DCDAAA2" />
-        <AssociationConnector Association="ProyectoModel.FK__PMensaje__idUsua__11D4A34F" />
+        <AssociationConnector Association="ProyectoModel.FK__PMensaje__idUsua__4C0144E4" />
+        <EntityTypeShape EntityType="ProyectoModel.PlanNutri" Width="1.5" PointX="5.25" PointY="8.25" />
+        <AssociationConnector Association="ProyectoModel.FK__PlanNutri__idUsu__6D6238AF" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

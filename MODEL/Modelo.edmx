@@ -44,6 +44,7 @@
             <PropertyRef Name="idInfo" />
           </Key>
           <Property Name="idInfo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUsuario" Type="int" />
           <Property Name="imcInicial" Type="varchar" MaxLength="100" />
           <Property Name="imcActual" Type="varchar" MaxLength="100" />
           <Property Name="peso" Type="varchar" MaxLength="100" />
@@ -82,6 +83,17 @@
           <Property Name="telefono" Type="varchar" MaxLength="12" />
           <Property Name="mensaje" Type="varchar" MaxLength="500" />
           <Property Name="activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="PlanNutri">
+          <Key>
+            <PropertyRef Name="idPlan" />
+          </Key>
+          <Property Name="idPlan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUsuario" Type="int" />
+          <Property Name="Desayuno" Type="varchar" MaxLength="500" />
+          <Property Name="Comida" Type="varchar" MaxLength="500" />
+          <Property Name="Cena" Type="varchar" MaxLength="500" />
+          <Property Name="Colaciones" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Platillo">
           <Key>
@@ -134,10 +146,9 @@
           <Property Name="contrasena" Type="varchar" MaxLength="50" />
           <Property Name="nacimiento" Type="date" />
           <Property Name="activo" Type="bit" />
-          <Property Name="idInfo" Type="int" />
           <Property Name="idGenero" Type="int" />
         </EntityType>
-        <Association Name="FK__Cita__id_medico__1A69E950">
+        <Association Name="FK__Cita__id_medico__5B438874">
           <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
           <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
           <ReferentialConstraint>
@@ -149,7 +160,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cita__idUsuario__1975C517">
+        <Association Name="FK__Cita__idUsuario__5A4F643B">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
           <ReferentialConstraint>
@@ -157,6 +168,30 @@
               <PropertyRef Name="idUsuario" />
             </Principal>
             <Dependent Role="Cita">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DietaInfo__idUsu__53A266AC">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="DietaInfo" Type="Self.DietaInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="DietaInfo">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PlanNutri__idUsu__6D6238AF">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="PlanNutri" Type="Self.PlanNutri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="PlanNutri">
               <PropertyRef Name="idUsuario" />
             </Dependent>
           </ReferentialConstraint>
@@ -185,7 +220,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PMensaje__idMedi__12C8C788">
+        <Association Name="FK__PMensaje__idMedi__4CF5691D">
           <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
           <End Role="PMensaje" Type="Self.PMensaje" Multiplicity="*" />
           <ReferentialConstraint>
@@ -197,7 +232,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PMensaje__idUsua__11D4A34F">
+        <Association Name="FK__PMensaje__idUsua__4C0144E4">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="PMensaje" Type="Self.PMensaje" Multiplicity="*" />
           <ReferentialConstraint>
@@ -209,7 +244,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Usuario__idGener__0EF836A4">
+        <Association Name="FK__Usuario__idGener__4924D839">
           <End Role="Genero" Type="Self.Genero" Multiplicity="0..1" />
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -221,18 +256,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Usuario__idInfo__0E04126B">
-          <End Role="DietaInfo" Type="Self.DietaInfo" Multiplicity="0..1" />
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DietaInfo">
-              <PropertyRef Name="idInfo" />
-            </Principal>
-            <Dependent Role="Usuario">
-              <PropertyRef Name="idInfo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="ProyectoModelStoreContainer">
           <EntitySet Name="Alimento" EntityType="Self.Alimento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cita" EntityType="Self.Cita" Schema="dbo" store:Type="Tables" />
@@ -240,18 +263,27 @@
           <EntitySet Name="Genero" EntityType="Self.Genero" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medico" EntityType="Self.Medico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mensaje" EntityType="Self.Mensaje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanNutri" EntityType="Self.PlanNutri" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Platillo" EntityType="Self.Platillo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Platillo_Alimento" EntityType="Self.Platillo_Alimento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PMensaje" EntityType="Self.PMensaje" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Cita__id_medico__1A69E950" Association="Self.FK__Cita__id_medico__1A69E950">
+          <AssociationSet Name="FK__Cita__id_medico__5B438874" Association="Self.FK__Cita__id_medico__5B438874">
             <End Role="Medico" EntitySet="Medico" />
             <End Role="Cita" EntitySet="Cita" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cita__idUsuario__1975C517" Association="Self.FK__Cita__idUsuario__1975C517">
+          <AssociationSet Name="FK__Cita__idUsuario__5A4F643B" Association="Self.FK__Cita__idUsuario__5A4F643B">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DietaInfo__idUsu__53A266AC" Association="Self.FK__DietaInfo__idUsu__53A266AC">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="DietaInfo" EntitySet="DietaInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PlanNutri__idUsu__6D6238AF" Association="Self.FK__PlanNutri__idUsu__6D6238AF">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="PlanNutri" EntitySet="PlanNutri" />
           </AssociationSet>
           <AssociationSet Name="FK__Platillo___idAli__7EC1CEDB" Association="Self.FK__Platillo___idAli__7EC1CEDB">
             <End Role="Alimento" EntitySet="Alimento" />
@@ -261,20 +293,16 @@
             <End Role="Platillo" EntitySet="Platillo" />
             <End Role="Platillo_Alimento" EntitySet="Platillo_Alimento" />
           </AssociationSet>
-          <AssociationSet Name="FK__PMensaje__idMedi__12C8C788" Association="Self.FK__PMensaje__idMedi__12C8C788">
+          <AssociationSet Name="FK__PMensaje__idMedi__4CF5691D" Association="Self.FK__PMensaje__idMedi__4CF5691D">
             <End Role="Medico" EntitySet="Medico" />
             <End Role="PMensaje" EntitySet="PMensaje" />
           </AssociationSet>
-          <AssociationSet Name="FK__PMensaje__idUsua__11D4A34F" Association="Self.FK__PMensaje__idUsua__11D4A34F">
+          <AssociationSet Name="FK__PMensaje__idUsua__4C0144E4" Association="Self.FK__PMensaje__idUsua__4C0144E4">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="PMensaje" EntitySet="PMensaje" />
           </AssociationSet>
-          <AssociationSet Name="FK__Usuario__idGener__0EF836A4" Association="Self.FK__Usuario__idGener__0EF836A4">
+          <AssociationSet Name="FK__Usuario__idGener__4924D839" Association="Self.FK__Usuario__idGener__4924D839">
             <End Role="Genero" EntitySet="Genero" />
-            <End Role="Usuario" EntitySet="Usuario" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Usuario__idInfo__0E04126B" Association="Self.FK__Usuario__idInfo__0E04126B">
-            <End Role="DietaInfo" EntitySet="DietaInfo" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
         </EntityContainer>
@@ -298,23 +326,23 @@
             <End Role="Alimento" EntitySet="Alimentoes" />
             <End Role="Platillo_Alimento" EntitySet="Platillo_Alimento" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cita__id_medico__1A69E950" Association="ProyectoModel.FK__Cita__id_medico__1A69E950">
+          <AssociationSet Name="FK__Cita__id_medico__5B438874" Association="ProyectoModel.FK__Cita__id_medico__5B438874">
             <End Role="Medico" EntitySet="Medicos" />
             <End Role="Cita" EntitySet="Citas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cita__idUsuario__1975C517" Association="ProyectoModel.FK__Cita__idUsuario__1975C517">
+          <AssociationSet Name="FK__Cita__idUsuario__5A4F643B" Association="ProyectoModel.FK__Cita__idUsuario__5A4F643B">
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="Cita" EntitySet="Citas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Usuario__idInfo__0E04126B" Association="ProyectoModel.FK__Usuario__idInfo__0E04126B">
-            <End Role="DietaInfo" EntitySet="DietaInfoes" />
+          <AssociationSet Name="FK__DietaInfo__idUsu__53A266AC" Association="ProyectoModel.FK__DietaInfo__idUsu__53A266AC">
             <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="DietaInfo" EntitySet="DietaInfoes" />
           </AssociationSet>
-          <AssociationSet Name="FK__Usuario__idGener__0EF836A4" Association="ProyectoModel.FK__Usuario__idGener__0EF836A4">
+          <AssociationSet Name="FK__Usuario__idGener__4924D839" Association="ProyectoModel.FK__Usuario__idGener__4924D839">
             <End Role="Genero" EntitySet="Generoes" />
             <End Role="Usuario" EntitySet="Usuarios" />
           </AssociationSet>
-          <AssociationSet Name="FK__PMensaje__idMedi__12C8C788" Association="ProyectoModel.FK__PMensaje__idMedi__12C8C788">
+          <AssociationSet Name="FK__PMensaje__idMedi__4CF5691D" Association="ProyectoModel.FK__PMensaje__idMedi__4CF5691D">
             <End Role="Medico" EntitySet="Medicos" />
             <End Role="PMensaje" EntitySet="PMensajes" />
           </AssociationSet>
@@ -322,9 +350,14 @@
             <End Role="Platillo" EntitySet="Platilloes" />
             <End Role="Platillo_Alimento" EntitySet="Platillo_Alimento" />
           </AssociationSet>
-          <AssociationSet Name="FK__PMensaje__idUsua__11D4A34F" Association="ProyectoModel.FK__PMensaje__idUsua__11D4A34F">
+          <AssociationSet Name="FK__PMensaje__idUsua__4C0144E4" Association="ProyectoModel.FK__PMensaje__idUsua__4C0144E4">
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="PMensaje" EntitySet="PMensajes" />
+          </AssociationSet>
+          <EntitySet Name="PlanNutris" EntityType="ProyectoModel.PlanNutri" />
+          <AssociationSet Name="FK__PlanNutri__idUsu__6D6238AF" Association="ProyectoModel.FK__PlanNutri__idUsu__6D6238AF">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="PlanNutri" EntitySet="PlanNutris" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Alimento">
@@ -361,21 +394,22 @@
           <Property Name="idUsuario" Type="Int32" />
           <Property Name="id_medico" Type="Int32" />
           <Property Name="activo" Type="Boolean" />
-          <NavigationProperty Name="Medico" Relationship="ProyectoModel.FK__Cita__id_medico__1A69E950" FromRole="Cita" ToRole="Medico" />
-          <NavigationProperty Name="Usuario" Relationship="ProyectoModel.FK__Cita__idUsuario__1975C517" FromRole="Cita" ToRole="Usuario" />
+          <NavigationProperty Name="Medico" Relationship="ProyectoModel.FK__Cita__id_medico__5B438874" FromRole="Cita" ToRole="Medico" />
+          <NavigationProperty Name="Usuario" Relationship="ProyectoModel.FK__Cita__idUsuario__5A4F643B" FromRole="Cita" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="DietaInfo">
           <Key>
             <PropertyRef Name="idInfo" />
           </Key>
           <Property Name="idInfo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUsuario" Type="Int32" />
           <Property Name="imcInicial" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="imcActual" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="peso" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="altura" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="naf" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="resultado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Usuarios" Relationship="ProyectoModel.FK__Usuario__idInfo__0E04126B" FromRole="DietaInfo" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario" Relationship="ProyectoModel.FK__DietaInfo__idUsu__53A266AC" FromRole="DietaInfo" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Genero">
           <Key>
@@ -383,7 +417,7 @@
           </Key>
           <Property Name="idGenero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="genero1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Usuarios" Relationship="ProyectoModel.FK__Usuario__idGener__0EF836A4" FromRole="Genero" ToRole="Usuario" />
+          <NavigationProperty Name="Usuarios" Relationship="ProyectoModel.FK__Usuario__idGener__4924D839" FromRole="Genero" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Medico">
           <Key>
@@ -398,8 +432,8 @@
           <Property Name="contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="puesto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="activo" Type="Boolean" />
-          <NavigationProperty Name="Citas" Relationship="ProyectoModel.FK__Cita__id_medico__1A69E950" FromRole="Medico" ToRole="Cita" />
-          <NavigationProperty Name="PMensajes" Relationship="ProyectoModel.FK__PMensaje__idMedi__12C8C788" FromRole="Medico" ToRole="PMensaje" />
+          <NavigationProperty Name="Citas" Relationship="ProyectoModel.FK__Cita__id_medico__5B438874" FromRole="Medico" ToRole="Cita" />
+          <NavigationProperty Name="PMensajes" Relationship="ProyectoModel.FK__PMensaje__idMedi__4CF5691D" FromRole="Medico" ToRole="PMensaje" />
         </EntityType>
         <EntityType Name="Mensaje">
           <Key>
@@ -442,8 +476,8 @@
           <Property Name="idMedico" Type="Int32" />
           <Property Name="mensaje" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="activo" Type="Boolean" />
-          <NavigationProperty Name="Medico" Relationship="ProyectoModel.FK__PMensaje__idMedi__12C8C788" FromRole="PMensaje" ToRole="Medico" />
-          <NavigationProperty Name="Usuario" Relationship="ProyectoModel.FK__PMensaje__idUsua__11D4A34F" FromRole="PMensaje" ToRole="Usuario" />
+          <NavigationProperty Name="Medico" Relationship="ProyectoModel.FK__PMensaje__idMedi__4CF5691D" FromRole="PMensaje" ToRole="Medico" />
+          <NavigationProperty Name="Usuario" Relationship="ProyectoModel.FK__PMensaje__idUsua__4C0144E4" FromRole="PMensaje" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -468,12 +502,12 @@
           <Property Name="contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="nacimiento" Type="DateTime" Precision="0" />
           <Property Name="activo" Type="Boolean" />
-          <Property Name="idInfo" Type="Int32" />
           <Property Name="idGenero" Type="Int32" />
-          <NavigationProperty Name="Citas" Relationship="ProyectoModel.FK__Cita__idUsuario__1975C517" FromRole="Usuario" ToRole="Cita" />
-          <NavigationProperty Name="DietaInfo" Relationship="ProyectoModel.FK__Usuario__idInfo__0E04126B" FromRole="Usuario" ToRole="DietaInfo" />
-          <NavigationProperty Name="Genero" Relationship="ProyectoModel.FK__Usuario__idGener__0EF836A4" FromRole="Usuario" ToRole="Genero" />
-          <NavigationProperty Name="PMensajes" Relationship="ProyectoModel.FK__PMensaje__idUsua__11D4A34F" FromRole="Usuario" ToRole="PMensaje" />
+          <NavigationProperty Name="Citas" Relationship="ProyectoModel.FK__Cita__idUsuario__5A4F643B" FromRole="Usuario" ToRole="Cita" />
+          <NavigationProperty Name="DietaInfoes" Relationship="ProyectoModel.FK__DietaInfo__idUsu__53A266AC" FromRole="Usuario" ToRole="DietaInfo" />
+          <NavigationProperty Name="Genero" Relationship="ProyectoModel.FK__Usuario__idGener__4924D839" FromRole="Usuario" ToRole="Genero" />
+          <NavigationProperty Name="PMensajes" Relationship="ProyectoModel.FK__PMensaje__idUsua__4C0144E4" FromRole="Usuario" ToRole="PMensaje" />
+          <NavigationProperty Name="PlanNutris" Relationship="ProyectoModel.FK__PlanNutri__idUsu__6D6238AF" FromRole="Usuario" ToRole="PlanNutri" />
         </EntityType>
         <Association Name="FK__Platillo___idAli__7EC1CEDB">
           <End Type="ProyectoModel.Alimento" Role="Alimento" Multiplicity="0..1" />
@@ -487,7 +521,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cita__id_medico__1A69E950">
+        <Association Name="FK__Cita__id_medico__5B438874">
           <End Type="ProyectoModel.Medico" Role="Medico" Multiplicity="0..1" />
           <End Type="ProyectoModel.Cita" Role="Cita" Multiplicity="*" />
           <ReferentialConstraint>
@@ -499,7 +533,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cita__idUsuario__1975C517">
+        <Association Name="FK__Cita__idUsuario__5A4F643B">
           <End Type="ProyectoModel.Usuario" Role="Usuario" Multiplicity="0..1" />
           <End Type="ProyectoModel.Cita" Role="Cita" Multiplicity="*" />
           <ReferentialConstraint>
@@ -511,19 +545,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Usuario__idInfo__0E04126B">
-          <End Type="ProyectoModel.DietaInfo" Role="DietaInfo" Multiplicity="0..1" />
-          <End Type="ProyectoModel.Usuario" Role="Usuario" Multiplicity="*" />
+        <Association Name="FK__DietaInfo__idUsu__53A266AC">
+          <End Type="ProyectoModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+          <End Type="ProyectoModel.DietaInfo" Role="DietaInfo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="DietaInfo">
-              <PropertyRef Name="idInfo" />
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
             </Principal>
-            <Dependent Role="Usuario">
-              <PropertyRef Name="idInfo" />
+            <Dependent Role="DietaInfo">
+              <PropertyRef Name="idUsuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Usuario__idGener__0EF836A4">
+        <Association Name="FK__Usuario__idGener__4924D839">
           <End Type="ProyectoModel.Genero" Role="Genero" Multiplicity="0..1" />
           <End Type="ProyectoModel.Usuario" Role="Usuario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -535,7 +569,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PMensaje__idMedi__12C8C788">
+        <Association Name="FK__PMensaje__idMedi__4CF5691D">
           <End Type="ProyectoModel.Medico" Role="Medico" Multiplicity="0..1" />
           <End Type="ProyectoModel.PMensaje" Role="PMensaje" Multiplicity="*" />
           <ReferentialConstraint>
@@ -559,7 +593,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PMensaje__idUsua__11D4A34F">
+        <Association Name="FK__PMensaje__idUsua__4C0144E4">
           <End Type="ProyectoModel.Usuario" Role="Usuario" Multiplicity="0..1" />
           <End Type="ProyectoModel.PMensaje" Role="PMensaje" Multiplicity="*" />
           <ReferentialConstraint>
@@ -571,7 +605,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="PlanNutri">
+          <Key>
+            <PropertyRef Name="idPlan" />
+          </Key>
+          <Property Name="idPlan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUsuario" Type="Int32" />
+          <Property Name="Desayuno" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Comida" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Cena" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Colaciones" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuario" Relationship="ProyectoModel.FK__PlanNutri__idUsu__6D6238AF" FromRole="PlanNutri" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK__PlanNutri__idUsu__6D6238AF">
+          <End Type="ProyectoModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+          <End Type="ProyectoModel.PlanNutri" Role="PlanNutri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="PlanNutri">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -622,6 +680,7 @@
                 <ScalarProperty Name="peso" ColumnName="peso" />
                 <ScalarProperty Name="imcActual" ColumnName="imcActual" />
                 <ScalarProperty Name="imcInicial" ColumnName="imcInicial" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
                 <ScalarProperty Name="idInfo" ColumnName="idInfo" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -707,7 +766,6 @@
             <EntityTypeMapping TypeName="ProyectoModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
                 <ScalarProperty Name="idGenero" ColumnName="idGenero" />
-                <ScalarProperty Name="idInfo" ColumnName="idInfo" />
                 <ScalarProperty Name="activo" ColumnName="activo" />
                 <ScalarProperty Name="nacimiento" ColumnName="nacimiento" />
                 <ScalarProperty Name="contrasena" ColumnName="contrasena" />
@@ -717,6 +775,18 @@
                 <ScalarProperty Name="aPaterno" ColumnName="aPaterno" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanNutris">
+            <EntityTypeMapping TypeName="ProyectoModel.PlanNutri">
+              <MappingFragment StoreEntitySet="PlanNutri">
+                <ScalarProperty Name="Colaciones" ColumnName="Colaciones" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+                <ScalarProperty Name="Comida" ColumnName="Comida" />
+                <ScalarProperty Name="Desayuno" ColumnName="Desayuno" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idPlan" ColumnName="idPlan" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

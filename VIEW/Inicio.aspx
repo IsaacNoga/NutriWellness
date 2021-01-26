@@ -27,7 +27,7 @@
                         
                       </div>
                       <div class="col-8">
-                          <p class="p">Información escencial.</p>
+                          <p class="p">Mi nombre es Perla Medina...</p>
                         <p class="p"></p>
                         <p class="p"></p>
                       </div>
@@ -38,13 +38,13 @@
                 <hr/>
                 <address>
                   <strong>Dirección</strong>
-                  <br>xxxxxxxxxxxxx, 
+                  <br>Blv. Enrique Segoviano, 
                   <br>Centro, 83000 Hermosillo, Son.
                   <br>
                 </address>
                 <address>
                   <abbr title="">Teléfono: </abbr>
-                  xxxxxxxxxxxx
+                  (662)4636874
                   <br>
                   <abbr title="">Correo: </abbr>
                   <a href="mailto:#">nutriologa.perla@gmail.com</a>

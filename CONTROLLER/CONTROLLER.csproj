@@ -41,9 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlimentosControlador.cs" />
     <Compile Include="CitaControlador.cs" />
+    <Compile Include="DietaInfoControlador.cs" />
     <Compile Include="MedicoControlador.cs" />
     <Compile Include="MensajeControlador.cs" />
+    <Compile Include="PlanControlador.cs" />
     <Compile Include="PlatillosControlador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioControlador.cs" />

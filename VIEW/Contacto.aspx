@@ -26,7 +26,7 @@
                                 </a>
                             </div>
                             <div class="col-md-4">
-                                <i class="fab fa-whatsapp ico-redes"> xxx-xxx-xxxx</i>
+                                <i class="fab fa-whatsapp ico-redes"> (662)4636874</i>
                             </div>
                         </div>
                         <hr />

@@ -18,7 +18,9 @@ namespace MODEL
         public Usuario()
         {
             this.Citas = new HashSet<Cita>();
+            this.DietaInfoes = new HashSet<DietaInfo>();
             this.PMensajes = new HashSet<PMensaje>();
+            this.PlanNutris = new HashSet<PlanNutri>();
         }
     
         public int idUsuario { get; set; }
@@ -30,14 +32,16 @@ namespace MODEL
         public string contrasena { get; set; }
         public Nullable<System.DateTime> nacimiento { get; set; }
         public Nullable<bool> activo { get; set; }
-        public Nullable<int> idInfo { get; set; }
         public Nullable<int> idGenero { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cita> Citas { get; set; }
-        public virtual DietaInfo DietaInfo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DietaInfo> DietaInfoes { get; set; }
         public virtual Genero Genero { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PMensaje> PMensajes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PlanNutri> PlanNutris { get; set; }
     }
 }

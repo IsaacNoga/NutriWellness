@@ -55,6 +55,14 @@
             </asp:Panel>
         </div>
         <div id="mensajeError" visible="false" class="alert mt-3 alert-danger mt-1" runat="server" role="alert">
+            <div class="row">
+                <div class="col-10">
+                    <asp:Label Text="" runat="server" ID="lblError"/>
+                </div>
+                <div class="col-2">
+                    <asp:Button Text="Cerrar" CssClass="btn  btn-dark" runat="server" ID="btnError" OnClick="btnError_Click" />
+                </div>
+            </div>
         </div>
         <div class="mt-5">
             <asp:GridView id="gvUsuarios" CssClass="table table-bordered dataTable" AutoGenerateColumns="false" runat="server">
@@ -63,9 +71,13 @@
                     <asp:BoundField dataField="nombre" HeaderText="Nombre" />
                     <asp:BoundField dataField="aPaterno" HeaderText="Apellido Paterno"/>
                     <asp:BoundField dataField="aMaterno" HeaderText="Apellido Materno" />
-                    
                     <asp:BoundField DataField="correo" HeaderText="Correo" />
                     <asp:BoundField DataField="telefono" HeaderText="Telefono" />
+                    <asp:templatefield headertext="Edad">
+			            <itemtemplate>
+				            <%# CalculateAge(Convert.ToDateTime(Eval("Nacimiento"))) %>
+			            </itemtemplate>
+		            </asp:templatefield>
                     <asp:TemplateField HeaderText="Acciones">
                         <ItemTemplate>
                             <asp:ImageButton CommandArgument="<%#((Usuario)(Container.DataItem)).idUsuario%>" imageUrl="~/Include/img/icons/delete.png" Width="30" Height="30" ID="ImgBtnEliminar" runat="server" OnCommand="ImgBtnEliminar_Command" />
