@@ -31,14 +31,22 @@ namespace VIEW
 
                 MensajeControlador.InsertarMensaje(newMensaje);
                 mensaje.Visible = true;
-                string javaScript = "OcultarMensaje();";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", javaScript, true);
+                txtNombre.Text = "";
+                txtEmail.Text = "";
+                txtTelefono.Text = "";
+                txtMensaje.Text = "";
             }
             catch (Exception ex)
             {
-                var datos = "<script> alert('" + ex.Message + "') </script>";
-                Response.Write(datos);
+                lblError.Text = ex.Message;
+                mensajeError.Visible = true;
             }
+        }
+
+        protected void btnError_Click(object sender, EventArgs e)
+        {
+            mensajeError.Visible = false;
+            mensaje.Visible = false;
         }
     }
 }

@@ -1759,6 +1759,9 @@
     <Content Include="include\img\bg-01.jpg" />
     <Content Include="include\img\bg-1.jpg" />
     <Content Include="include\img\bg.png" />
+    <Content Include="include\img\bg2.png" />
+    <Content Include="include\img\bg3.png" />
+    <Content Include="include\img\icon.ico" />
     <Content Include="include\img\icons\check.png" />
     <Content Include="include\img\icons\delete.png" />
     <Content Include="include\img\icons\edit.png" />

@@ -55,15 +55,11 @@ namespace VIEW
 				PlanControlador.InsertarPlan(nuevoPlan);
 				
 				mensaje.Visible = true;
-				string javaScript = "OcultarMensaje();";
-				ScriptManager.RegisterStartupScript(this, this.GetType(), "script", javaScript, true);
 			}
 			catch (Exception ex)
 			{
 				lblError.Text = ex.Message;
 				mensajeError.Visible = true;
-				string javaScript = "OcultarMensajeError();";
-				ScriptManager.RegisterStartupScript(this, this.GetType(), "script", javaScript, true);
 			}
 		}
 

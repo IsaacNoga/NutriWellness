@@ -24,10 +24,9 @@
                   <div class="row ">
                       <div class="col-4">
                           <img src="include/img/logo5.png" width="200" alt="Alternate Text" />
-                        
                       </div>
                       <div class="col-8">
-                          <p class="p">Mi nombre es Perla Medina...</p>
+                          <p class="p"></p>
                         <p class="p"></p>
                         <p class="p"></p>
                       </div>
@@ -155,6 +154,16 @@
                           <h4 class="alert-heading">Enviado!</h4>
                           <hr>
                           <p class="mb-0">Gracias por tu mensaje, me se contactaré contigo en breve.</p>
+                        </div>
+                        <div id="mensajeError" visible="false" class="alert mt-3 alert-danger mt-1" runat="server" role="alert">
+                            <div class="row">
+                                <div class="col-11">
+                                    <asp:Label Text="xDD" runat="server" ID="lblError"/>
+                                </div>
+                                <div class="col-1">
+                                    <asp:Button Text="Cerrar" CssClass="btn btn-outline-danger" runat="server" ID="btnError" OnClick="btnError_Click"/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

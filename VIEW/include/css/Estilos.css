@@ -13,7 +13,7 @@ body {
     font-weight: 500;
 }
 .backg-1 {
-    background-image: url(../img/bg.png);
+    background-image: url(../img/bg2.png);
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -57,12 +57,10 @@ body {
 }
 
 .ico-redes {
-    font: Montserrat;
     font-size: 40px;
-    color: #9dcd98;
-    text-shadow: -1px -1px 0 #2E8939, 1px -1px 0 #2E8939, -1px 1px 0 #2E8939, 1px 1px 0 #2E8939;
+    color: #4c3747;
 }
 
-.ico-redes:hover{
-     text-shadow: -1px -1px 0 #41273b, 1px -1px 0 #41273b, -1px 1px 0 #41273b, 1px 1px 0 #41273b;
-}
+    .ico-redes:hover {
+        color: #9dcd98;
+    }

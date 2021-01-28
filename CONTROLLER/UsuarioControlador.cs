@@ -38,7 +38,7 @@ namespace CONTROLLER
             }
             catch (Exception ex)
             {
-                throw new Exception("Hubo un error en la capa del Modelo: " + ex.Message.ToString());
+                throw new Exception("Hubo un error: " + ex.Message.ToString());
             }
         }
 
@@ -52,12 +52,12 @@ namespace CONTROLLER
                 }
                 else
                 {
-                    throw new Exception("Hubo un error");
+                    throw new Exception("Hubo un con el usuario");
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Hubo un error en la capa del Modelo: " + ex.Message.ToString());
+                throw new Exception("Hubo un error: " + ex.Message.ToString());
             }
         }
 
@@ -72,7 +72,7 @@ namespace CONTROLLER
             }
             catch (Exception ex)
             {
-                throw new Exception("Hubo un error en la capa del Modelo: " + ex.Message.ToString());
+                throw new Exception("Hubo un error: " + ex.Message.ToString());
             }
         }
 
@@ -94,12 +94,12 @@ namespace CONTROLLER
                 }
                 else
                 {
-                    throw new Exception("Hubo un error");
+                    throw new Exception("No se admiten campos vacios.");
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Hubo un error en la capa del Modelo: " + ex.Message.ToString());
+                throw new Exception("Hubo un error: " + ex.Message.ToString());
             }
         }
     }

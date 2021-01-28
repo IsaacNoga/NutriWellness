@@ -11,6 +11,7 @@
     <!-- Material Kit CSS -->
     <link href="~/Include/assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
     <link href="include/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/x-icon" href="include/img/icon.ico" />
     <script src="include/vendor/jquery/jquery.min.js"></script>
     <script src="include/js/jquery-3.4.1.min.js"></script>
     <script src="include/js/JavaScript.js"></script>
@@ -18,7 +19,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-  <div class="wrapper ">
+  <div class="wrapper " style="background-image:url(~/Include/img/bg3.png)">
     <div class="sidebar" data-color="danger" data-background-color="white">
 
       <div class="logo">

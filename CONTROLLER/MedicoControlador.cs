@@ -27,12 +27,12 @@ namespace CONTROLLER
                 }
                 else
                 {
-                    throw new Exception("Hubo un error");
+                    throw new Exception("Los datos ingresados no son validos");
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Hubo un error en la capa del Modelo: " + ex.Message.ToString());
+                throw new Exception("Hubo un error: " + ex.Message.ToString());
             }
         }
     }

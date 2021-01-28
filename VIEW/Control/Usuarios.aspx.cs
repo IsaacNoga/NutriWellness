@@ -76,32 +76,38 @@ namespace VIEW.Control
         {
             try
             {
-                string CadenaConexion = "Data source=localhost;initial catalog=Proyecto;integrated Security=True";
-                SqlConnection conexionSQL = new SqlConnection(CadenaConexion);
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "UPDATE Usuario SET nombre=@nombre, aPaterno=@aPaterno, aMaterno=@aMaterno, correo=@correo, telefono=@telefono WHERE idUsuario=@idUsuario";
-                cmd.Parameters.Add("@idUsuario", SqlDbType.Int).Value = txtId.Text;
-                cmd.Parameters.Add("@nombre", SqlDbType.Text).Value = txtNombre.Text;
-                cmd.Parameters.Add("@aPaterno", SqlDbType.Text).Value = txtApellido1.Text;
-                cmd.Parameters.Add("@aMaterno", SqlDbType.Text).Value = txtApellido2.Text;
-                cmd.Parameters.Add("@correo", SqlDbType.Text).Value = txtCorreo.Text;
-                cmd.Parameters.Add("@telefono", SqlDbType.Text).Value = txtTelefono.Text;
-                cmd.Connection = conexionSQL;
-                conexionSQL.Open();
-                cmd.ExecuteNonQuery();
+                if (String.IsNullOrEmpty(txtNombre.Text)|| String.IsNullOrEmpty(txtApellido1.Text) || String.IsNullOrEmpty(txtApellido2.Text) || String.IsNullOrEmpty(txtCorreo.Text) || String.IsNullOrEmpty(txtTelefono.Text))
+                {
+                    lblError.Text = "Error: Todos los campos deben ser llenados";
+                    mensajeError.Visible = true;
+                }
+                else
+                {
+                    string CadenaConexion = "Data source=localhost;initial catalog=Proyecto;integrated Security=True";
+                    SqlConnection conexionSQL = new SqlConnection(CadenaConexion);
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "UPDATE Usuario SET nombre=@nombre, aPaterno=@aPaterno, aMaterno=@aMaterno, correo=@correo, telefono=@telefono WHERE idUsuario=@idUsuario";
+                    cmd.Parameters.Add("@idUsuario", SqlDbType.Int).Value = txtId.Text;
+                    cmd.Parameters.Add("@nombre", SqlDbType.Text).Value = txtNombre.Text;
+                    cmd.Parameters.Add("@aPaterno", SqlDbType.Text).Value = txtApellido1.Text;
+                    cmd.Parameters.Add("@aMaterno", SqlDbType.Text).Value = txtApellido2.Text;
+                    cmd.Parameters.Add("@correo", SqlDbType.Text).Value = txtCorreo.Text;
+                    cmd.Parameters.Add("@telefono", SqlDbType.Text).Value = txtTelefono.Text;
+                    cmd.Connection = conexionSQL;
+                    conexionSQL.Open();
+                    cmd.ExecuteNonQuery();
 
-                pnlEditar.Visible = false;
-                var resultado = UsuarioControlador.BuscarUsuarioCriterios(string.Empty, true);
+                    pnlEditar.Visible = false;
+                    var resultado = UsuarioControlador.BuscarUsuarioCriterios(string.Empty, true);
 
-                gvUsuarios.DataSource = resultado;
-                gvUsuarios.DataBind();
+                    gvUsuarios.DataSource = resultado;
+                    gvUsuarios.DataBind();
+                }
             }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
                 mensajeError.Visible = true;
-                string javaScript = "OcultarMensajeError();";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", javaScript, true);
             }
         }
 
