@@ -14,9 +14,10 @@ namespace VIEW.User
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ConsularImagen();
+            ConsularImagen(); //Se ejecuta el metodo al cargar la pagina
         }
 
+        //Metodo donde se carga un GV con la información delos platillos
         public void ConsularImagen()
         {
             try

@@ -9,6 +9,7 @@ namespace CONTROLLER
 {
     public class CitaControlador
     {
+        //Crea la cita y la inserta en la base de datos con los datos de la cita, se controla datos invalidos
         public static void InsertarCita(Cita newCita)
         {
             try
@@ -28,6 +29,7 @@ namespace CONTROLLER
             }
         }
 
+        //Buscador de cita mediante los criterios establecidos
         public static List<Cita> BuscarCitaCriterios(string criterios, bool estado)
         {
             try
