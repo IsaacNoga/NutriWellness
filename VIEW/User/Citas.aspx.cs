@@ -15,6 +15,7 @@ namespace VIEW.User
 {
     public partial class Citas : System.Web.UI.Page
     {
+        //Al cargar la pagina, se muestra la información del historial de las citas del usuario
         protected void Page_Load(object sender, EventArgs e)
         {
             try

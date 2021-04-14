@@ -14,7 +14,7 @@ namespace VIEW.Control
 {
     public partial class Usuarios : System.Web.UI.Page
     {
-        
+        //Al cargar la pagina, se llena el GV con la información
         protected void Page_Load(object sender, EventArgs e)
         {
             var resultado = UsuarioControlador.BuscarUsuarioCriterios(string.Empty, true);
@@ -22,7 +22,7 @@ namespace VIEW.Control
             gvUsuarios.DataSource = resultado;
             gvUsuarios.DataBind();
         }
-
+        //Busca a los usuarios con los criterios escritos en la barra de busqueda
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             try
@@ -72,13 +72,16 @@ namespace VIEW.Control
             txtTelefono.Text = row.Cells[5].Text;
         }
 
+        //Metodo que se manda a llamar con el botón de actualizar, modifica la información del usuario
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (String.IsNullOrEmpty(txtNombre.Text)|| String.IsNullOrEmpty(txtApellido1.Text) || String.IsNullOrEmpty(txtApellido2.Text) || String.IsNullOrEmpty(txtCorreo.Text) || String.IsNullOrEmpty(txtTelefono.Text))
+                if (String.IsNullOrEmpty(txtNombre.Text)|| String.IsNullOrEmpty(txtApellido1.Text) || 
+                    String.IsNullOrEmpty(txtApellido2.Text) || String.IsNullOrEmpty(txtCorreo.Text) || 
+                    String.IsNullOrEmpty(txtTelefono.Text))
                 {
-                    lblError.Text = "Error: Todos los campos deben ser llenados";
+                    lblError.Text = "Error: Todos los campos deben ser llenados"; //Texto del error si algún dato está vacio
                     mensajeError.Visible = true;
                 }
                 else
@@ -86,7 +89,9 @@ namespace VIEW.Control
                     string CadenaConexion = "Data source=localhost;initial catalog=Proyecto;integrated Security=True";
                     SqlConnection conexionSQL = new SqlConnection(CadenaConexion);
                     SqlCommand cmd = new SqlCommand();
-                    cmd.CommandText = "UPDATE Usuario SET nombre=@nombre, aPaterno=@aPaterno, aMaterno=@aMaterno, correo=@correo, telefono=@telefono WHERE idUsuario=@idUsuario";
+                    cmd.CommandText = "UPDATE Usuario SET nombre=@nombre, aPaterno=@aPaterno, " +
+                                      "aMaterno=@aMaterno, correo=@correo, telefono=@telefono " +
+                                      "WHERE idUsuario=@idUsuario";
                     cmd.Parameters.Add("@idUsuario", SqlDbType.Int).Value = txtId.Text;
                     cmd.Parameters.Add("@nombre", SqlDbType.Text).Value = txtNombre.Text;
                     cmd.Parameters.Add("@aPaterno", SqlDbType.Text).Value = txtApellido1.Text;
@@ -101,7 +106,7 @@ namespace VIEW.Control
                     var resultado = UsuarioControlador.BuscarUsuarioCriterios(string.Empty, true);
 
                     gvUsuarios.DataSource = resultado;
-                    gvUsuarios.DataBind();
+                    gvUsuarios.DataBind(); //Llena el GV con la información
                 }
             }
             catch (Exception ex)
@@ -116,9 +121,11 @@ namespace VIEW.Control
             mensajeError.Visible = false;
         }
 
+        double DiasAño = 335.25;
+
         protected int CalculateAge(DateTime dob)
         {
-            return (int)((double)new TimeSpan(DateTime.Now.Subtract(dob).Ticks).Days / 365.25);
+            return (int)((double)new TimeSpan(DateTime.Now.Subtract(dob).Ticks).Days / DiasAño);
         }
     }
 }

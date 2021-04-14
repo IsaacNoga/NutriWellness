@@ -17,18 +17,19 @@ namespace VIEW.Control
         {
         }
 
+        //Metodo para agregar las citas con la información de la cita y el usuario seleccionado
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             try
             {
                 var nuevaCita = new Cita()
                 {
-                    id_medico = Convert.ToInt32(Session["idUsuario"].ToString()),
-                    idUsuario = Convert.ToInt32(ddlUsuarios.SelectedValue),
+                    id_medico = Convert.ToInt32(Session["idUsuario"].ToString()), //La id del medico es el de la sesion
+                    idUsuario = Convert.ToInt32(ddlUsuarios.SelectedValue), //La id del usuario es la que está seleccionada en la ddl
                     fecha = Convert.ToDateTime(txtDia.Text),
-                    hora = TimeSpan.Parse(txtHora.Text),
+                    hora = TimeSpan.Parse(txtHora.Text), //El formato de la hora es TimeSpan
                     activo = true,
-                    observaciones="Sin Observaciones"
+                    observaciones="Sin Observaciones" //Es el valor por defecto de las observaciones de la cita
                 };
 
                 CitaControlador.InsertarCita(nuevaCita);
@@ -41,6 +42,7 @@ namespace VIEW.Control
             }
         }
 
+        //Metodo para buscar las citas mediante los criterios de los textbox
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             try
@@ -75,6 +77,7 @@ namespace VIEW.Control
             Page_Load(null, null);
         }
 
+        //Comando para modificar
         protected void ImgBtnModificar_Command(object sender, CommandEventArgs e)
         {
             btnAgregar.Enabled = false;
@@ -91,6 +94,7 @@ namespace VIEW.Control
             txtObservacion.Text = row.Cells[4].Text;
         }
 
+        //Metodo para actualizar la información para los usuarios
         protected void btnEditar_Click(object sender, EventArgs e)
         {
             try
@@ -98,24 +102,25 @@ namespace VIEW.Control
                 string CadenaConexion = "Data source=localhost;initial catalog=Proyecto;integrated Security=True";
                 SqlConnection conexionSQL = new SqlConnection(CadenaConexion);
                 SqlCommand cmd = new SqlCommand();
+                //El comando es para actualizar los datos
                 cmd.CommandText = "UPDATE Cita SET fecha=@fecha, hora=@hora, observaciones=@observaciones WHERE idCita=@idCita";
                 cmd.Parameters.Add("@idCita", SqlDbType.Int).Value = txtIdCita.Text;
-                cmd.Parameters.Add("@fecha", SqlDbType.Date).Value = Convert.ToDateTime(txtDiaEdit.Text);
-                cmd.Parameters.Add("@hora", SqlDbType.Time).Value = TimeSpan.Parse(txtHoraEdit.Text);
+                cmd.Parameters.Add("@fecha", SqlDbType.Date).Value = Convert.ToDateTime(txtDiaEdit.Text); //Se convierte el formato de fecha
+                cmd.Parameters.Add("@hora", SqlDbType.Time).Value = TimeSpan.Parse(txtHoraEdit.Text); //TimeSpan es el formato de la hora
                 cmd.Parameters.Add("@observaciones", SqlDbType.Text).Value = txtObservacion.Text;
                 cmd.Connection = conexionSQL;
-                conexionSQL.Open();
-                cmd.ExecuteNonQuery();
+                conexionSQL.Open(); //Se abre la conexión
+                cmd.ExecuteNonQuery(); //Se ejecuta el comando
 
                 pnlEditar.Visible = false;
                 btnAgregar.Enabled = true;
                 txtDia.Enabled = true;
                 txtHora.Enabled = true;
                 ddlUsuarios.Enabled = true;
-                var resultado = CitaControlador.BuscarCitaCriterios(string.Empty, true);
+                var resultado = CitaControlador.BuscarCitaCriterios(string.Empty, true); //Con esto actualiza el Gv
 
                 gvCitas.DataSource = resultado;
-                gvCitas.DataBind();
+                gvCitas.DataBind(); //Llena el GV con la información
             }
             catch (Exception ex)
             {

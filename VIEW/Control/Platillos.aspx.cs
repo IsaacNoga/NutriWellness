@@ -80,6 +80,7 @@ namespace VIEW.Control
 
         }
 
+        //Utiliza el buscador mediante los criterios establecidos
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             try
@@ -108,6 +109,7 @@ namespace VIEW.Control
             }
         }
 
+        //Se ejecuta el comando para eliminar algún platillo seleccionado
         protected void ImgBtnEliminar_Command(object sender, CommandEventArgs e)
         {
             var idPlatillo = Convert.ToInt32(e.CommandArgument);
@@ -116,6 +118,7 @@ namespace VIEW.Control
             Page_Load(null, null);
         }
 
+        //Se ejecuta el comando para para abrir el panel de modificación
         protected void ImgBtnModificar_Command(object sender, CommandEventArgs e)
         {
             pnlEditar.Visible = true;
@@ -126,6 +129,7 @@ namespace VIEW.Control
             txtDescripcionEdit.Text = row.Cells[2].Text;
         }
 
+        //Se actualiza en la base de datos la inforación del platillo
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
             try
@@ -146,7 +150,8 @@ namespace VIEW.Control
                 //Insertar en la bd
                 SqlConnection conexionSQL = new SqlConnection(CadenaConexion);
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "UPDATE Platillo SET nombre=@nombre, descripcion=@descripcion, imagen=@imagen WHERE idPlatillo=@idPlatillo";
+                cmd.CommandText = "UPDATE Platillo SET nombre=@nombre, descripcion=@descripcion, " +
+                                  "imagen=@imagen WHERE idPlatillo=@idPlatillo";
                 cmd.Parameters.Add("@idPlatillo", SqlDbType.Int).Value = txtId.Text;
                 cmd.Parameters.Add("@imagen", SqlDbType.Image).Value = bImagenThumbnail;
                 cmd.Parameters.Add("@nombre", SqlDbType.Text).Value = txtNombreEdit.Text;

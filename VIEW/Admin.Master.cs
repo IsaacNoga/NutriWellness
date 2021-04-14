@@ -13,10 +13,7 @@ namespace VIEW
         {
             var nombre = Session["nombre"];
             var id = Session["idUsuario"];
-            if (nombre == null || id == null)
-            {
-                Response.Redirect("~/Login.aspx");
-            }
+            if (nombre == null || id == null) Response.Redirect("~/Login.aspx");
             lblUsuarioLog.Text = nombre.ToString();
         }
     }

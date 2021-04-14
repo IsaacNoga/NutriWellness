@@ -16,10 +16,11 @@ namespace VIEW.Control
 
         }
 
+        //Metodo para buscar los mensajes al momento de dar click en el boton
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             bool estado;
-            if (chbxEstado.SelectedIndex == 0)
+            if (chbxEstado.SelectedIndex == 0) //Si el estado es el inicial
             {
                 estado = true;
             }
@@ -28,17 +29,19 @@ namespace VIEW.Control
                 estado = false;
             }
 
+            //Se utilizan la iformación esctrita en el textbox para buscar los mensajes
             var resultado = MensajeControlador.BuscarMensajeCriterios(txtCriterios.Text, estado);
 
             gvMensajes.DataSource = resultado;
-            gvMensajes.DataBind();
+            gvMensajes.DataBind(); //Llena el GV con la información
         }
 
+        //Metodo que se llama cuando se ejecuta el comando de la confirmación de lectura
         protected void ImgBtnLeido_Command(object sender, CommandEventArgs e)
         {
             var idMensaje = Convert.ToInt32(e.CommandArgument);
 
-            MensajeControlador.CambiarEstadoMensaje(idMensaje);
+            MensajeControlador.CambiarEstadoMensaje(idMensaje); //Cambia el estado del mensaje con su id
             Page_Load(null, null);
         }
     }

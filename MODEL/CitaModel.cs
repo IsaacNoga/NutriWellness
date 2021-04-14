@@ -17,18 +17,24 @@ namespace MODEL
             }
 
         }
+        //Mediante los criterios del textbox, busca en la base de datos a traves del controlador
         public static List<Cita> BuscarCita(string criterios, bool estado)
         {
             using (var modelo = new ProyectoEntities())
             {
                 List<Cita> resultado =
                     (from us in modelo.Citas
-                     where (us.Usuario.nombre.Contains(criterios) || us.Usuario.correo.Contains(criterios) || us.Usuario.aPaterno.Contains(criterios) || us.Usuario.aMaterno.Contains(criterios)) && us.activo == estado
+                     where (us.Usuario.nombre.Contains(criterios) ||
+                     us.Usuario.correo.Contains(criterios) ||
+                     us.Usuario.aPaterno.Contains(criterios) ||
+                     us.Usuario.aMaterno.Contains(criterios)) && 
+                     us.activo == estado
                      select us).ToList();
                 return resultado;
             }
         }
 
+        //Metodo para cambiar el estado de una cita
         public static void CambiarEstadoCita(int idCita)
         {
             using (var modelo = new ProyectoEntities())
