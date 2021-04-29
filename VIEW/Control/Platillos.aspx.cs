@@ -14,10 +14,24 @@ namespace VIEW.Control
 {
     public partial class Platillos : System.Web.UI.Page
     {
+        ///<param name=" CadenaConexion">string Cadena de conexion para la base de datos</param>
         string CadenaConexion = "Data source=localhost;initial catalog=Proyecto;integrated Security=True";
+        /// <summary>
+        /// Carga de la página
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Argumento de evento</param>
         protected void Page_Load(object sender, EventArgs e)
         {
         }
+
+        /// <summary>
+        /// Metodo click, agregar platillo a la base de datos
+        /// 
+        /// Inserta la imagen del platillo y todos sus datos dentro de la base de datos
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Argumento de evento</param>
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -68,6 +82,14 @@ namespace VIEW.Control
             }
         }
 
+        /// <summary>
+        /// Metodo para redimencionar una imagen
+        /// 
+        /// La imagen que se insertara en la base de datos debe tener un tamaño regulado
+        /// </summary>
+        /// <param name="imagenOriginal">Alto de la imagen original</param>
+        /// <param name="Alto">Alto de la imagen</param>
+        /// <returns></returns>
         public System.Drawing.Image redimencionarImagen(System.Drawing.Image imagenOriginal, int Alto)
         {
             var radio = (double)Alto / imagenOriginal.Height;
@@ -80,7 +102,17 @@ namespace VIEW.Control
 
         }
 
-        //Utiliza el buscador mediante los criterios establecidos
+        /// <summary>
+        /// Metodo click para buscar usuarios
+        /// 
+        /// Al hacer click en el boton buscar, toma los datos de los criterios y busca coincidencia
+        /// de los platillo atraves del controlador conectado al modelo, si un error ocurre, se muestra
+        /// el mensaje de error correspondiente atraves del try-catch
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Argumento de evento</param>
+        /// <param name="estado">bool Comprueba el estado de la consulta</param>
+        /// <param name="resultado">var resultado el resultado de la consulta</param>
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             try
@@ -104,12 +136,14 @@ namespace VIEW.Control
             {
                 lblError.Text = ex.Message;
                 mensajeError.Visible = true;
-                string javaScript = "OcultarMensajeError();";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", javaScript, true);
             }
         }
 
-        //Se ejecuta el comando para eliminar algún platillo seleccionado
+        /// <summary>
+        /// Metodo comando, ejecuta el comando para eliminar algun platillo seleccionado
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Argumento de evento</param>
         protected void ImgBtnEliminar_Command(object sender, CommandEventArgs e)
         {
             var idPlatillo = Convert.ToInt32(e.CommandArgument);
@@ -118,7 +152,11 @@ namespace VIEW.Control
             Page_Load(null, null);
         }
 
-        //Se ejecuta el comando para para abrir el panel de modificación
+        /// <summary>
+        /// Metodo comando, Se ejecuta el comando para para abrir el panel de modificación
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Argumento de evento</param>
         protected void ImgBtnModificar_Command(object sender, CommandEventArgs e)
         {
             pnlEditar.Visible = true;
@@ -129,7 +167,11 @@ namespace VIEW.Control
             txtDescripcionEdit.Text = row.Cells[2].Text;
         }
 
-        //Se actualiza en la base de datos la inforación del platillo
+        /// <summary>
+        /// Metodo click, actualiza en la base de datos la inforación del platillo
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Argumento de evento</param>
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
             try
@@ -180,6 +222,14 @@ namespace VIEW.Control
             }
         }
 
+        /// <summary>
+		/// Metodo click, Cerrar el error
+		/// 
+		/// Al mostrar el error, este se muestra con este boton, al hacer click
+		/// se cierra el error
+		/// </summary>
+		/// <param name="sender">Objeto</param>
+		/// <param name="e">Argumento de evento</param>
         protected void btnError_Click(object sender, EventArgs e)
         {
             mensajeError.Visible = false;

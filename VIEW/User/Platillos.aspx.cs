@@ -12,12 +12,20 @@ namespace VIEW.User
 {
     public partial class Platillos : System.Web.UI.Page
     {
+        /// <summary>
+        /// Carga de la página 
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Argumento de evento</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             ConsularImagen(); //Se ejecuta el metodo al cargar la pagina
         }
 
-        //Metodo donde se carga un GV con la información delos platillos
+        /// <summary>
+        /// Metodo donde se carga un GV con la información de los platillos en el GV
+        /// </summary>
+        /// <param name="resultado">var Guarda el resultado de la consulta</param>
         public void ConsularImagen()
         {
             try
@@ -31,8 +39,6 @@ namespace VIEW.User
             {
                 mensajeError.Visible = true;
                 mensajeError.InnerText = ex.Message;
-                string javaScript = "OcultarMensajeError();";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", javaScript, true);
             }
         }
     }

@@ -8,6 +8,10 @@ namespace MODEL
 {
     public class MensajeModel
     {
+        /// <summary>
+        /// Inserta directamente en la base de datos el mensaje
+        /// </summary>
+        /// <param name="newContacto">Mensaje Datos del mensaje</param>
         public static void InsertarMensaje(Mensaje newContacto)
         {
             try
@@ -24,6 +28,12 @@ namespace MODEL
             }
         }
 
+        /// <summary>
+        /// Busca directamente en la base de datos si un mensaje coincide con los criterios
+        /// </summary>
+        /// <param name="criterios">stirng Criterios de busqueda</param>
+        /// <param name="estado">bool estado del platillo</param>
+        /// <returns>Retorna el resultado de la busqueda</returns>
         public static List<Mensaje> BuscarMensajeCriterios(string criterios, bool estado)
         {
             using (var modelo = new ProyectoEntities())
@@ -37,6 +47,11 @@ namespace MODEL
             }
         }
 
+        /// <summary>
+        /// Busca directamente en la base de datos si un mensaje coincide con la id
+        /// </summary>
+        /// <param name="idMensaje">int Identificador del mensaje</param>
+        /// <returns>Rtorna la respuesta de la busqueda</returns>
         public static Mensaje BuscarMensajePorID(int idMensaje)
         {
             using (var modelo = new ProyectoEntities())
@@ -47,7 +62,10 @@ namespace MODEL
                 return resultado;
             }
         }
-
+        /// <summary>
+        /// Actualiza directamente en la base de datos la informacion del mensaje
+        /// </summary>
+        /// <param name="mensajeModificado">Mensaje Datos del mensaje</param>
         public static void ModificarMensaje(Mensaje mensajeModificado)
         {
             var contact = new Mensaje() { idMensaje = mensajeModificado.idMensaje };
@@ -59,7 +77,10 @@ namespace MODEL
                 modelo.SaveChanges();
             }
         }
-
+        /// <summary>
+        /// Actualiza directamente en la base de datos el estado del mensaje
+        /// </summary>
+        /// <param name="idMensaje">int Identificador del mensaje</param>
         public static void CambiarEstadoMensaje(int idMensaje)
         {
             using (var modelo = new ProyectoEntities())

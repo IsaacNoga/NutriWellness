@@ -9,19 +9,19 @@
               
                 <div class="mb-5" style="margin-top: 55px; margin-bottom: 5px; min-height: 0px;">
                     <div class="">
-                        <h1 class="h1 cOscuro-claro ">Contactame!</h1>
+                        <h1 class="h1 cOscuro-claro ">Contacto</h1>
                         <hr />
                     </div>
                     <div class="redes p-3 backg-1 ">
                         <hr />
                         <div class="row">
                             <div class="col-md-4">
-                                <a href="https://www.facebook.com/">
+                                <a href="https://www.facebook.com/nutperlamedc/">
                                     <i class="fab fa-facebook-square ico-redes m-2"> Facebook</i>
                                 </a>
                             </div>
                             <div class="col-md-4">
-                                <a href="https://www.instagram.com/">
+                                <a href="https://instagram.com/nutperlamedc">
                                     <i class="fab fa-instagram ico-redes m-2"> Instagram</i>
                                 </a>
                             </div>

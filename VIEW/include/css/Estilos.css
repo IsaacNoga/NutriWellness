@@ -19,17 +19,17 @@ body {
 }
 
 .header-text-1 {
-    color: #ffffff61;
+    color: #167521;
     font-weight: bolder;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #167521;
 }
 
 .header-text-2 {
-    color: white;
+    color: black;
     font-weight: bolder;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #167521;
+    -webkit-text-stroke-color: black;
     font-size: 2rem;
 }
 

@@ -9,6 +9,12 @@ namespace CONTROLLER
 {
     public class PlatillosControlador
     {
+        /// <summary>
+        /// Busca platillos en la base de datos atraves de los criterios
+        /// </summary>
+        /// <param name="criterios">string Criterios para buscar</param>
+        /// <param name="estado">bool Estado del platillo</param>
+        /// <returns>Retorna la consulta</returns>
         public static List<Platillo> BuscarPlatilloCriterios(string criterios, bool estado)
         {
             try
@@ -21,6 +27,10 @@ namespace CONTROLLER
             }
         }
 
+        /// <summary>
+        /// Cambiar el estado del platillo activo-innactivo
+        /// </summary>
+        /// <param name="idPlatillo">Identificador del platillo</param>
         public static void CambiarEstadoPlatillo(int idPlatillo)
         {
             try

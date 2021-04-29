@@ -9,13 +9,30 @@ using CONTROLLER;
 
 namespace VIEW
 {
+    /// <summary>
+    /// Página principal de la pagina
+    /// </summary>
     public partial class Inicio : System.Web.UI.Page
     {
+        /// <summary>
+        /// Metodo load, restringe el acceso sin una sesion iniciada
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Argumento de evento</param>
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Metodo click, envia el mensaje
+        /// 
+        /// Crea el mensaje y lo inserta en la base de datos atraves del
+        /// controlador conectado al modelo.
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Argumento de evento</param>
+        /// <param name="newMensaje">var Crea el mensaje con los datos escritos</param>
         protected void btnEnviar_Click(object sender, EventArgs e)
         {
             try
@@ -43,6 +60,14 @@ namespace VIEW
             }
         }
 
+        /// <summary>
+		/// Metodo click, Cerrar el error
+		/// 
+		/// Al mostrar el error, este se muestra con este boton, al hacer click
+		/// se cierra el error
+		/// </summary>
+		/// <param name="sender">Objeto</param>
+		/// <param name="e">Argumento de evento</param>
         protected void btnError_Click(object sender, EventArgs e)
         {
             mensajeError.Visible = false;

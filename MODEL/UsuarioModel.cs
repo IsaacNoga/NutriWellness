@@ -8,6 +8,10 @@ namespace MODEL
 {
     public class UsuarioModel
     {
+        /// <summary>
+        /// Inserta directamente en la base de datos la informacion de registro de usuario
+        /// </summary>
+        /// <param name="newUsuario">Usuario datos del usuario a registrar</param>
         public static void InsertarUsuario(Usuario newUsuario)
         {
             using (var modelo = new ProyectoEntities())
@@ -17,7 +21,12 @@ namespace MODEL
             }
 
         }
-
+        /// <summary>
+        /// Busca directamente en la base de datos si un usuario coincide con los criterios
+        /// </summary>
+        /// <param name="criterios">string Criterios para la busqueda</param>
+        /// <param name="estado">bool Estado del usuario</param>
+        /// <returns>Retorna los datos del usuario</returns>
         public static List<Usuario> BuscarUsuarioCriterios(string criterios, bool estado)
         {
             using (var modelo = new ProyectoEntities())
@@ -31,6 +40,10 @@ namespace MODEL
             }
         }
 
+        /// <summary>
+        /// Actualiza directamente en la base de datos la informacion del usuario
+        /// </summary>
+        /// <param name="usuarioModificado">Usuario Datos del usuario actualizados</param>
         public static void ModificarUsuario(Usuario usuarioModificado)
         {
             var user = new Usuario() { idUsuario = usuarioModificado.idUsuario };
@@ -43,6 +56,10 @@ namespace MODEL
             }
         }
 
+        /// <summary>
+        /// Cambia directamente en la base de datos el estado del usuario
+        /// </summary>
+        /// <param name="idUsuario">int Identificador del usuario</param>
         public static void CambiarEstadoUsuario(int idUsuario)
         {
             using (var modelo = new ProyectoEntities())
@@ -53,6 +70,11 @@ namespace MODEL
             }
         }
 
+        /// <summary>
+        /// Consulta directamente en la base de datos si el usuario que desea ingresar existe
+        /// </summary>
+        /// <param name="usuario">Usuario datos de inicio de sesion</param>
+        /// <returns>Retorna la respuesta</returns>
         public static Usuario IngresarSistema(Usuario usuario)
         {
             try
@@ -74,6 +96,11 @@ namespace MODEL
 
         }
 
+        /// <summary>
+        /// Verifica directamente en la base de datos si el usuario existe
+        /// </summary>
+        /// <param name="correo">string correo del usuario</param>
+        /// <returns>Retorna una respuesta</returns>
         public static bool ExisteUsuario(string correo)
         {
             using (var modelo = new ProyectoEntities())

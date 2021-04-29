@@ -1810,7 +1810,6 @@
     <Content Include="include\vendor\jquery\jquery.slim.js" />
     <Content Include="include\vendor\jquery\jquery.slim.min.js" />
     <Content Include="include\vendor\jquery\jquery.slim.min.map" />
-    <Content Include="Index.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="LoginAdmin.aspx" />
@@ -1885,13 +1884,6 @@
     </Compile>
     <Compile Include="Control\Usuarios.aspx.designer.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>

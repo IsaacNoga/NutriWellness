@@ -7,6 +7,9 @@ using System.Web.UI.WebControls;
 
 namespace VIEW
 {
+    /// <summary>
+    /// Página maestra principal
+    /// </summary>
     public partial class Master : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)

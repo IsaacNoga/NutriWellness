@@ -17,12 +17,19 @@ namespace VIEW.Control
         {
 
         }
-
-        //Metodo para editar la información de la dieta del usuario y traer la información a los textbox
+        ///<param name=" CadenaConexion">string Cadena de conexion para la base de datos</param>
+        string CadenaConexion = "Data source=localhost;initial catalog=Proyecto;integrated Security=True";
+        /// <summary>
+        /// Metodo click, ditar la información de la dieta del usuario y traer la información a los textbox
+        /// 
+        /// Al seleccionar al usuario, carga la informacion de la dieta en los TextBox correspondientes
+        /// tras una consulta.
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Argumento de evento</param>
         protected void btnSeleccionar_Click(object sender, EventArgs e)
         {
             var idUsuario = ddlUsuarios.SelectedValue;
-            string CadenaConexion = "Data source=localhost;initial catalog=Proyecto;integrated Security=True";
             SqlConnection conexionSQL = new SqlConnection(CadenaConexion);
             SqlCommand comando = new SqlCommand("SELECT * FROM DIETAINFO WHERE idInfo=@idUsuario", conexionSQL);
             comando.Parameters.AddWithValue("@idUsuario", idUsuario);
@@ -73,7 +80,11 @@ namespace VIEW.Control
             }
         }
 
-        //Al dar click en guardar, guarda la información de la dieta
+        /// <summary>
+        /// Metodo click, guarda la informacion de la dieta en el usuario correspondiente
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Argumento de evento</param>
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             var ID = ddlUsuarios.SelectedValue;
@@ -91,7 +102,6 @@ namespace VIEW.Control
                 }
                 else
                 {
-                    string CadenaConexion = "Data source=localhost;initial catalog=Proyecto;integrated Security=True";
                     SqlConnection conexionSQL = new SqlConnection(CadenaConexion);
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandText = "UPDATE DietaInfo SET idUsuario=@idUsuario, imcInicial=@imcInicial, imcActual=@imcActual, " +
@@ -139,6 +149,14 @@ namespace VIEW.Control
 
         }
 
+        /// <summary>
+		/// Metodo click, Cerrar el error
+		/// 
+		/// Al mostrar el error, este se muestra con este boton, al hacer click
+		/// se cierra el error
+		/// </summary>
+		/// <param name="sender">Objeto</param>
+		/// <param name="e">Argumento de evento</param>
         protected void btnError_Click(object sender, EventArgs e)
         {
             mensajeError.Visible = false;

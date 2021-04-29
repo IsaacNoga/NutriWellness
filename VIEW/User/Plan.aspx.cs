@@ -11,7 +11,12 @@ namespace VIEW.User
 {
     public partial class Plan : System.Web.UI.Page
     {
-        //Al cargar la pagina, se consulta a la base de datos mediante el la información del plan del paciente
+        /// <summary>
+        /// Al cargar la pagina, se consulta a la base de datos mediante el la información del plan del paciente
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Argumento de evento</param>
+        /// <param name="idUser">Id del usuario que accedio para cargar sus datos</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             try

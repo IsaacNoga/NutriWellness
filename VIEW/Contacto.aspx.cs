@@ -9,13 +9,26 @@ using CONTROLLER;
 
 namespace VIEW
 {
+    /// <summary>
+    /// Información de contacto
+    /// </summary>
     public partial class contacto : System.Web.UI.Page
     {
+        /// <summary>
+        /// Metodo load, restringe el acceso sin una sesion iniciada
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Argumento de evento</param>
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Argumento de evento</param>
         protected void btnEnviar_Click(object sender, EventArgs e)
         {
             try

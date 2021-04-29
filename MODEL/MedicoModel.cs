@@ -8,6 +8,11 @@ namespace MODEL
 {
     public class MedicoModel
     {
+        /// <summary>
+        /// Busca directamente en la base de datos si el usuario administrador existe
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         public static Medico IngresarSistema(Medico usuario)
         {
             try
