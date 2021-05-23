@@ -216,6 +216,6 @@ namespace VIEW.Control
                 lblError.Text = ex.Message;
                 mensajeError.Visible = true;
             }
-}
+        }
     }
 }
