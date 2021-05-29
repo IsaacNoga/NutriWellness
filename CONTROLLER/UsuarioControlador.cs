@@ -9,6 +9,7 @@ namespace CONTROLLER
 {
     public class UsuarioControlador
     {
+       
         /// <summary>
         /// Inserta al nuevo usuario a la base de datos con sus datos
         /// </summary>
@@ -124,6 +125,14 @@ namespace CONTROLLER
             {
                 throw new Exception("Hubo un error: " + ex.Message.ToString());
             }
+        }
+
+        public static int CalculateAge (DateTime fecha)
+        {
+            double DiasAño = 335.25;
+            //return (int)((double)new TimeSpan(DateTime.Now.Subtract(fecha).Ticks).Days /DiasAño);
+            int nacimiento = DateTime.Today.Year - fecha.Year;
+            return nacimiento;
         }
     }
 }

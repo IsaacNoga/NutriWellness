@@ -165,9 +165,11 @@ namespace VIEW.Control
         /// </summary>
         /// <param name="fechaNacimiento"></param>
         /// <returns>Calcula y regresa el valor de la edad del usuario registrado</returns>
+        /*
         protected int CalculateAge(DateTime fechaNacimiento)
         {
             return (int)((double)new TimeSpan(DateTime.Now.Subtract(fechaNacimiento).Ticks).Days / DiasAño);
         }
+        */
     }
 }

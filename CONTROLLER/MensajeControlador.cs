@@ -20,16 +20,20 @@ namespace CONTROLLER
                 if (newMensaje.correo != string.Empty || newMensaje.mensaje1 != string.Empty || newMensaje.nombre != string.Empty)
                 {
                     MensajeModel.InsertarMensaje(newMensaje);
+                    
                 }
                 else
                 {
                     throw new Exception("No se admiten campos vacios");
+                  
                 }
             }
             catch (Exception ex)
             {
                 throw new Exception("Hubo un error en la capa del Modelo: " + ex.Message.ToString());
+
             }
+           
         }
 
         /// <summary>
@@ -108,5 +112,7 @@ namespace CONTROLLER
                 throw new Exception("Hubo un error: " + ex.Message.ToString());
             }
         }
+
+      
     }
 }
