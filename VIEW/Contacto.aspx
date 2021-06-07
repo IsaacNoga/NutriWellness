@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="contacto.aspx.cs" Inherits="VIEW.contacto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>Contacto</title>
     <link href="include/css/Estilos.css" rel="stylesheet" />
     <link href="include/css/textCss.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -74,7 +75,7 @@
                                     <asp:Button ID="btnEnviar" CssClass="btn btn-info" Text="Enviar" runat="server" OnClick="btnEnviar_Click" />
                                 </p>
                                     <asp:CheckBox Id="chbxTerminos" Checked="true" Text="" runat="server" />
-                                    <asp:Label Text="Acepto la politica de privacidad" runat="server" />
+                                    <asp:Label Text="Acepto la <a href = 'PoliticaDePrivacidad.aspx' target=_blank> Politica de Privacidad </a>" runat="server" />
                             </div>
                         <div class="vc_empty_space" style="height: 50px">
                             <span class="vc_empty_space_inner"></span>

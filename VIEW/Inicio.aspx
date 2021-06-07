@@ -145,7 +145,7 @@
                                     <asp:Button ID="btnEnviar" CssClass="btn btn-info" Text="Enviar" runat="server" OnClick="btnEnviar_Click" />
                                 </p>
                                     <asp:CheckBox Id="chbxTerminos" Checked="true" Text="" runat="server" />
-                                    <asp:Label Text="Acepto la politica de privacidad" runat="server" />
+                                    <asp:Label Text="Acepto la <a href = 'PoliticaDePrivacidad.aspx' target=_blank> Politica de Privacidad </a>" runat="server" />
                             </div>
                         <div class="vc_empty_space" style="height: 50px">
                             <span class="vc_empty_space_inner"></span>
