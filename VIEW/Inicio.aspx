@@ -145,7 +145,7 @@
                                     <asp:Button ID="btnEnviar" CssClass="btn btn-info" Text="Enviar" runat="server" OnClick="btnEnviar_Click" />
                                 </p>
                                     <asp:CheckBox Id="chbxTerminos" Checked="true" Text="" runat="server" />
-                                    <asp:Label Text="Acepto la politica de privacidad" runat="server" />
+                                    <asp:Label Text="Acepto la <a href = 'PoliticaDePrivacidad.aspx' target=_blank> Politica de Privacidad </a>" runat="server" />
                             </div>
                         <div class="vc_empty_space" style="height: 50px">
                             <span class="vc_empty_space_inner"></span>
@@ -157,10 +157,10 @@
                         </div>
                         <div id="mensajeError" visible="false" class="alert mt-3 alert-danger mt-1" runat="server" role="alert">
                             <div class="row">
-                                <div class="col-11">
-                                    <asp:Label Text="xDD" runat="server" ID="lblError"/>
+                                <div class="col-8">
+                                    <asp:Label Text="Debe aceptar la politica de privacidad" runat="server" ID="lblError"/>
                                 </div>
-                                <div class="col-1">
+                                <div class="col-1 mt-1">
                                     <asp:Button Text="Cerrar" CssClass="btn btn-outline-danger" runat="server" ID="btnError" OnClick="btnError_Click"/>
                                 </div>
                             </div>

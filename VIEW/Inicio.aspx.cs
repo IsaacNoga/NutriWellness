@@ -35,29 +35,37 @@ namespace VIEW
         /// <param name="newMensaje">var Crea el mensaje con los datos escritos</param>
         protected void btnEnviar_Click(object sender, EventArgs e)
         {
-            try
+            if (chbxTerminos.Checked == false)
             {
-                var newMensaje = new Mensaje()
-                {
-                    nombre = txtNombre.Text,
-                    correo = txtEmail.Text,
-                    telefono = txtTelefono.Text,
-                    mensaje1 = txtMensaje.Text,
-                    activo = true
-                };
-
-                MensajeControlador.InsertarMensaje(newMensaje);
-                mensaje.Visible = true;
-                txtNombre.Text = "";
-                txtEmail.Text = "";
-                txtTelefono.Text = "";
-                txtMensaje.Text = "";
-            }
-            catch (Exception ex)
-            {
-                lblError.Text = ex.Message;
                 mensajeError.Visible = true;
             }
+            else
+            {
+                try
+                {
+                    var newMensaje = new Mensaje()
+                    {
+                        nombre = txtNombre.Text,
+                        correo = txtEmail.Text,
+                        telefono = txtTelefono.Text,
+                        mensaje1 = txtMensaje.Text,
+                        activo = true
+                    };
+
+                    MensajeControlador.InsertarMensaje(newMensaje);
+                    mensaje.Visible = true;
+                    txtNombre.Text = "";
+                    txtEmail.Text = "";
+                    txtTelefono.Text = "";
+                    txtMensaje.Text = "";
+                }
+                catch (Exception ex)
+                {
+                    lblError.Text = ex.Message;
+                    mensajeError.Visible = true;
+                }
+            }
+            
         }
 
         /// <summary>
