@@ -129,7 +129,6 @@ namespace CONTROLLER
 
         public static int CalculateAge (DateTime fecha)
         {
-            double DiasAño = 335.25;
             //return (int)((double)new TimeSpan(DateTime.Now.Subtract(fecha).Ticks).Days /DiasAño);
             int nacimiento = DateTime.Today.Year - fecha.Year;
             return nacimiento;
