@@ -19,12 +19,19 @@
     <div class="container">
             <div class="row">
               <div class="col-8 mb-5">
-                  <h2 class="cOscuro-claro">¿Quién soy?</h2>
+                  <h2 class="cOscuro-claro">¿Qué es NutriWellness?</h2>
                   <hr/>
                   <div class="row ">
                       <div class="col-4">
                           <img src="include/img/logo5.png" width="200" alt="Alternate Text" />
                       </div>
+                  <div class="card" style="width: 30rem;">
+                  <div class="card-body">
+                    <p class="card-text text-justify" >Es un software para especialistas en nutricion. Nuestro sistema evalúa los resultados dietéticos y ayuda a desarrolla un plan alimenticio para mejorar los habitos. Ahorrando asi el tiempo para una mayor eficiencia y accesibilidad de atención de calidad.
+
+                    </p>
+                    </div>
+                </div>
                       <div class="col-8">
                           <p class="p"></p>
                         <p class="p"></p>
