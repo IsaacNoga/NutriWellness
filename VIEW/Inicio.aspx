@@ -157,10 +157,10 @@
                         </div>
                         <div id="mensajeError" visible="false" class="alert mt-3 alert-danger mt-1" runat="server" role="alert">
                             <div class="row">
-                                <div class="col-11">
-                                    <asp:Label Text="xDD" runat="server" ID="lblError"/>
+                                <div class="col-8">
+                                    <asp:Label Text="Debe aceptar la politica de privacidad" runat="server" ID="lblError"/>
                                 </div>
-                                <div class="col-1">
+                                <div class="col-1 mt-1">
                                     <asp:Button Text="Cerrar" CssClass="btn btn-outline-danger" runat="server" ID="btnError" OnClick="btnError_Click"/>
                                 </div>
                             </div>

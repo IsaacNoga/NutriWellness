@@ -31,27 +31,41 @@ namespace VIEW
         /// <param name="e">Argumento de evento</param>
         protected void btnEnviar_Click(object sender, EventArgs e)
         {
-            try
+            if (chbxTerminos.Checked==false)
             {
-                var newMensaje = new Mensaje()
+                mensajeError.Visible = true;
+            }
+            else
+            {
+                try
                 {
-                    nombre = txtNombre.Text,
-                    correo = txtEmail.Text,
-                    telefono = txtTelefono.Text,
-                    mensaje1 = txtMensaje.Text,
-                    activo = true
-                };
+                    var newMensaje = new Mensaje()
+                    {
+                        nombre = txtNombre.Text,
+                        correo = txtEmail.Text,
+                        telefono = txtTelefono.Text,
+                        mensaje1 = txtMensaje.Text,
+                        activo = true
+                    };
 
-                MensajeControlador.InsertarMensaje(newMensaje);
-                mensaje.Visible = true;
-                string javaScript = "OcultarMensaje();";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", javaScript, true);
+                    MensajeControlador.InsertarMensaje(newMensaje);
+                    mensaje.Visible = true;
+                    string javaScript = "OcultarMensaje();";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", javaScript, true);
+                }
+                catch (Exception ex)
+                {
+                    var datos = "<script> alert('" + ex.Message + "') </script>";
+                    Response.Write(datos);
+                }
             }
-            catch (Exception ex)
-            {
-                var datos = "<script> alert('" + ex.Message + "') </script>";
-                Response.Write(datos);
-            }
+            
+        }
+
+        protected void btnError_Click(object sender, EventArgs e)
+        {
+            mensajeError.Visible = false;
+            mensaje.Visible = false;
         }
     }
 }
