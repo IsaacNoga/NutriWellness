@@ -9,7 +9,7 @@ section {
 
     section .section-title {
         text-align: center;
-        color: #007b5e;
+        color: #005B0B;
         margin-bottom: 50px;
         text-transform: uppercase;
     }
@@ -39,7 +39,7 @@ section {
         }
 
             #what-we-do .card .card-block a {
-                color: #007b5e !important;
+                color: #005B0B !important;
                 font-weight: 700;
                 text-decoration: none;
             }
@@ -64,15 +64,15 @@ section {
         }
 
         #what-we-do .card .block-1:before {
-            content: "\f0e7";
+            content: "\F08A";
         }
 
         #what-we-do .card .block-2:before {
-            content: "\f0eb";
+            content: "\F0F5";
         }
 
         #what-we-do .card .block-3:before {
-            content: "\f00c";
+            content: "\F040";
         }
 
         #what-we-do .card .block-4:before {
