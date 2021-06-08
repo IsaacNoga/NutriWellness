@@ -8,7 +8,14 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form runat="server">
-        <div class="row">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Administración de citas</h4>
+                    <p class="card-category">Formulario</p>
+                </div>
+                <div class="card-body">
+                    <div class="row">
             <div class="col-2">
                 <asp:Label Text="Paciente" ID="lblCliente" runat="server" />
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ProyectoConnectionString %>" SelectCommand="SELECT * FROM [Usuario]"></asp:SqlDataSource>
@@ -101,5 +108,9 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
+                </div>
+            </div>
+        </div>
+        
     </form>
 </asp:Content>

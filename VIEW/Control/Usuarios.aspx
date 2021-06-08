@@ -1,14 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="VIEW.Control.Usuarios" %>
 <%@ import Namespace="MODEL" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-<title>Usuarios</title>
+    <title>Usuarios</title>
 </asp:Content>
 <asp:Content ID="titulo" ContentPlaceHolderID="Titulo" runat="server">
     <a class="navbar-brand">Usuarios</a>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form  runat="server">
-        <div class=" row">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Administración de pacientes</h4>
+                    <p class="card-category">Formulario</p>
+                </div>
+                <div class="card-body">
+                    <div class=" row">
             <div class="col-3">
                 <div class="input-group input-group-sm mb-3">
                   <div class="input-group-prepend">
@@ -87,5 +94,9 @@
                 </Columns>
             </asp:GridView>
         </div>
+                </div>
+            </div>
+        </div>
+        
     </form>
 </asp:Content>

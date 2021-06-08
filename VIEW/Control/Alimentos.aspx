@@ -8,8 +8,14 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form runat="server">
-        
-        <asp:Panel runat="server" ID="pnlAgregar" Visible="false">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Administración de alimentos</h4>
+                    <p class="card-category">Formulario</p>
+                </div>
+                <div class="card-body">
+                    <asp:Panel runat="server" ID="pnlAgregar" Visible="false">
             <div class="row">
                 <div class="col-3">
                     <asp:Label Text="Nombre" runat="server" />
@@ -158,6 +164,11 @@
                 </asp:GridView>
             </div>
         </asp:Panel>
+                </div>
+            </div>
+        </div>
+        
+        
         
     </form>
 </asp:Content>

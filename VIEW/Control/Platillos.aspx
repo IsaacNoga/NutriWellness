@@ -8,10 +8,16 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form runat="server">
-        <div class="container">
-            <div class="row mb-5">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Administración Platillos</h4>
+                    <p class="card-category">Formulario</p>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-5">
                 <div class="col-md-4 col-md-offset-4 mt-5 mb-5">
-                    <h1 class="h1">Agregar Platillo:</h1>
+                    
                     <br />
                     Foto:
                     <asp:FileUpload ID="fuploadImagen" accept=".jpg" CssClass="form-control" runat="server" />
@@ -108,6 +114,9 @@
                     </asp:Panel>
                 </div>
             </div>
+                </div>
+            </div>
+            
         </div>
     </form>
 </asp:Content>

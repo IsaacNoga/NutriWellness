@@ -7,7 +7,14 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form runat="server">
-        <asp:Panel runat="server" ID="pnlSeleccionar">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Dieta de pacientes</h4>
+                    <p class="card-category">Formulario</p>
+                </div>
+                <div class="card-body">
+                    <asp:Panel runat="server" ID="pnlSeleccionar">
             <div class="row">
                 <div class="col-3 ">
                     <asp:Label Text="Paciente" ID="lblCliente" runat="server" />
@@ -94,5 +101,9 @@
                 </div>
             </div>
         </div>
+                </div>
+            </div>
+        </div>
+        
     </form>
 </asp:Content>
