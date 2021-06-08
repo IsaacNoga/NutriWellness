@@ -129,6 +129,7 @@
     <Content Include="include\css\Login.css" />
     <Content Include="include\css\Panel.css" />
     <Content Include="include\css\Registro.css" />
+    <Content Include="include\css\Servicios.css" />
     <Content Include="include\css\textCss.css" />
     <Content Include="include\fontawesome\css\all.css" />
     <Content Include="include\fontawesome\css\all.min.css" />
