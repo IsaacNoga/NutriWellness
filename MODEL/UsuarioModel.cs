@@ -33,9 +33,18 @@ namespace MODEL
             {
                 List<Usuario> resultado =
                     (from us in modelo.Usuarios
-                     where (us.nombre.Contains(criterios) || us.correo.Contains(criterios) || us.aPaterno.Contains(criterios) || us.aMaterno.Contains(criterios))
+                     where (us.idUsuario.ToString().Contains(criterios)||us.nombre.Contains(criterios) || us.correo.Contains(criterios) || us.aPaterno.Contains(criterios) || us.aMaterno.Contains(criterios))
                      && us.activo == estado
                      select us).ToList();
+                return resultado;
+            }
+        }
+
+        public static Usuario BuscarIdUsuario(string correo)
+        {
+            using (var modelo = new ProyectoEntities())
+            {
+                Usuario resultado = (Usuario)(from us in modelo.Usuarios where us.correo.Contains(correo) select us.idUsuario);
                 return resultado;
             }
         }

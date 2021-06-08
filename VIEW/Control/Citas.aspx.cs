@@ -30,7 +30,7 @@ namespace VIEW.Control
                 var nuevaCita = new Cita()
                 {
                     id_medico = Convert.ToInt32(Session["idUsuario"].ToString()), //La id del medico es el de la sesion
-                    idUsuario = Convert.ToInt32(ddlUsuarios.SelectedValue), //La id del usuario es la que está seleccionada en la ddl
+                    idUsuario = Convert.ToInt32(ddlUsuarios.Text), //La id del usuario es la que está seleccionada en la ddl
                     fecha = Convert.ToDateTime(txtDia.Text),
                     hora = TimeSpan.Parse(txtHora.Text), //El formato de la hora es TimeSpan
                     activo = true,

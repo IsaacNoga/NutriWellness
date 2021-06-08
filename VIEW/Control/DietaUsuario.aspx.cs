@@ -29,7 +29,8 @@ namespace VIEW.Control
         /// <param name="e">Argumento de evento</param>
         protected void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            var idUsuario = ddlUsuarios.SelectedValue;
+            var idUsuario = ddlUsuarios.Text;
+            //var idUsuario = ddlUsuarios.SelectedValue;
             SqlConnection conexionSQL = new SqlConnection(CadenaConexion);
             SqlCommand comando = new SqlCommand("SELECT * FROM DIETAINFO WHERE idInfo=@idUsuario", conexionSQL);
             comando.Parameters.AddWithValue("@idUsuario", idUsuario);
