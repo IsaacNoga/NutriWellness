@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="VIEW.Inicio" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="VIEW.Inicio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Inicio</title>
     <script src="include/js/jquery-3.4.1.min.js"></script>

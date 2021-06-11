@@ -14,7 +14,7 @@ namespace MODEL
         /// <param name="newUsuario">Usuario datos del usuario a registrar</param>
         public static void InsertarUsuario(Usuario newUsuario)
         {
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 modelo.Usuarios.Add(newUsuario);
                 modelo.SaveChanges();
@@ -29,7 +29,7 @@ namespace MODEL
         /// <returns>Retorna los datos del usuario</returns>
         public static List<Usuario> BuscarUsuarioCriterios(string criterios, bool estado)
         {
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 List<Usuario> resultado =
                     (from us in modelo.Usuarios
@@ -42,7 +42,7 @@ namespace MODEL
 
         public static Usuario BuscarIdUsuario(string correo)
         {
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 Usuario resultado = (Usuario)(from us in modelo.Usuarios where us.correo.Contains(correo) select us.idUsuario);
                 return resultado;
@@ -57,7 +57,7 @@ namespace MODEL
         {
             var user = new Usuario() { idUsuario = usuarioModificado.idUsuario };
 
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 modelo.Usuarios.Attach(user);
                 user = usuarioModificado;
@@ -71,7 +71,7 @@ namespace MODEL
         /// <param name="idUsuario">int Identificador del usuario</param>
         public static void CambiarEstadoUsuario(int idUsuario)
         {
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 var usuario = modelo.Usuarios.Find(idUsuario);
                 usuario.activo = usuario.activo == true ? false : true;
@@ -88,7 +88,7 @@ namespace MODEL
         {
             try
             {
-                using (var modelo = new ProyectoEntities())
+                using (var modelo = new proyectoEntities())
                 {
                     var resultado = (from us in modelo.Usuarios
                                      where (us.contrasena == usuario.contrasena
@@ -112,12 +112,21 @@ namespace MODEL
         /// <returns>Retorna una respuesta</returns>
         public static bool ExisteUsuario(string correo)
         {
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 var resultado = (from us in modelo.Usuarios
                                  where us.correo == correo
                                  select us);
                 return resultado.Count() > 0 ? true : false;
+            }
+        }
+
+        public static int idUsuario(string correo)
+        {
+            using (var modelo = new proyectoEntities())
+            {
+                var resultado = (from user in modelo.Usuarios where (user.correo == correo) select user.idUsuario).FirstOrDefault();
+                return resultado;
             }
         }
     }

@@ -15,7 +15,7 @@ namespace MODEL
         /// <returns>Retorna el resultado de la busqueda</returns>
         public static List<Alimento> BuscarAlimentoCriterios(string criterios)
         {
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 List<Alimento> resultado =
                     (from al in modelo.Alimentoes where (al.nombre.Contains(criterios) || al.unidad.Contains(criterios) || al.cantidadSu.Contains(criterios)) select al).ToList();
@@ -29,7 +29,7 @@ namespace MODEL
         /// <param name="newAlimento">Alimento Datos del nuevo alimento</param>
         public static void InsertarAlimento(Alimento newAlimento)
         {
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 modelo.Alimentoes.Add(newAlimento);
                 modelo.SaveChanges();
@@ -48,7 +48,7 @@ namespace MODEL
                 nombre=alimentoModificado.nombre
             };
 
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 
                 modelo.Alimentoes.Attach(alimento);

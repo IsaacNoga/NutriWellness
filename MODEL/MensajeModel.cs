@@ -16,7 +16,7 @@ namespace MODEL
         {
             try
             {
-                using (var modelo = new ProyectoEntities())
+                using (var modelo = new proyectoEntities())
                 {
                     modelo.Mensajes.Add(newContacto);
                     modelo.SaveChanges();
@@ -36,7 +36,7 @@ namespace MODEL
         /// <returns>Retorna el resultado de la busqueda</returns>
         public static List<Mensaje> BuscarMensajeCriterios(string criterios, bool estado)
         {
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 List<Mensaje> resultado =
                     (from msj in modelo.Mensajes
@@ -54,7 +54,7 @@ namespace MODEL
         /// <returns>Rtorna la respuesta de la busqueda</returns>
         public static Mensaje BuscarMensajePorID(int idMensaje)
         {
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 var resultado = (from msj in modelo.Mensajes
                                  where msj.idMensaje == idMensaje
@@ -70,7 +70,7 @@ namespace MODEL
         {
             var contact = new Mensaje() { idMensaje = mensajeModificado.idMensaje };
 
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 modelo.Mensajes.Attach(contact);
                 contact = mensajeModificado;
@@ -83,7 +83,7 @@ namespace MODEL
         /// <param name="idMensaje">int Identificador del mensaje</param>
         public static void CambiarEstadoMensaje(int idMensaje)
         {
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 var elmensaje = modelo.Mensajes.Find(idMensaje);
                 //elmensaje.activo = elmensaje.activo == true ? false : true;

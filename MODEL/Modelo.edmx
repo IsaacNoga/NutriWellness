@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ProyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="db_a75d97_proyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Alimento">
           <Key>
             <PropertyRef Name="idAlimento" />
@@ -256,7 +256,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ProyectoModelStoreContainer">
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="db_a75d97_proyectoModelStoreContainer">
           <EntitySet Name="Alimento" EntityType="Self.Alimento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cita" EntityType="Self.Cita" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DietaInfo" EntityType="Self.DietaInfo" Schema="dbo" store:Type="Tables" />
@@ -306,60 +337,11 @@
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ProyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="ProyectoEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Alimentoes" EntityType="ProyectoModel.Alimento" />
-          <EntitySet Name="Citas" EntityType="ProyectoModel.Cita" />
-          <EntitySet Name="DietaInfoes" EntityType="ProyectoModel.DietaInfo" />
-          <EntitySet Name="Generoes" EntityType="ProyectoModel.Genero" />
-          <EntitySet Name="Medicos" EntityType="ProyectoModel.Medico" />
-          <EntitySet Name="Mensajes" EntityType="ProyectoModel.Mensaje" />
-          <EntitySet Name="Platilloes" EntityType="ProyectoModel.Platillo" />
-          <EntitySet Name="Platillo_Alimento" EntityType="ProyectoModel.Platillo_Alimento" />
-          <EntitySet Name="PMensajes" EntityType="ProyectoModel.PMensaje" />
-          <EntitySet Name="sysdiagrams" EntityType="ProyectoModel.sysdiagram" />
-          <EntitySet Name="Usuarios" EntityType="ProyectoModel.Usuario" />
-          <AssociationSet Name="FK__Platillo___idAli__7EC1CEDB" Association="ProyectoModel.FK__Platillo___idAli__7EC1CEDB">
-            <End Role="Alimento" EntitySet="Alimentoes" />
-            <End Role="Platillo_Alimento" EntitySet="Platillo_Alimento" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Cita__id_medico__5B438874" Association="ProyectoModel.FK__Cita__id_medico__5B438874">
-            <End Role="Medico" EntitySet="Medicos" />
-            <End Role="Cita" EntitySet="Citas" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Cita__idUsuario__5A4F643B" Association="ProyectoModel.FK__Cita__idUsuario__5A4F643B">
-            <End Role="Usuario" EntitySet="Usuarios" />
-            <End Role="Cita" EntitySet="Citas" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DietaInfo__idUsu__53A266AC" Association="ProyectoModel.FK__DietaInfo__idUsu__53A266AC">
-            <End Role="Usuario" EntitySet="Usuarios" />
-            <End Role="DietaInfo" EntitySet="DietaInfoes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Usuario__idGener__4924D839" Association="ProyectoModel.FK__Usuario__idGener__4924D839">
-            <End Role="Genero" EntitySet="Generoes" />
-            <End Role="Usuario" EntitySet="Usuarios" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PMensaje__idMedi__4CF5691D" Association="ProyectoModel.FK__PMensaje__idMedi__4CF5691D">
-            <End Role="Medico" EntitySet="Medicos" />
-            <End Role="PMensaje" EntitySet="PMensajes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Platillo___idPla__7DCDAAA2" Association="ProyectoModel.FK__Platillo___idPla__7DCDAAA2">
-            <End Role="Platillo" EntitySet="Platilloes" />
-            <End Role="Platillo_Alimento" EntitySet="Platillo_Alimento" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PMensaje__idUsua__4C0144E4" Association="ProyectoModel.FK__PMensaje__idUsua__4C0144E4">
-            <End Role="Usuario" EntitySet="Usuarios" />
-            <End Role="PMensaje" EntitySet="PMensajes" />
-          </AssociationSet>
-          <EntitySet Name="PlanNutris" EntityType="ProyectoModel.PlanNutri" />
-          <AssociationSet Name="FK__PlanNutri__idUsu__6D6238AF" Association="ProyectoModel.FK__PlanNutri__idUsu__6D6238AF">
-            <End Role="Usuario" EntitySet="Usuarios" />
-            <End Role="PlanNutri" EntitySet="PlanNutris" />
-          </AssociationSet>
-        </EntityContainer>
+      <Schema Namespace="db_a75d97_proyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Alimento">
           <Key>
             <PropertyRef Name="idAlimento" />
@@ -381,7 +363,7 @@
           <Property Name="indiceGlic" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="unidad" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="cantidadSu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Platillo_Alimento" Relationship="ProyectoModel.FK__Platillo___idAli__7EC1CEDB" FromRole="Alimento" ToRole="Platillo_Alimento" />
+          <NavigationProperty Name="Platillo_Alimento" Relationship="Self.FK__Platillo___idAli__7EC1CEDB" FromRole="Alimento" ToRole="Platillo_Alimento" />
         </EntityType>
         <EntityType Name="Cita">
           <Key>
@@ -394,8 +376,8 @@
           <Property Name="idUsuario" Type="Int32" />
           <Property Name="id_medico" Type="Int32" />
           <Property Name="activo" Type="Boolean" />
-          <NavigationProperty Name="Medico" Relationship="ProyectoModel.FK__Cita__id_medico__5B438874" FromRole="Cita" ToRole="Medico" />
-          <NavigationProperty Name="Usuario" Relationship="ProyectoModel.FK__Cita__idUsuario__5A4F643B" FromRole="Cita" ToRole="Usuario" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK__Cita__id_medico__5B438874" FromRole="Cita" ToRole="Medico" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Cita__idUsuario__5A4F643B" FromRole="Cita" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="DietaInfo">
           <Key>
@@ -409,7 +391,7 @@
           <Property Name="altura" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="naf" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="resultado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Usuario" Relationship="ProyectoModel.FK__DietaInfo__idUsu__53A266AC" FromRole="DietaInfo" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__DietaInfo__idUsu__53A266AC" FromRole="DietaInfo" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Genero">
           <Key>
@@ -417,7 +399,7 @@
           </Key>
           <Property Name="idGenero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="genero1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Usuarios" Relationship="ProyectoModel.FK__Usuario__idGener__4924D839" FromRole="Genero" ToRole="Usuario" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuario__idGener__4924D839" FromRole="Genero" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Medico">
           <Key>
@@ -432,8 +414,8 @@
           <Property Name="contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="puesto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="activo" Type="Boolean" />
-          <NavigationProperty Name="Citas" Relationship="ProyectoModel.FK__Cita__id_medico__5B438874" FromRole="Medico" ToRole="Cita" />
-          <NavigationProperty Name="PMensajes" Relationship="ProyectoModel.FK__PMensaje__idMedi__4CF5691D" FromRole="Medico" ToRole="PMensaje" />
+          <NavigationProperty Name="Citas" Relationship="Self.FK__Cita__id_medico__5B438874" FromRole="Medico" ToRole="Cita" />
+          <NavigationProperty Name="PMensajes" Relationship="Self.FK__PMensaje__idMedi__4CF5691D" FromRole="Medico" ToRole="PMensaje" />
         </EntityType>
         <EntityType Name="Mensaje">
           <Key>
@@ -446,6 +428,18 @@
           <Property Name="mensaje1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="activo" Type="Boolean" />
         </EntityType>
+        <EntityType Name="PlanNutri">
+          <Key>
+            <PropertyRef Name="idPlan" />
+          </Key>
+          <Property Name="idPlan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUsuario" Type="Int32" />
+          <Property Name="Desayuno" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Comida" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Cena" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Colaciones" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__PlanNutri__idUsu__6D6238AF" FromRole="PlanNutri" ToRole="Usuario" />
+        </EntityType>
         <EntityType Name="Platillo">
           <Key>
             <PropertyRef Name="idPlatillo" />
@@ -455,7 +449,7 @@
           <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="activo" Type="Boolean" />
-          <NavigationProperty Name="Platillo_Alimento" Relationship="ProyectoModel.FK__Platillo___idPla__7DCDAAA2" FromRole="Platillo" ToRole="Platillo_Alimento" />
+          <NavigationProperty Name="Platillo_Alimento" Relationship="Self.FK__Platillo___idPla__7DCDAAA2" FromRole="Platillo" ToRole="Platillo_Alimento" />
         </EntityType>
         <EntityType Name="Platillo_Alimento">
           <Key>
@@ -464,8 +458,8 @@
           <Property Name="idPlatillo_Alimento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idPlatillo" Type="Int32" />
           <Property Name="idAlimento" Type="Int32" />
-          <NavigationProperty Name="Alimento" Relationship="ProyectoModel.FK__Platillo___idAli__7EC1CEDB" FromRole="Platillo_Alimento" ToRole="Alimento" />
-          <NavigationProperty Name="Platillo" Relationship="ProyectoModel.FK__Platillo___idPla__7DCDAAA2" FromRole="Platillo_Alimento" ToRole="Platillo" />
+          <NavigationProperty Name="Alimento" Relationship="Self.FK__Platillo___idAli__7EC1CEDB" FromRole="Platillo_Alimento" ToRole="Alimento" />
+          <NavigationProperty Name="Platillo" Relationship="Self.FK__Platillo___idPla__7DCDAAA2" FromRole="Platillo_Alimento" ToRole="Platillo" />
         </EntityType>
         <EntityType Name="PMensaje">
           <Key>
@@ -476,14 +470,14 @@
           <Property Name="idMedico" Type="Int32" />
           <Property Name="mensaje" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="activo" Type="Boolean" />
-          <NavigationProperty Name="Medico" Relationship="ProyectoModel.FK__PMensaje__idMedi__4CF5691D" FromRole="PMensaje" ToRole="Medico" />
-          <NavigationProperty Name="Usuario" Relationship="ProyectoModel.FK__PMensaje__idUsua__4C0144E4" FromRole="PMensaje" ToRole="Usuario" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK__PMensaje__idMedi__4CF5691D" FromRole="PMensaje" ToRole="Medico" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__PMensaje__idUsua__4C0144E4" FromRole="PMensaje" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
@@ -503,15 +497,15 @@
           <Property Name="nacimiento" Type="DateTime" Precision="0" />
           <Property Name="activo" Type="Boolean" />
           <Property Name="idGenero" Type="Int32" />
-          <NavigationProperty Name="Citas" Relationship="ProyectoModel.FK__Cita__idUsuario__5A4F643B" FromRole="Usuario" ToRole="Cita" />
-          <NavigationProperty Name="DietaInfoes" Relationship="ProyectoModel.FK__DietaInfo__idUsu__53A266AC" FromRole="Usuario" ToRole="DietaInfo" />
-          <NavigationProperty Name="Genero" Relationship="ProyectoModel.FK__Usuario__idGener__4924D839" FromRole="Usuario" ToRole="Genero" />
-          <NavigationProperty Name="PMensajes" Relationship="ProyectoModel.FK__PMensaje__idUsua__4C0144E4" FromRole="Usuario" ToRole="PMensaje" />
-          <NavigationProperty Name="PlanNutris" Relationship="ProyectoModel.FK__PlanNutri__idUsu__6D6238AF" FromRole="Usuario" ToRole="PlanNutri" />
+          <NavigationProperty Name="Citas" Relationship="Self.FK__Cita__idUsuario__5A4F643B" FromRole="Usuario" ToRole="Cita" />
+          <NavigationProperty Name="DietaInfoes" Relationship="Self.FK__DietaInfo__idUsu__53A266AC" FromRole="Usuario" ToRole="DietaInfo" />
+          <NavigationProperty Name="Genero" Relationship="Self.FK__Usuario__idGener__4924D839" FromRole="Usuario" ToRole="Genero" />
+          <NavigationProperty Name="PlanNutris" Relationship="Self.FK__PlanNutri__idUsu__6D6238AF" FromRole="Usuario" ToRole="PlanNutri" />
+          <NavigationProperty Name="PMensajes" Relationship="Self.FK__PMensaje__idUsua__4C0144E4" FromRole="Usuario" ToRole="PMensaje" />
         </EntityType>
         <Association Name="FK__Platillo___idAli__7EC1CEDB">
-          <End Type="ProyectoModel.Alimento" Role="Alimento" Multiplicity="0..1" />
-          <End Type="ProyectoModel.Platillo_Alimento" Role="Platillo_Alimento" Multiplicity="*" />
+          <End Role="Alimento" Type="Self.Alimento" Multiplicity="0..1" />
+          <End Role="Platillo_Alimento" Type="Self.Platillo_Alimento" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Alimento">
               <PropertyRef Name="idAlimento" />
@@ -522,8 +516,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Cita__id_medico__5B438874">
-          <End Type="ProyectoModel.Medico" Role="Medico" Multiplicity="0..1" />
-          <End Type="ProyectoModel.Cita" Role="Cita" Multiplicity="*" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Medico">
               <PropertyRef Name="idMedico" />
@@ -534,8 +528,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Cita__idUsuario__5A4F643B">
-          <End Type="ProyectoModel.Usuario" Role="Usuario" Multiplicity="0..1" />
-          <End Type="ProyectoModel.Cita" Role="Cita" Multiplicity="*" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
               <PropertyRef Name="idUsuario" />
@@ -546,8 +540,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__DietaInfo__idUsu__53A266AC">
-          <End Type="ProyectoModel.Usuario" Role="Usuario" Multiplicity="0..1" />
-          <End Type="ProyectoModel.DietaInfo" Role="DietaInfo" Multiplicity="*" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="DietaInfo" Type="Self.DietaInfo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
               <PropertyRef Name="idUsuario" />
@@ -558,8 +552,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Usuario__idGener__4924D839">
-          <End Type="ProyectoModel.Genero" Role="Genero" Multiplicity="0..1" />
-          <End Type="ProyectoModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <End Role="Genero" Type="Self.Genero" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Genero">
               <PropertyRef Name="idGenero" />
@@ -570,8 +564,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__PMensaje__idMedi__4CF5691D">
-          <End Type="ProyectoModel.Medico" Role="Medico" Multiplicity="0..1" />
-          <End Type="ProyectoModel.PMensaje" Role="PMensaje" Multiplicity="*" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="PMensaje" Type="Self.PMensaje" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Medico">
               <PropertyRef Name="idMedico" />
@@ -581,9 +575,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PlanNutri__idUsu__6D6238AF">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="PlanNutri" Type="Self.PlanNutri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="PlanNutri">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Platillo___idPla__7DCDAAA2">
-          <End Type="ProyectoModel.Platillo" Role="Platillo" Multiplicity="0..1" />
-          <End Type="ProyectoModel.Platillo_Alimento" Role="Platillo_Alimento" Multiplicity="*" />
+          <End Role="Platillo" Type="Self.Platillo" Multiplicity="0..1" />
+          <End Role="Platillo_Alimento" Type="Self.Platillo_Alimento" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Platillo">
               <PropertyRef Name="idPlatillo" />
@@ -594,8 +600,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__PMensaje__idUsua__4C0144E4">
-          <End Type="ProyectoModel.Usuario" Role="Usuario" Multiplicity="0..1" />
-          <End Type="ProyectoModel.PMensaje" Role="PMensaje" Multiplicity="*" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="PMensaje" Type="Self.PMensaje" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
               <PropertyRef Name="idUsuario" />
@@ -605,191 +611,282 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="PlanNutri">
-          <Key>
-            <PropertyRef Name="idPlan" />
-          </Key>
-          <Property Name="idPlan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idUsuario" Type="Int32" />
-          <Property Name="Desayuno" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Comida" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Cena" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Colaciones" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Usuario" Relationship="ProyectoModel.FK__PlanNutri__idUsu__6D6238AF" FromRole="PlanNutri" ToRole="Usuario" />
-        </EntityType>
-        <Association Name="FK__PlanNutri__idUsu__6D6238AF">
-          <End Type="ProyectoModel.Usuario" Role="Usuario" Multiplicity="0..1" />
-          <End Type="ProyectoModel.PlanNutri" Role="PlanNutri" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="idUsuario" />
-            </Principal>
-            <Dependent Role="PlanNutri">
-              <PropertyRef Name="idUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        </Schema>
+        <EntityContainer Name="proyectoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Alimentoes" EntityType="Self.Alimento" />
+          <EntitySet Name="Citas" EntityType="Self.Cita" />
+          <EntitySet Name="DietaInfoes" EntityType="Self.DietaInfo" />
+          <EntitySet Name="Generoes" EntityType="Self.Genero" />
+          <EntitySet Name="Medicos" EntityType="Self.Medico" />
+          <EntitySet Name="Mensajes" EntityType="Self.Mensaje" />
+          <EntitySet Name="PlanNutris" EntityType="Self.PlanNutri" />
+          <EntitySet Name="Platilloes" EntityType="Self.Platillo" />
+          <EntitySet Name="Platillo_Alimento" EntityType="Self.Platillo_Alimento" />
+          <EntitySet Name="PMensajes" EntityType="Self.PMensaje" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK__Platillo___idAli__7EC1CEDB" Association="Self.FK__Platillo___idAli__7EC1CEDB">
+            <End Role="Alimento" EntitySet="Alimentoes" />
+            <End Role="Platillo_Alimento" EntitySet="Platillo_Alimento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cita__id_medico__5B438874" Association="Self.FK__Cita__id_medico__5B438874">
+            <End Role="Medico" EntitySet="Medicos" />
+            <End Role="Cita" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cita__idUsuario__5A4F643B" Association="Self.FK__Cita__idUsuario__5A4F643B">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Cita" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DietaInfo__idUsu__53A266AC" Association="Self.FK__DietaInfo__idUsu__53A266AC">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="DietaInfo" EntitySet="DietaInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__idGener__4924D839" Association="Self.FK__Usuario__idGener__4924D839">
+            <End Role="Genero" EntitySet="Generoes" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PMensaje__idMedi__4CF5691D" Association="Self.FK__PMensaje__idMedi__4CF5691D">
+            <End Role="Medico" EntitySet="Medicos" />
+            <End Role="PMensaje" EntitySet="PMensajes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PlanNutri__idUsu__6D6238AF" Association="Self.FK__PlanNutri__idUsu__6D6238AF">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="PlanNutri" EntitySet="PlanNutris" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Platillo___idPla__7DCDAAA2" Association="Self.FK__Platillo___idPla__7DCDAAA2">
+            <End Role="Platillo" EntitySet="Platilloes" />
+            <End Role="Platillo_Alimento" EntitySet="Platillo_Alimento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PMensaje__idUsua__4C0144E4" Association="Self.FK__PMensaje__idUsua__4C0144E4">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="PMensaje" EntitySet="PMensajes" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(db_a75d97_proyectoModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(db_a75d97_proyectoModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ProyectoModelStoreContainer" CdmEntityContainer="ProyectoEntities">
+        <EntityContainerMapping StorageEntityContainer="db_a75d97_proyectoModelStoreContainer" CdmEntityContainer="proyectoEntities">
           <EntitySetMapping Name="Alimentoes">
-            <EntityTypeMapping TypeName="ProyectoModel.Alimento">
+            <EntityTypeMapping TypeName="db_a75d97_proyectoModel.Alimento">
               <MappingFragment StoreEntitySet="Alimento">
-                <ScalarProperty Name="cantidadSu" ColumnName="cantidadSu" />
-                <ScalarProperty Name="unidad" ColumnName="unidad" />
-                <ScalarProperty Name="indiceGlic" ColumnName="indiceGlic" />
-                <ScalarProperty Name="cargaGlic" ColumnName="cargaGlic" />
-                <ScalarProperty Name="hidratosDC" ColumnName="hidratosDC" />
-                <ScalarProperty Name="lipidos" ColumnName="lipidos" />
-                <ScalarProperty Name="protenia" ColumnName="protenia" />
-                <ScalarProperty Name="energia" ColumnName="energia" />
-                <ScalarProperty Name="pesoNeto" ColumnName="pesoNeto" />
-                <ScalarProperty Name="pesoBruto" ColumnName="pesoBruto" />
-                <ScalarProperty Name="fibra" ColumnName="fibra" />
-                <ScalarProperty Name="vitmaminaA" ColumnName="vitmaminaA" />
-                <ScalarProperty Name="acidoFolico" ColumnName="acidoFolico" />
-                <ScalarProperty Name="hierro" ColumnName="hierro" />
-                <ScalarProperty Name="potasio" ColumnName="potasio" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="idAlimento" ColumnName="idAlimento" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="potasio" ColumnName="potasio" />
+                <ScalarProperty Name="hierro" ColumnName="hierro" />
+                <ScalarProperty Name="acidoFolico" ColumnName="acidoFolico" />
+                <ScalarProperty Name="vitmaminaA" ColumnName="vitmaminaA" />
+                <ScalarProperty Name="fibra" ColumnName="fibra" />
+                <ScalarProperty Name="pesoBruto" ColumnName="pesoBruto" />
+                <ScalarProperty Name="pesoNeto" ColumnName="pesoNeto" />
+                <ScalarProperty Name="energia" ColumnName="energia" />
+                <ScalarProperty Name="protenia" ColumnName="protenia" />
+                <ScalarProperty Name="lipidos" ColumnName="lipidos" />
+                <ScalarProperty Name="hidratosDC" ColumnName="hidratosDC" />
+                <ScalarProperty Name="cargaGlic" ColumnName="cargaGlic" />
+                <ScalarProperty Name="indiceGlic" ColumnName="indiceGlic" />
+                <ScalarProperty Name="unidad" ColumnName="unidad" />
+                <ScalarProperty Name="cantidadSu" ColumnName="cantidadSu" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Citas">
-            <EntityTypeMapping TypeName="ProyectoModel.Cita">
+            <EntityTypeMapping TypeName="db_a75d97_proyectoModel.Cita">
               <MappingFragment StoreEntitySet="Cita">
-                <ScalarProperty Name="activo" ColumnName="activo" />
-                <ScalarProperty Name="id_medico" ColumnName="id_medico" />
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-                <ScalarProperty Name="hora" ColumnName="hora" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
                 <ScalarProperty Name="idCita" ColumnName="idCita" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="id_medico" ColumnName="id_medico" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DietaInfoes">
-            <EntityTypeMapping TypeName="ProyectoModel.DietaInfo">
+            <EntityTypeMapping TypeName="db_a75d97_proyectoModel.DietaInfo">
               <MappingFragment StoreEntitySet="DietaInfo">
-                <ScalarProperty Name="resultado" ColumnName="resultado" />
-                <ScalarProperty Name="naf" ColumnName="naf" />
-                <ScalarProperty Name="altura" ColumnName="altura" />
-                <ScalarProperty Name="peso" ColumnName="peso" />
-                <ScalarProperty Name="imcActual" ColumnName="imcActual" />
-                <ScalarProperty Name="imcInicial" ColumnName="imcInicial" />
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
                 <ScalarProperty Name="idInfo" ColumnName="idInfo" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="imcInicial" ColumnName="imcInicial" />
+                <ScalarProperty Name="imcActual" ColumnName="imcActual" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="altura" ColumnName="altura" />
+                <ScalarProperty Name="naf" ColumnName="naf" />
+                <ScalarProperty Name="resultado" ColumnName="resultado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Generoes">
-            <EntityTypeMapping TypeName="ProyectoModel.Genero">
+            <EntityTypeMapping TypeName="db_a75d97_proyectoModel.Genero">
               <MappingFragment StoreEntitySet="Genero">
-                <ScalarProperty Name="genero1" ColumnName="genero" />
                 <ScalarProperty Name="idGenero" ColumnName="idGenero" />
+                <ScalarProperty Name="genero1" ColumnName="genero" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Medicos">
-            <EntityTypeMapping TypeName="ProyectoModel.Medico">
+            <EntityTypeMapping TypeName="db_a75d97_proyectoModel.Medico">
               <MappingFragment StoreEntitySet="Medico">
-                <ScalarProperty Name="activo" ColumnName="activo" />
-                <ScalarProperty Name="puesto" ColumnName="puesto" />
-                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
-                <ScalarProperty Name="correo" ColumnName="correo" />
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="aMaterno" ColumnName="aMaterno" />
-                <ScalarProperty Name="aPaterno" ColumnName="aPaterno" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="idMedico" ColumnName="idMedico" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="aPaterno" ColumnName="aPaterno" />
+                <ScalarProperty Name="aMaterno" ColumnName="aMaterno" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="puesto" ColumnName="puesto" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Mensajes">
-            <EntityTypeMapping TypeName="ProyectoModel.Mensaje">
+            <EntityTypeMapping TypeName="db_a75d97_proyectoModel.Mensaje">
               <MappingFragment StoreEntitySet="Mensaje">
-                <ScalarProperty Name="activo" ColumnName="activo" />
-                <ScalarProperty Name="mensaje1" ColumnName="mensaje" />
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="correo" ColumnName="correo" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="idMensaje" ColumnName="idMensaje" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Platilloes">
-            <EntityTypeMapping TypeName="ProyectoModel.Platillo">
-              <MappingFragment StoreEntitySet="Platillo">
-                <ScalarProperty Name="activo" ColumnName="activo" />
-                <ScalarProperty Name="imagen" ColumnName="imagen" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="idPlatillo" ColumnName="idPlatillo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Platillo_Alimento">
-            <EntityTypeMapping TypeName="ProyectoModel.Platillo_Alimento">
-              <MappingFragment StoreEntitySet="Platillo_Alimento">
-                <ScalarProperty Name="idAlimento" ColumnName="idAlimento" />
-                <ScalarProperty Name="idPlatillo" ColumnName="idPlatillo" />
-                <ScalarProperty Name="idPlatillo_Alimento" ColumnName="idPlatillo_Alimento" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PMensajes">
-            <EntityTypeMapping TypeName="ProyectoModel.PMensaje">
-              <MappingFragment StoreEntitySet="PMensaje">
-                <ScalarProperty Name="activo" ColumnName="activo" />
-                <ScalarProperty Name="mensaje" ColumnName="mensaje" />
-                <ScalarProperty Name="idMedico" ColumnName="idMedico" />
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-                <ScalarProperty Name="idPMensaje" ColumnName="idPMensaje" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="ProyectoModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="ProyectoModel.Usuario">
-              <MappingFragment StoreEntitySet="Usuario">
-                <ScalarProperty Name="idGenero" ColumnName="idGenero" />
-                <ScalarProperty Name="activo" ColumnName="activo" />
-                <ScalarProperty Name="nacimiento" ColumnName="nacimiento" />
-                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
                 <ScalarProperty Name="correo" ColumnName="correo" />
-                <ScalarProperty Name="aMaterno" ColumnName="aMaterno" />
-                <ScalarProperty Name="aPaterno" ColumnName="aPaterno" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="mensaje1" ColumnName="mensaje" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PlanNutris">
-            <EntityTypeMapping TypeName="ProyectoModel.PlanNutri">
+            <EntityTypeMapping TypeName="db_a75d97_proyectoModel.PlanNutri">
               <MappingFragment StoreEntitySet="PlanNutri">
-                <ScalarProperty Name="Colaciones" ColumnName="Colaciones" />
-                <ScalarProperty Name="Cena" ColumnName="Cena" />
-                <ScalarProperty Name="Comida" ColumnName="Comida" />
-                <ScalarProperty Name="Desayuno" ColumnName="Desayuno" />
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
                 <ScalarProperty Name="idPlan" ColumnName="idPlan" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="Desayuno" ColumnName="Desayuno" />
+                <ScalarProperty Name="Comida" ColumnName="Comida" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+                <ScalarProperty Name="Colaciones" ColumnName="Colaciones" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Platilloes">
+            <EntityTypeMapping TypeName="db_a75d97_proyectoModel.Platillo">
+              <MappingFragment StoreEntitySet="Platillo">
+                <ScalarProperty Name="idPlatillo" ColumnName="idPlatillo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Platillo_Alimento">
+            <EntityTypeMapping TypeName="db_a75d97_proyectoModel.Platillo_Alimento">
+              <MappingFragment StoreEntitySet="Platillo_Alimento">
+                <ScalarProperty Name="idPlatillo_Alimento" ColumnName="idPlatillo_Alimento" />
+                <ScalarProperty Name="idPlatillo" ColumnName="idPlatillo" />
+                <ScalarProperty Name="idAlimento" ColumnName="idAlimento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PMensajes">
+            <EntityTypeMapping TypeName="db_a75d97_proyectoModel.PMensaje">
+              <MappingFragment StoreEntitySet="PMensaje">
+                <ScalarProperty Name="idPMensaje" ColumnName="idPMensaje" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idMedico" ColumnName="idMedico" />
+                <ScalarProperty Name="mensaje" ColumnName="mensaje" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="db_a75d97_proyectoModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="db_a75d97_proyectoModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="aPaterno" ColumnName="aPaterno" />
+                <ScalarProperty Name="aMaterno" ColumnName="aMaterno" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="nacimiento" ColumnName="nacimiento" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="idGenero" ColumnName="idGenero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="db_a75d97_proyectoModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="db_a75d97_proyectoModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="db_a75d97_proyectoModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="db_a75d97_proyectoModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="db_a75d97_proyectoModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="db_a75d97_proyectoModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="db_a75d97_proyectoModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="db_a75d97_proyectoModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="db_a75d97_proyectoModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

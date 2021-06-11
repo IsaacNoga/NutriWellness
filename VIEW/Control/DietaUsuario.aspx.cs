@@ -18,7 +18,7 @@ namespace VIEW.Control
 
         }
         ///<param name=" CadenaConexion">string Cadena de conexion para la base de datos</param>
-        string CadenaConexion = "Data source=localhost;initial catalog=Proyecto;integrated Security=True";
+        string CadenaConexion = "Data Source=SQL5053.site4now.net;Initial Catalog=db_a75d97_proyecto;User Id=db_a75d97_proyecto_admin;Password=nutriw2021";
         /// <summary>
         /// Metodo click, ditar la información de la dieta del usuario y traer la información a los textbox
         /// 
@@ -32,7 +32,7 @@ namespace VIEW.Control
             var idUsuario = ddlUsuarios.Text;
             //var idUsuario = ddlUsuarios.SelectedValue;
             SqlConnection conexionSQL = new SqlConnection(CadenaConexion);
-            SqlCommand comando = new SqlCommand("SELECT * FROM DIETAINFO WHERE idInfo=@idUsuario", conexionSQL);
+            SqlCommand comando = new SqlCommand("SELECT * FROM DIETAINFO WHERE idUsuario=@idUsuario", conexionSQL);
             comando.Parameters.AddWithValue("@idUsuario", idUsuario);
             conexionSQL.Open();
             SqlDataReader reader = comando.ExecuteReader();

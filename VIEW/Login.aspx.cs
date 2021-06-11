@@ -43,13 +43,27 @@ namespace VIEW
                     contrasena = txtContrasena.Text,
                     correo = txtEmail.Text
                 };
-                var usuario = UsuarioControlador.IngresarSistema(newUsuario);
-                Session.Timeout = 20;
-                Session["nombre"] = usuario.nombre + " " + usuario.aPaterno;
-                Session["idUsuario"] = usuario.idUsuario;
-
-
-                Response.Redirect("~/User/Citas.aspx");
+                if (UsuarioModel.ExisteUsuario(newUsuario.correo))
+                {
+                    var usuario = UsuarioControlador.IngresarSistema(newUsuario);
+                    Session.Timeout = 20;
+                    Session["nombre"] = usuario.nombre + " " + usuario.aPaterno;
+                    Session["idUsuario"] = usuario.idUsuario;
+                    Response.Redirect("~/User/Citas.aspx");
+                }
+                else
+                {
+                    var newUserNutri = new MODEL.Medico()
+                    {
+                        contrasena = txtContrasena.Text,
+                        correo = txtEmail.Text
+                    };
+                    var medico = MedicoControlador.IngresarSistema(newUserNutri);
+                    Session.Timeout = 60;
+                    Session["nombre"] = medico.nombre + " " + medico.aPaterno;
+                    Session["idUsuario"] = medico.idMedico;
+                    Response.Redirect("~/Control/Usuarios.aspx");
+                }
             }
             catch (Exception ex)
             {

@@ -47,8 +47,6 @@ namespace VIEW
                 Session.Timeout = 60;
                 Session["nombre"] = medico.nombre + " " + medico.aPaterno;
                 Session["idUsuario"] = medico.idMedico;
-
-
                 Response.Redirect("~/Control/Usuarios.aspx");
             }
             catch (Exception ex)

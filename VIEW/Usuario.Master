@@ -23,7 +23,7 @@
     <div class="sidebar" data-color="danger" data-background-color="white">
 
       <div class="logo">
-        <a href="/inicio.aspx" class="simple-text logo-mini">
+        <a href="/index.aspx" class="simple-text logo-mini">
           Inicio
         </a>
       </div>

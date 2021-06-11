@@ -120,7 +120,7 @@ namespace VIEW.Control
         {
             try
             {
-                string CadenaConexion = "Data source=localhost;initial catalog=Proyecto;integrated Security=True";
+                string CadenaConexion = "Data Source=SQL5053.site4now.net;Initial Catalog=db_a75d97_proyecto;User Id=db_a75d97_proyecto_admin;Password=nutriw2021";
                 SqlConnection conexionSQL = new SqlConnection(CadenaConexion);
                 SqlCommand cmd = new SqlCommand();
                 //El comando es para actualizar los datos

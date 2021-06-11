@@ -51,28 +51,32 @@ namespace VIEW
 					nacimiento = Convert.ToDateTime(txtNacimiento.Text),
 					idGenero = ddlGenero.SelectedIndex+1
 				};
-
-				var nuevoDietaInfo = new MODEL.DietaInfo()
-				{
-					imcActual = "Sin definir",
-					imcInicial = "Sin definir",
-					peso = "Sin definir",
-					altura = "Sin definir",
-					naf = "Sin definir",
-					resultado = "Sin definir",
-				};
-
-				var nuevoPlan = new MODEL.PlanNutri()
-				{
-					Desayuno="Sin asignar",
-					Comida= "Sin asignar",
-					Cena= "Sin asignar",
-					Colaciones= "Sin asignar"
-				};
-				DietaInfoControlador.InsertarDietaInfo(nuevoDietaInfo);
-				UsuarioControlador.InsertarUsuario(nuevoUsuario);
-				PlanControlador.InsertarPlan(nuevoPlan);
 				
+				UsuarioControlador.InsertarUsuario(nuevoUsuario);
+				if (UsuarioModel.ExisteUsuario(nuevoUsuario.correo))
+                {
+					int id = UsuarioModel.idUsuario(nuevoUsuario.correo);
+					var nuevoDietaInfo = new MODEL.DietaInfo()
+					{
+						imcActual = "Sin definir",
+						imcInicial = "Sin definir",
+						peso = "Sin definir",
+						altura = "Sin definir",
+						naf = "Sin definir",
+						resultado = "Sin definir",
+						idUsuario = id
+					};
+					var nuevoPlan = new MODEL.PlanNutri()
+					{
+						Desayuno = "Sin asignar",
+						Comida = "Sin asignar",
+						Cena = "Sin asignar",
+						Colaciones = "Sin asignar",
+						idUsuario = id
+					};
+					PlanControlador.InsertarPlan(nuevoPlan);
+					DietaInfoControlador.InsertarDietaInfo(nuevoDietaInfo);
+				}
 				mensaje.Visible = true;
 			}
 			catch (Exception ex)

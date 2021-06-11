@@ -10,7 +10,7 @@ namespace MODEL
     {
         public static void InsertarCita(Cita newCita)
         {
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 modelo.Citas.Add(newCita);
                 modelo.SaveChanges();
@@ -25,7 +25,7 @@ namespace MODEL
         /// <returns>Retorna el resultado de la busqueda</returns>
         public static List<Cita> BuscarCita(string criterios, bool estado)
         {
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 List<Cita> resultado =
                     (from us in modelo.Citas
@@ -45,7 +45,7 @@ namespace MODEL
         /// <param name="idCita">int Identificador de la cita</param>
         public static void CambiarEstadoCita(int idCita)
         {
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 var cita = modelo.Citas.Find(idCita);
                 if (cita.activo == true)

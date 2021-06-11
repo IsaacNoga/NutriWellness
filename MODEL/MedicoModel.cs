@@ -17,7 +17,7 @@ namespace MODEL
         {
             try
             {
-                using (var modelo = new ProyectoEntities())
+                using (var modelo = new proyectoEntities())
                 {
                     var resultado = (from us in modelo.Medicos
                                      where (us.contrasena == usuario.contrasena

@@ -14,7 +14,7 @@ namespace MODEL
         /// <param name="newDietaInfo">DietaInfo Datos de la dieta</param>
         public static void InsertarDietaInfo(DietaInfo newDietaInfo)
         {
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 modelo.DietaInfoes.Add(newDietaInfo);
                 modelo.SaveChanges();
@@ -30,7 +30,7 @@ namespace MODEL
         {
             var dieta = new DietaInfo() {  idInfo = dietaInfoModificado.idInfo };
 
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 modelo.DietaInfoes.Attach(dieta);
                 dieta = dietaInfoModificado;

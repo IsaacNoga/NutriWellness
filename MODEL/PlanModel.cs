@@ -14,7 +14,7 @@ namespace MODEL
         /// <param name="newPlan">PlanNutri Informacion nutricional del usuario</param>
         public static void InsertarPlan(PlanNutri newPlan)
         {
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 modelo.PlanNutris.Add(newPlan);
                 modelo.SaveChanges();

@@ -13,7 +13,11 @@ namespace VIEW.Control
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Se utilizan la iformación esctrita en el textbox para buscar los mensajes
+            var resultado = MensajeControlador.BuscarMensajeCriterios(string.Empty, true);
 
+            gvMensajes.DataSource = resultado;
+            gvMensajes.DataBind(); //Llena el GV con la información
         }
 
         /// <summary>

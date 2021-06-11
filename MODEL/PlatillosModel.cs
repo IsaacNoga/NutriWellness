@@ -16,7 +16,7 @@ namespace MODEL
         /// <returns>Retorna el resultado de la busqueda</returns>
         public static List<Platillo> BuscarPlatilloCriterios(string criterios, bool estado)
         {
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 List<Platillo> resultado =
                     (from pl in modelo.Platilloes
@@ -33,7 +33,7 @@ namespace MODEL
         /// <param name="idPlatillo">int Identificador del platillo</param>
         public static void CambiarEstadoPlatillo(int idPlatillo)
         {
-            using (var modelo = new ProyectoEntities())
+            using (var modelo = new proyectoEntities())
             {
                 var platillo = modelo.Platilloes.Find(idPlatillo);
                 //platillo.activo = platillo.activo == true ? false : true;

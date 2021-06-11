@@ -16,20 +16,20 @@
                 </div>
                 <div class="card-body">
                     <div class=" row">
-            <div class="col-3">
-                <div class="input-group input-group-sm mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Buscar</span>
-                  </div>
-                  <asp:TextBox runat="server" ID="txtCriterios" CssClass="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Buscar</span>
+                              </div>
+                              <asp:TextBox runat="server" ID="txtCriterios" CssClass="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
             
-                </div>
-                <asp:CheckBoxList ID="chbxEstado" runat="server">
-                    <asp:ListItem Selected="True" Value="1"> Activos</asp:ListItem>
-                    <asp:ListItem Value="0"> Inactivos</asp:ListItem>
-                </asp:CheckBoxList>
-                <asp:Button ID="btnBuscar" Text="Buscar" CssClass="btn btn-primary mt-1" runat="server" OnClick="btnBuscar_Click" />
-            </div>
+                            </div>
+                            <asp:CheckBoxList ID="chbxEstado" runat="server">
+                                <asp:ListItem Selected="True" Value="1"> Activos</asp:ListItem>
+                                <asp:ListItem Value="0"> Inactivos</asp:ListItem>
+                            </asp:CheckBoxList>
+                            <asp:Button ID="btnBuscar" Text="Buscar" CssClass="btn btn-primary mt-1" runat="server" OnClick="btnBuscar_Click" />
+                        </div>
             <asp:Panel runat="server" Visible="false" ID="pnlEditar">
                 <div class="col-9">
                     <div class="row input-group input-group-sm mb-3 ">
