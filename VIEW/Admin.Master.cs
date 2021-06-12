@@ -26,5 +26,11 @@ namespace VIEW
             if (nombre == null || id == null) Response.Redirect("~/Login.aspx");
             lblUsuarioLog.Text = nombre.ToString();
         }
+
+        protected void Logout_ServerClick(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("~/Index.aspx");
+        }
     }
 }
