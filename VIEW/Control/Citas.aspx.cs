@@ -36,9 +36,18 @@ namespace VIEW.Control
                     activo = true,
                     observaciones="Sin Observaciones" //Es el valor por defecto de las observaciones de la cita
                 };
-
-                CitaControlador.InsertarCita(nuevaCita);
-                mensaje.Visible = true;
+                int result = DateTime.Compare((DateTime)nuevaCita.fecha, DateTime.Now);
+                if (result <= 0)
+                {
+                    lblError.Text = "Error con la fecha de la cita: No se puede generar una cita para el día o antes del día actual.";
+                    mensajeError.Visible = true;
+                }
+                else if (result > 0)
+                {
+                    CitaControlador.InsertarCita(nuevaCita);
+                    mensaje.Visible = true;
+                }
+                
             }
             catch (Exception ex )
             {
@@ -130,8 +139,20 @@ namespace VIEW.Control
                 cmd.Parameters.Add("@hora", SqlDbType.Time).Value = TimeSpan.Parse(txtHoraEdit.Text); //TimeSpan es el formato de la hora
                 cmd.Parameters.Add("@observaciones", SqlDbType.Text).Value = txtObservacion.Text;
                 cmd.Connection = conexionSQL;
-                conexionSQL.Open(); //Se abre la conexión
-                cmd.ExecuteNonQuery(); //Se ejecuta el comando
+                
+                var fecha = Convert.ToDateTime(txtDiaEdit.Text);
+                int result = DateTime.Compare((DateTime)fecha, DateTime.Now);
+                if (result <= 0)
+                {
+                    lblError.Text = "Error con la fecha de la cita: No se puede generar una cita para el día o antes del día actual.";
+                    mensajeError.Visible = true;
+                }
+                else if (result > 0)
+                {
+                    conexionSQL.Open(); //Se abre la conexión
+                    cmd.ExecuteNonQuery(); //Se ejecuta el comando
+                    mensaje.Visible = true;
+                }
 
                 pnlEditar.Visible = false;
                 btnAgregar.Enabled = true;
