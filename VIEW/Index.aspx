@@ -27,8 +27,10 @@
                       </div>
                   <div class="card" style="width: 30rem;">
                   <div class="card-body">
-                    <p class="card-text text-justify" >Es un software para especialistas en nutricion. Nuestro sistema evalúa los resultados dietéticos y ayuda a desarrolla un plan alimenticio para mejorar los habitos. Ahorrando asi el tiempo para una mayor eficiencia y accesibilidad de atención de calidad.
-
+                    <p class="card-text text-justify">
+                        Nutriwellness es un equipo de especialistas en nutrición; nuestro objetivo es ayudarte a mejorar tus hábitos en cuestión de 
+                        alimentación desarrollando un plan alimenticio
+                        mediante la evaluación de los resultados dietéticos a través de la consulta nutricional.
                     </p>
                     </div>
                 </div>
@@ -139,10 +141,12 @@
                                 </p>
                                 <p>
                                     <asp:TextBox ID="txtEmail" class="form-control" placeholder="Email" runat="server"></asp:TextBox>
+                                    <asp:RegularExpressionValidator ID="revEmail" runat="server" ErrorMessage="* Formato de Email incorrecto" ControlToValidate="txtEmail" Display="Dynamic" ForeColor="#FF3300" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                                     <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ErrorMessage="* Campo requerido" ControlToValidate="txtEmail" ForeColor="#FF3300" Display="Dynamic"></asp:RequiredFieldValidator>
                                 </p>
                                 <p>
                                     <asp:TextBox ID="txtTelefono" class="form-control" placeholder="Telefono" runat="server"></asp:TextBox>
+                                    <asp:RegularExpressionValidator ID="revPhone" runat="server" ErrorMessage="* Se requieren 10 digitos" ControlToValidate="txtTelefono" ForeColor="#FF3300" ValidationExpression="^\d{10}$" Display="Dynamic"></asp:RegularExpressionValidator>
                                 </p>
                                 <p>
                                     <asp:TextBox ID="txtMensaje" CssClass="form-control" placeholder="¿En qué te podemos ayudar?" runat="server" TextMode="MultiLine" Height="150px" Width="80%"></asp:TextBox>

@@ -53,7 +53,7 @@
             </div>
           </nav>
 
-          <!-- Header -->
+          <!-- End Header -->
           <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
 
@@ -65,7 +65,7 @@
                         <img src="include/img/logo.png" width="300px" alt="Alternate Text" />
                     </div>-->
                     <div class="col-md-4">
-                        <a href="https://www.facebook.com/">
+                        <a href="https://www.facebook.com/nutperlamedc/">
                             <i class="fab fa-facebook-square ico-footer m-2"></i>
                         </a>
                     </div>
@@ -75,12 +75,12 @@
                         </a>
                     </div>
                     <div class="col-md-4">
-                        <a href="https://www.instagram.com/">
+                        <a href="https://instagram.com/nutperlamedc">
                             <i class="fab fa-instagram ico-footer m-2"></i>
                         </a>
                     </div>
                 </div>
-              <p class="m-0 text-center text-white">&copy; Derechos de autor - Perla Medina 2020</p>
+              <p class="m-0 text-center text-white">&copy; Nutriwellness - 2021</p>
             </div>
           </footer>
     </form>

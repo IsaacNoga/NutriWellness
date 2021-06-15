@@ -33,6 +33,7 @@ namespace VIEW
         {
             if (chbxTerminos.Checked==false)
             {
+                
                 mensajeError.Visible = true;
             }
             else
