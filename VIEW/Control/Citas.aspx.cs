@@ -184,5 +184,14 @@ namespace VIEW.Control
             mensajeError.Visible = false;
             mensaje.Visible = false;
         }
+
+        protected void btnCancelarEdicion_Click(object sender, EventArgs e)
+        {
+            pnlEditar.Visible = false;
+            btnAgregar.Enabled = true;
+            txtDia.Enabled = true;
+            txtHora.Enabled = true;
+            ddlUsuarios.Enabled = true;
+        }
     }
 }

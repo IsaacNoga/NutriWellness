@@ -24,7 +24,7 @@ namespace VIEW
             var nombre = Session["nombre"];
             var id = Session["idUsuario"];
             if (nombre == null || id == null) Response.Redirect("~/Login.aspx");
-            lblUsuarioLog.Text = nombre.ToString();
+            lblUsuarioLog.Text = "Se le da la bienvenida "+nombre.ToString();
         }
 
         protected void Logout_ServerClick(object sender, EventArgs e)

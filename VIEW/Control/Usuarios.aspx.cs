@@ -170,6 +170,10 @@ namespace VIEW.Control
         {
             return (int)((double)new TimeSpan(DateTime.Now.Subtract(fechaNacimiento).Ticks).Days / DiasAño);
         }
-       
+
+        protected void btnCancelarEdicion_Click(object sender, EventArgs e)
+        {
+            pnlEditar.Visible = false;
+        }
     }
 }

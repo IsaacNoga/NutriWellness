@@ -137,6 +137,7 @@
                             <div role="form" class="wpcf7" id="wpcf7-f35569-p36084-o1" lang="en-US" dir="ltr">
                                 <p>
                                     <asp:TextBox ID="txtNombre" class="form-control" placeholder="Nombre" runat="server"></asp:TextBox>
+                                    <asp:RegularExpressionValidator ID="revNombre" runat="server" ErrorMessage="* No valido" ControlToValidate="txtNombre" Display="Dynamic" ForeColor="#FF3300" ValidationExpression="^[A-Z][a-zA-Z]+$"></asp:RegularExpressionValidator>
                                     <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="* Campo requerido" ControlToValidate="txtNombre" ForeColor="#FF3300" Display="Dynamic"></asp:RequiredFieldValidator>
                                 </p>
                                 <p>

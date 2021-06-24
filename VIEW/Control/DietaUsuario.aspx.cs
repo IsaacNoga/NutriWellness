@@ -52,7 +52,7 @@ namespace VIEW.Control
             SqlDataReader reader2 = comando2.ExecuteReader();
             if (reader2.Read())
             {
-                lblNombre.Text ="Paciente: " + reader2["nombre"].ToString() +" "+ reader2["aPaterno"].ToString() + " " + reader2["aMaterno"].ToString();
+                lblNombre.Text = "Paciente: " + reader2["nombre"].ToString() + " " + reader2["aPaterno"].ToString() + " " + reader2["aMaterno"].ToString();
             }
             conexionSQL.Close();
             SqlCommand comando3 = new SqlCommand("SELECT * FROM PlanNutri WHERE idUsuario=@idUsuario3", conexionSQL);
@@ -71,7 +71,7 @@ namespace VIEW.Control
             pnlSeleccionar.Enabled = false;
             pnlDieta.Visible = true;
             pnlPlan.Visible = true;
-            if(txtIMCI.Text=="Sin definir")
+            if (txtIMCI.Text == "Sin definir")
             {
                 txtIMCI.Enabled = true;
             }
@@ -91,9 +91,9 @@ namespace VIEW.Control
             var ID = ddlUsuarios.SelectedValue;
             try
             {
-                if (String.IsNullOrEmpty(txtAltura.Text) || String.IsNullOrEmpty(txtIMCA.Text) || String.IsNullOrEmpty(txtIMCI.Text) || 
-                    String.IsNullOrEmpty(txtNaf.Text) || String.IsNullOrEmpty(txtPeso.Text) || String.IsNullOrEmpty(txtResultado.Text)||
-                    String.IsNullOrEmpty(txtDesayuno.Text) || String.IsNullOrEmpty(txtComida.Text) || String.IsNullOrEmpty(txtCena.Text) || 
+                if (String.IsNullOrEmpty(txtAltura.Text) || String.IsNullOrEmpty(txtIMCA.Text) || String.IsNullOrEmpty(txtIMCI.Text) ||
+                    String.IsNullOrEmpty(txtNaf.Text) || String.IsNullOrEmpty(txtPeso.Text) || String.IsNullOrEmpty(txtResultado.Text) ||
+                    String.IsNullOrEmpty(txtDesayuno.Text) || String.IsNullOrEmpty(txtComida.Text) || String.IsNullOrEmpty(txtCena.Text) ||
                     String.IsNullOrEmpty(txtColaciones.Text))
                 {
 
@@ -162,6 +162,13 @@ namespace VIEW.Control
         {
             mensajeError.Visible = false;
             mensaje.Visible = false;
+        }
+
+        protected void btnCancelarEdicion_Click(object sender, EventArgs e)
+        {
+            pnlSeleccionar.Enabled = true;
+            pnlDieta.Visible = false;
+            pnlPlan.Visible = false;
         }
     }
 }

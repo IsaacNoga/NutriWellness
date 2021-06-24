@@ -234,5 +234,10 @@ namespace VIEW.Control
         {
             mensajeError.Visible = false;
         }
+
+        protected void btnCancelarEdicion_Click(object sender, EventArgs e)
+        {
+            pnlEditar.Visible = false;
+        }
     }
 }
