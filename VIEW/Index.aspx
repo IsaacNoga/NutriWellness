@@ -1,138 +1,106 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="VIEW.Index" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-
-    <link href="include/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="include/css/index.css" rel="stylesheet" />
-    <link type="text/css" href="Include/fontawesome/css/all.css" rel="stylesheet" />
-
-    <script src="include/vendor/jquery/jquery.min.js"></script>
-    <script src="include/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
-    <form id="form1" runat="server">
-          <nav class="navbar navbar-expand-lg navbar-dark nav-color fixed-top">
-            <div class="container">
-              <a class="navbar-brand" href="#">
-                  <img src="include/img/logo.png" width="130px" alt="Alternate Text" /></a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                      <span class="sr-only">(current)</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-
-          <!-- Header -->
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="VIEW.Inicio" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>Inicio</title>
+    <script src="include/js/jquery-3.4.1.min.js"></script>
+    <link href="include/css/textCss.css" rel="stylesheet" />
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <!-- Header -->
           <header class="backg-1 py-5 mb-5">
             <div class="container h-100">
               <div class="row h-100 align-items-center">
                 <div class="col-lg-12">
                   <h1 class="display-4 header-text-1 mt-5 mb-2">Valora, protege y atiende tu salud</h1>
-                  <p class="mb-5 header-text-2">Consulta presencial y en línea</p>
+                  <p class="mb-5 header-text-2">Consulta medica profesional</p>
                 </div>
               </div>
             </div>
-          </header>
-
-          <!-- Page Content -->
-          <div class="container">
-
+          </header> 
+    <div class="container">
             <div class="row">
-              <div class="col-md-8 mb-5">
-                  <h2>¿Quién soy?</h2>
+              <div class="col-8 mb-5">
+                  <h2 class="cOscuro-claro">¿Qué es NutriWellness?</h2>
                   <hr/>
-                  <div class="row">
-                      <div class="col-md-4">
-                          <img src="include/img/lr-1.jpg" width="200" alt="Alternate Text" />
-                        
+                  <div class="row ">
+                      <div class="col-4">
+                          <img src="include/img/logo5.png" width="200" alt="Alternate Text" />
                       </div>
-                      <div class="col-md-8">
-                          <p>Mi nombre es Lorena Romero.</p>
-                        <p>Soy Licenciada en Ciencias Nutricionales, egresada de la Universidad de Sonora.</p>
-                        <p>Cédula profesional 045272.</p>
+                  <div class="card" style="width: 30rem;">
+                  <div class="card-body">
+                    <p class="card-text text-justify">
+                        Nutriwellness es un equipo de especialistas en nutrición; nuestro objetivo es ayudarte a mejorar tus hábitos en cuestión de 
+                        alimentación desarrollando un plan alimenticio
+                        mediante la evaluación de los resultados dietéticos a través de la consulta nutricional.
+                    </p>
+                    </div>
+                </div>
+                      <div class="col-8">
+                          <p class="p"></p>
+                        <p class="p"></p>
+                        <p class="p"></p>
                       </div>
                   </div>
               </div>
-              <div class="col-md-4 mb-5">
-                <h2>Contacto:</h2>
+              <div class="col-4 mb-5">
+                <h2 class="h2 cOscuro-claro">Contacto:</h2>
                 <hr/>
                 <address>
                   <strong>Dirección</strong>
-                  <br>Niños Héroes #118, 
+                  <br>Blv. Enrique Segoviano, 
                   <br>Centro, 83000 Hermosillo, Son.
                   <br>
                 </address>
                 <address>
                   <abbr title="">Teléfono: </abbr>
-                  662 316 6892
+                  (662)4636874
                   <br>
                   <abbr title="">Correo: </abbr>
-                  <a href="mailto:#">nutriologa.lorenaromero@gmail.com</a>
+                  <a href="mailto:#">nutriologa.perla@gmail.com</a>
                 </address>
               </div>
             </div>
             <!-- /.row -->
-
-            <div class="row">
-              <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                  <img class="card-img-top" src="https://placehold.it/300x200" alt="">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
+            <div id="servicios">
+                <h2 class="cOscuro-claro">Servicios</h2>
+                <hr />
+                <div class="row">
+                  <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                      <img class="card-img-top" src="include/img/svc1.jpg" alt="">
+                      <div class="card-body">
+                        <h4 class="card-title">Evaluación antropométrica</h4>
+                        <p>Estas medidas sirven como un método de investigación del estado nutricional, así como para ayudar a evaluar el riesgo de enfermedades crónicas como la obesidad y las enfermedades cardíacas.</p>
+                        <p class="card-text"></p>
+                      </div>
+                    </div>
                   </div>
-                  <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
+                  <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                      <img class="card-img-top" src="include/img/svc2.jpg" alt="">
+                      <div class="card-body">
+                        <h4 class="card-title">Consulta nutricional</h4>
+                          <p>Consiste en realizar una evaluación del estado nutricional del paciente y, según los resultados, se realiza una planificación de alimentación. La dieta se tiene que adaptar a ti y no al revés.</p>
+                        <p class="card-text"></p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                  <img class="card-img-top" src="https://placehold.it/300x200" alt="">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
-                  </div>
-                  <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                  <img class="card-img-top" src="https://placehold.it/300x200" alt="">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                  </div>
-                  <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
+                  <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                      <img class="card-img-top" src="include/img/svc3.jpg" alt="">
+                      <div class="card-body">
+                        <h4 class="card-title">Reto mensual</h4>
+                        <p class="card-text">Para conseguir tus objetivos de peso, salud o rendimiento deportivo.</p>
+                        <p class="card-text"></p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+                <div class="">
+                    <a href="servicios.aspx" class="btn btn-primary">Más información!</a>
+                </div>
             </div>
+            
+            
             <!-- /.row -->
 
           </div>
@@ -141,8 +109,8 @@
               <hr />
                 <div class="mb-5" style="margin-top: 55px; margin-bottom: 5px; min-height: 0px;">
                     <div class="">
-                        <h2 class="h2">Contactame!</h2>
-                        <p style="text-align: center; font: normal 19px / 25px;">Llama al 662 316 6892 o envíanos un mensaje</p>
+                        <h2 class="h2 cOscuro-claro">Contactame!</h2>
+                        <p style="text-align: center; font: normal 19px / 25px;">Llama o envíanos un mensaje</p>
                     </div>
                 </div>
                 <div class="row" style="margin-top: 0px; margin-bottom: 0px; min-height: 0px;">
@@ -152,7 +120,7 @@
                                 <div class="wpb_gmaps_widget wpb_content_element">
                                     <div class="wpb_wrapper">
                                         <div class="wpb_map_wraper"> 
-                                            <iframe src="https://maps.google.com/maps?width=100%&height=600&hl=es&q=Ni%C3%B1os%20H%C3%A9roes%20%23118%2C%20Centro%2C%2083000%20Hermosillo%2C%20Son.+(Nutri%C3%B3loga%20Lorena%20Romero)&ie=UTF8&t=&z=16&iwloc=B&output=embed" width="600" height="450" frameborder="0" style="border: 0px; pointer-events: none;" allowfullscreen=""></iframe>
+                                            <iframe width="100%" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=Hermosillo+(Mi%20nombre%20de%20egocios)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
                                         </div>
                                     </div>
                                 </div>
@@ -169,53 +137,47 @@
                             <div role="form" class="wpcf7" id="wpcf7-f35569-p36084-o1" lang="en-US" dir="ltr">
                                 <p>
                                     <asp:TextBox ID="txtNombre" class="form-control" placeholder="Nombre" runat="server"></asp:TextBox>
+                                    <asp:RegularExpressionValidator ID="revNombre" runat="server" ErrorMessage="* No valido" ControlToValidate="txtNombre" Display="Dynamic" ForeColor="#FF3300" ValidationExpression="^[A-Z][a-zA-Z]+$"></asp:RegularExpressionValidator>
+                                    <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="* Campo requerido" ControlToValidate="txtNombre" ForeColor="#FF3300" Display="Dynamic"></asp:RequiredFieldValidator>
                                 </p>
                                 <p>
                                     <asp:TextBox ID="txtEmail" class="form-control" placeholder="Email" runat="server"></asp:TextBox>
+                                    <asp:RegularExpressionValidator ID="revEmail" runat="server" ErrorMessage="* Formato de Email incorrecto" ControlToValidate="txtEmail" Display="Dynamic" ForeColor="#FF3300" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                                    <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ErrorMessage="* Campo requerido" ControlToValidate="txtEmail" ForeColor="#FF3300" Display="Dynamic"></asp:RequiredFieldValidator>
                                 </p>
                                 <p>
                                     <asp:TextBox ID="txtTelefono" class="form-control" placeholder="Telefono" runat="server"></asp:TextBox>
+                                    <asp:RegularExpressionValidator ID="revPhone" runat="server" ErrorMessage="* Se requieren 10 digitos" ControlToValidate="txtTelefono" ForeColor="#FF3300" ValidationExpression="^\d{10}$" Display="Dynamic"></asp:RegularExpressionValidator>
                                 </p>
                                 <p>
                                     <asp:TextBox ID="txtMensaje" CssClass="form-control" placeholder="¿En qué te podemos ayudar?" runat="server" TextMode="MultiLine" Height="150px" Width="80%"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvMensaje" runat="server" ErrorMessage="* Campo requerido" ControlToValidate="txtMensaje" ForeColor="#FF3300" Display="Dynamic"></asp:RequiredFieldValidator>
                                 </p>
                                 <p>
-                                    <asp:Button CssClass="btn btn-info" Text="Enviar" runat="server" />
+                                    <asp:Button ID="btnEnviar" CssClass="btn btn-info" Text="Enviar" runat="server" OnClick="btnEnviar_Click" />
                                 </p>
                                     <asp:CheckBox Id="chbxTerminos" Checked="true" Text="" runat="server" />
-                                    <asp:Label Text="Acepto la politica de privacidad" runat="server" />
+                                    <asp:Label Text="Acepto la <a href = 'PoliticaDePrivacidad.aspx' target=_blank> Politica de Privacidad </a>" runat="server" />
                             </div>
                         <div class="vc_empty_space" style="height: 50px">
                             <span class="vc_empty_space_inner"></span>
                         </div>
+                        <div id="mensaje" visible="false" runat="server" class="alert alert-success mt-1" role="alert">
+                          <h4 class="alert-heading">Enviado!</h4>
+                          <hr>
+                          <p class="mb-0">Gracias por tu mensaje, me se contactaré contigo en breve.</p>
+                        </div>
+                        <div id="mensajeError" visible="false" class="alert mt-3 alert-danger mt-1" runat="server" role="alert">
+                            <div class="row">
+                                <div class="col-8">
+                                    <asp:Label Text="Debe aceptar la politica de privacidad" runat="server" ID="lblError"/>
+                                </div>
+                                <div class="col-1 mt-1">
+                                    <asp:Button Text="Cerrar" CssClass="btn btn-outline-danger" runat="server" ID="btnError" OnClick="btnError_Click"/>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
           </div>
-          <!-- /.container -->
-
-          <!-- Footer -->
-          <footer class="py-5 bg-footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 text-center">
-                        <img src="include/img/logo.png" width="300px" alt="Alternate Text" />
-                    </div>
-                    <div class="col-md-4">
-                        <a href="https://www.facebook.com/nutriologa.lorenaromero/">
-                            <i class="fab fa-facebook-square ico-footer m-2"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fas fa-envelope-open-text ico-footer m-2"></i>
-                        </a>
-                        <a href="https://www.instagram.com/nutriologa.lorenaromero/">
-                            <i class="fab fa-instagram ico-footer m-2"></i>
-                        </a>
-                    </div>
-                </div>
-              <p class="m-0 text-center text-white">&copy; Derechos de autor - Lorena Romero 2020</p>
-            </div>
-            <!-- /.container -->
-          </footer>
-    </form>
-</body>
-</html>
+</asp:Content>

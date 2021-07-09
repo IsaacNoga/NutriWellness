@@ -8,11 +8,16 @@ namespace MODEL
 {
     public class MedicoModel
     {
+        /// <summary>
+        /// Busca directamente en la base de datos si el usuario administrador existe
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         public static Medico IngresarSistema(Medico usuario)
         {
             try
             {
-                using (var modelo = new ProyectoEntities())
+                using (var modelo = new proyectoEntities())
                 {
                     var resultado = (from us in modelo.Medicos
                                      where (us.contrasena == usuario.contrasena

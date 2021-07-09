@@ -9,6 +9,11 @@ namespace CONTROLLER
 {
     public class MedicoControlador
     {
+        /// <summary>
+        /// Metodo para iniciar sesion como usuario administrador
+        /// </summary>
+        /// <param name="usuario">Medico Datos del usuario a ingresar</param>
+        /// <returns>Retorna si el usuario existe o no para inicar sesion</returns>
         public static Medico IngresarSistema(Medico usuario)
         {
             try

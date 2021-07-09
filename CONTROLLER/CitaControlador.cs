@@ -9,7 +9,11 @@ namespace CONTROLLER
 {
     public class CitaControlador
     {
-        //Crea la cita y la inserta en la base de datos con los datos de la cita, se controla datos invalidos
+
+        /// <summary>
+        /// Crea la cita y la inserta en la base de datos con los datos de la cita, se controla datos invalidos
+        /// </summary>
+        /// <param name="newCita">Cita Datos de la cita a insertar</param>
         public static void InsertarCita(Cita newCita)
         {
             try
@@ -29,7 +33,12 @@ namespace CONTROLLER
             }
         }
 
-        //Buscador de cita mediante los criterios establecidos
+        /// <summary>
+        /// Buscador de cita mediante los criterios establecidos
+        /// </summary>
+        /// <param name="criterios">string Criterios de busqueda</param>
+        /// <param name="estado">bool Estado de la cita</param>
+        /// <returns></returns>
         public static List<Cita> BuscarCitaCriterios(string criterios, bool estado)
         {
             try

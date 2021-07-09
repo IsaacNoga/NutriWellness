@@ -11,12 +11,17 @@ namespace VIEW.User
 {
     public partial class Plan : System.Web.UI.Page
     {
-        //Al cargar la pagina, se consulta a la base de datos mediante el la información del plan del paciente
+        /// <summary>
+        /// Al cargar la pagina, se consulta a la base de datos mediante el la información del plan del paciente
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Argumento de evento</param>
+        /// <param name="idUser">Id del usuario que accedio para cargar sus datos</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                string CadenaConexion = "Data source=localhost;initial catalog=Proyecto;integrated Security=True";
+                string CadenaConexion = "Data Source=SQL5053.site4now.net;Initial Catalog=db_a75d97_proyecto;User Id=db_a75d97_proyecto_admin;Password=nutriw2021";
                 SqlConnection conexionSQL = new SqlConnection(CadenaConexion);
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = "SELECT * FROM PlanNutri Where idUsuario=@idUsuario";

@@ -15,12 +15,18 @@ namespace VIEW.User
 {
     public partial class Citas : System.Web.UI.Page
     {
-        //Al cargar la pagina, se muestra la información del historial de las citas del usuario
+
+        /// <summary>
+        /// Al cargar la pagina, se muestra la información del historial de las citas del usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name=" CadenaConexion">string Cadena de conexion para la base de datos</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                string CadenaConexion = "Data source=localhost;initial catalog=Proyecto;integrated Security=True";
+                string CadenaConexion = "Data Source=SQL5053.site4now.net;Initial Catalog=db_a75d97_proyecto;User Id=db_a75d97_proyecto_admin;Password=nutriw2021";
                 SqlConnection conexionSQL = new SqlConnection(CadenaConexion);
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = "SELECT * FROM Cita Where idUsuario=@idUsuario";

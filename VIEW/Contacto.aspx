@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="contacto.aspx.cs" Inherits="VIEW.contacto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>Contacto</title>
     <link href="include/css/Estilos.css" rel="stylesheet" />
     <link href="include/css/textCss.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -9,19 +10,19 @@
               
                 <div class="mb-5" style="margin-top: 55px; margin-bottom: 5px; min-height: 0px;">
                     <div class="">
-                        <h1 class="h1 cOscuro-claro ">Contactame!</h1>
+                        <h1 class="h1 cOscuro-claro ">Contacto</h1>
                         <hr />
                     </div>
                     <div class="redes p-3 backg-1 ">
                         <hr />
                         <div class="row">
                             <div class="col-md-4">
-                                <a href="https://www.facebook.com/">
+                                <a href="https://www.facebook.com/nutperlamedc/">
                                     <i class="fab fa-facebook-square ico-redes m-2"> Facebook</i>
                                 </a>
                             </div>
                             <div class="col-md-4">
-                                <a href="https://www.instagram.com/">
+                                <a href="https://instagram.com/nutperlamedc">
                                     <i class="fab fa-instagram ico-redes m-2"> Instagram</i>
                                 </a>
                             </div>
@@ -61,10 +62,12 @@
                                 </p>
                                 <p>
                                     <asp:TextBox ID="txtEmail" class="form-control" placeholder="Email" runat="server"></asp:TextBox>
+                                    <asp:RegularExpressionValidator ID="revEmail" runat="server" ErrorMessage="* Formato de Email incorrecto" ControlToValidate="txtEmail" Display="Dynamic" ForeColor="#FF3300" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                                     <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ErrorMessage="* Campo requerido" ControlToValidate="txtEmail" ForeColor="#FF3300" Display="Dynamic"></asp:RequiredFieldValidator>
                                 </p>
                                 <p>
                                     <asp:TextBox ID="txtTelefono" class="form-control" placeholder="Telefono" runat="server"></asp:TextBox>
+                                    <asp:RegularExpressionValidator ID="revPhone" runat="server" ErrorMessage="* Se requieren 10 digitos" ControlToValidate="txtTelefono" ForeColor="#FF3300" ValidationExpression="^\d{10}$" Display="Dynamic"></asp:RegularExpressionValidator>
                                 </p>
                                 <p>
                                     <asp:TextBox ID="txtMensaje" CssClass="form-control" placeholder="¿En qué te podemos ayudar?" runat="server" TextMode="MultiLine" Height="150px" Width="80%"></asp:TextBox>
@@ -74,7 +77,7 @@
                                     <asp:Button ID="btnEnviar" CssClass="btn btn-info" Text="Enviar" runat="server" OnClick="btnEnviar_Click" />
                                 </p>
                                     <asp:CheckBox Id="chbxTerminos" Checked="true" Text="" runat="server" />
-                                    <asp:Label Text="Acepto la politica de privacidad" runat="server" />
+                                    <asp:Label Text="Acepto la <a href = 'PoliticaDePrivacidad.aspx' target=_blank> Politica de Privacidad </a>" runat="server" />
                             </div>
                         <div class="vc_empty_space" style="height: 50px">
                             <span class="vc_empty_space_inner"></span>
@@ -83,6 +86,16 @@
                           <h4 class="alert-heading">Enviado!</h4>
                           <hr>
                           <p class="mb-0">Gracias por tu mensaje, me se contactaré contigo en breve.</p>
+                        </div>
+                        <div id="mensajeError" visible="false" class="alert mt-3 alert-danger mt-1" runat="server" role="alert">
+                            <div class="row">
+                                <div class="col-8">
+                                    <asp:Label Text="Debe aceptar la politica de privacidad" runat="server" ID="lblError"/>
+                                </div>
+                                <div class="col-1 mt-1">
+                                    <asp:Button Text="Cerrar" CssClass="btn btn-outline-danger" runat="server" ID="btnError" OnClick="btnError_Click"/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

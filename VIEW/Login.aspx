@@ -30,9 +30,9 @@
 				        </div>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center links">
+                <%--<div class="d-flex justify-content-center links">
                     <a href="LoginAdmin.aspx"><i class="fas fa-user-cog ico-log"> Entrar como Administrador</i></a>
-                </div>
+                </div>--%>
             </div>
         </div>
         <div id="mensajeError" visible="false" class="alert mt-3 alert-danger mt-1" runat="server" role="alert">

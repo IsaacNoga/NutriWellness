@@ -129,6 +129,7 @@
     <Content Include="include\css\Login.css" />
     <Content Include="include\css\Panel.css" />
     <Content Include="include\css\Registro.css" />
+    <Content Include="include\css\Servicios.css" />
     <Content Include="include\css\textCss.css" />
     <Content Include="include\fontawesome\css\all.css" />
     <Content Include="include\fontawesome\css\all.min.css" />
@@ -1811,9 +1812,9 @@
     <Content Include="include\vendor\jquery\jquery.slim.min.js" />
     <Content Include="include\vendor\jquery\jquery.slim.min.map" />
     <Content Include="Index.aspx" />
-    <Content Include="Inicio.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="LoginAdmin.aspx" />
+    <Content Include="PoliticaDePrivacidad.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Servicios.aspx" />
     <Content Include="User\Citas.aspx" />
@@ -1893,13 +1894,6 @@
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Inicio.aspx.cs">
-      <DependentUpon>Inicio.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Inicio.aspx.designer.cs">
-      <DependentUpon>Inicio.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1920,6 +1914,13 @@
     </Compile>
     <Compile Include="Master.Master.designer.cs">
       <DependentUpon>Master.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PoliticaDePrivacidad.aspx.cs">
+      <DependentUpon>PoliticaDePrivacidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PoliticaDePrivacidad.aspx.designer.cs">
+      <DependentUpon>PoliticaDePrivacidad.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registro.aspx.cs">
@@ -2197,6 +2198,7 @@
     <Content Include="include\assets\scss\material-dashboard\_variables.scss" />
     <None Include="packages.config" />
     <Content Include="Usuario.Master" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

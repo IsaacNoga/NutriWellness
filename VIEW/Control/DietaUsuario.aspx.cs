@@ -17,14 +17,22 @@ namespace VIEW.Control
         {
 
         }
-
-        //Metodo para editar la información de la dieta del usuario y traer la información a los textbox
+        ///<param name=" CadenaConexion">string Cadena de conexion para la base de datos</param>
+        string CadenaConexion = "Data Source=SQL5053.site4now.net;Initial Catalog=db_a75d97_proyecto;User Id=db_a75d97_proyecto_admin;Password=nutriw2021";
+        /// <summary>
+        /// Metodo click, ditar la información de la dieta del usuario y traer la información a los textbox
+        /// 
+        /// Al seleccionar al usuario, carga la informacion de la dieta en los TextBox correspondientes
+        /// tras una consulta.
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Argumento de evento</param>
         protected void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            var idUsuario = ddlUsuarios.SelectedValue;
-            string CadenaConexion = "Data source=localhost;initial catalog=Proyecto;integrated Security=True";
+            var idUsuario = ddlUsuarios.Text;
+            //var idUsuario = ddlUsuarios.SelectedValue;
             SqlConnection conexionSQL = new SqlConnection(CadenaConexion);
-            SqlCommand comando = new SqlCommand("SELECT * FROM DIETAINFO WHERE idInfo=@idUsuario", conexionSQL);
+            SqlCommand comando = new SqlCommand("SELECT * FROM DIETAINFO WHERE idUsuario=@idUsuario", conexionSQL);
             comando.Parameters.AddWithValue("@idUsuario", idUsuario);
             conexionSQL.Open();
             SqlDataReader reader = comando.ExecuteReader();
@@ -44,7 +52,7 @@ namespace VIEW.Control
             SqlDataReader reader2 = comando2.ExecuteReader();
             if (reader2.Read())
             {
-                lblNombre.Text ="Paciente: " + reader2["nombre"].ToString() +" "+ reader2["aPaterno"].ToString() + " " + reader2["aMaterno"].ToString();
+                lblNombre.Text = "Paciente: " + reader2["nombre"].ToString() + " " + reader2["aPaterno"].ToString() + " " + reader2["aMaterno"].ToString();
             }
             conexionSQL.Close();
             SqlCommand comando3 = new SqlCommand("SELECT * FROM PlanNutri WHERE idUsuario=@idUsuario3", conexionSQL);
@@ -63,7 +71,7 @@ namespace VIEW.Control
             pnlSeleccionar.Enabled = false;
             pnlDieta.Visible = true;
             pnlPlan.Visible = true;
-            if(txtIMCI.Text=="Sin definir")
+            if (txtIMCI.Text == "Sin definir")
             {
                 txtIMCI.Enabled = true;
             }
@@ -73,15 +81,19 @@ namespace VIEW.Control
             }
         }
 
-        //Al dar click en guardar, guarda la información de la dieta
+        /// <summary>
+        /// Metodo click, guarda la informacion de la dieta en el usuario correspondiente
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Argumento de evento</param>
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             var ID = ddlUsuarios.SelectedValue;
             try
             {
-                if (String.IsNullOrEmpty(txtAltura.Text) || String.IsNullOrEmpty(txtIMCA.Text) || String.IsNullOrEmpty(txtIMCI.Text) || 
-                    String.IsNullOrEmpty(txtNaf.Text) || String.IsNullOrEmpty(txtPeso.Text) || String.IsNullOrEmpty(txtResultado.Text)||
-                    String.IsNullOrEmpty(txtDesayuno.Text) || String.IsNullOrEmpty(txtComida.Text) || String.IsNullOrEmpty(txtCena.Text) || 
+                if (String.IsNullOrEmpty(txtAltura.Text) || String.IsNullOrEmpty(txtIMCA.Text) || String.IsNullOrEmpty(txtIMCI.Text) ||
+                    String.IsNullOrEmpty(txtNaf.Text) || String.IsNullOrEmpty(txtPeso.Text) || String.IsNullOrEmpty(txtResultado.Text) ||
+                    String.IsNullOrEmpty(txtDesayuno.Text) || String.IsNullOrEmpty(txtComida.Text) || String.IsNullOrEmpty(txtCena.Text) ||
                     String.IsNullOrEmpty(txtColaciones.Text))
                 {
 
@@ -91,7 +103,6 @@ namespace VIEW.Control
                 }
                 else
                 {
-                    string CadenaConexion = "Data source=localhost;initial catalog=Proyecto;integrated Security=True";
                     SqlConnection conexionSQL = new SqlConnection(CadenaConexion);
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandText = "UPDATE DietaInfo SET idUsuario=@idUsuario, imcInicial=@imcInicial, imcActual=@imcActual, " +
@@ -139,10 +150,25 @@ namespace VIEW.Control
 
         }
 
+        /// <summary>
+		/// Metodo click, Cerrar el error
+		/// 
+		/// Al mostrar el error, este se muestra con este boton, al hacer click
+		/// se cierra el error
+		/// </summary>
+		/// <param name="sender">Objeto</param>
+		/// <param name="e">Argumento de evento</param>
         protected void btnError_Click(object sender, EventArgs e)
         {
             mensajeError.Visible = false;
             mensaje.Visible = false;
+        }
+
+        protected void btnCancelarEdicion_Click(object sender, EventArgs e)
+        {
+            pnlSeleccionar.Enabled = true;
+            pnlDieta.Visible = false;
+            pnlPlan.Visible = false;
         }
     }
 }

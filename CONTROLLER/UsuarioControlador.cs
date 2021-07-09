@@ -9,6 +9,11 @@ namespace CONTROLLER
 {
     public class UsuarioControlador
     {
+       
+        /// <summary>
+        /// Inserta al nuevo usuario a la base de datos con sus datos
+        /// </summary>
+        /// <param name="newUsuario">Usuario Datos del nuevo usuario a insertar</param>
         public static void InsertarUsuario(Usuario newUsuario)
         {
             try
@@ -21,7 +26,7 @@ namespace CONTROLLER
                 }
                 else
                 {
-                    throw new Exception("Los datos de los campos son invalidos.");
+                    throw new Exception("Todos los campos deben ser llenados.");
                 }
             }
             catch (Exception ex)
@@ -30,6 +35,12 @@ namespace CONTROLLER
             }
         }
 
+        /// <summary>
+        /// Buscador de usuarios atraves de los critertios
+        /// </summary>
+        /// <param name="criterios">string Criterios de busqueda</param>
+        /// <param name="estado">bool Estado del usuario</param>
+        /// <returns></returns>
         public static List<Usuario> BuscarUsuarioCriterios(string criterios, bool estado)
         {
             try
@@ -42,6 +53,10 @@ namespace CONTROLLER
             }
         }
 
+        /// <summary>
+        /// Actualiza atraves del modelo los datos del usuario
+        /// </summary>
+        /// <param name="usuarioModificado">Usuario Datos del usuario a actualizar</param>
         public static void ModificarUsuario(Usuario usuarioModificado)
         {
             try
@@ -61,6 +76,10 @@ namespace CONTROLLER
             }
         }
 
+        /// <summary>
+        /// Cambia el estado del usuario activo-innactivo
+        /// </summary>
+        /// <param name="idUsuario">int Numero de identificador del usuario</param>
         public static void CambiarEstadoUsuario(int idUsuario)
         {
             try
@@ -76,6 +95,11 @@ namespace CONTROLLER
             }
         }
 
+        /// <summary>
+        /// Comprueba los datos para iniciar sesion
+        /// </summary>
+        /// <param name="usuario">Usuario datos del usuario</param>
+        /// <returns>Regresa una respuesta si el usuario existe o no</returns>
         public static Usuario IngresarSistema(Usuario usuario)
         {
             try
@@ -101,6 +125,13 @@ namespace CONTROLLER
             {
                 throw new Exception("Hubo un error: " + ex.Message.ToString());
             }
+        }
+
+        public static int CalculateAge (DateTime fecha)
+        {
+            //return (int)((double)new TimeSpan(DateTime.Now.Subtract(fecha).Ticks).Days /DiasAño);
+            int nacimiento = DateTime.Today.Year - fecha.Year;
+            return nacimiento;
         }
     }
 }

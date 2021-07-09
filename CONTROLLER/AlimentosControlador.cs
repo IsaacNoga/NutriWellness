@@ -9,7 +9,12 @@ namespace CONTROLLER
 {
     public class AlimentosControlador
     {
-        //Buscador de alimentos a traves de los criterios
+
+        /// <summary>
+        /// Buscador de alimentos a traves de los criterios
+        /// </summary>
+        /// <param name="criterios">string Input del usuario, criterios de busqueda</param>
+        /// <returns>Retorna el resultado de la busqueda si es valido</returns>
         public static List<Alimento> BuscarAlimentoCriterios(string criterios)
         {
             try
@@ -22,7 +27,10 @@ namespace CONTROLLER
             }
         }
 
-        //Inserta el alimento creado en la base de datos a traves del modelo
+        /// <summary>
+        /// Inserta el alimento creado en la base de datos a traves del modelo
+        /// </summary>
+        /// <param name="newAlimento">Alimento Datos del alimento a insertar</param>
         public static void InsertarAlimento(Alimento newAlimento)
         {
             try
@@ -46,8 +54,11 @@ namespace CONTROLLER
                 throw new Exception("Error: " + ex.Message.ToString());
             }
         }
-        
-        //Actualiza la información del alimento a traves del modelo
+
+        /// <summary>
+        /// Actualiza la información del alimento a traves del modelo
+        /// </summary>
+        /// <param name="alimentoModificado">Alimento Datos actualizados del alimento</param>
         public static void ModificarAlimento(Alimento alimentoModificado)
         {
             try

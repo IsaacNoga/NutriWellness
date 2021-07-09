@@ -9,6 +9,10 @@ namespace CONTROLLER
 {
     public class DietaInfoControlador
     {
+        /// <summary>
+        /// Metodo para insertar la informacion de la dieta en la base de datos
+        /// </summary>
+        /// <param name="newDietaInfo">DietaInfo Informacion de la dieta a insertar</param>
         public static void InsertarDietaInfo(DietaInfo newDietaInfo)
         {
             try
@@ -21,6 +25,10 @@ namespace CONTROLLER
             }
         }
 
+        /// <summary>
+        /// Actualiza la informacion de la dieta en la base de datos
+        /// </summary>
+        /// <param name="dietaInfoModificado">DietaInfo Informacion actualizada de la dieta</param>
         public static void ModificarDietaInfo(DietaInfo dietaInfoModificado)
         {
             try

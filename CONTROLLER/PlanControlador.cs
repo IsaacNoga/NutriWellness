@@ -9,6 +9,10 @@ namespace CONTROLLER
 {
     public class PlanControlador
     {
+        /// <summary>
+        /// Metodo para insertar el plan a la base de datos con los datos
+        /// </summary>
+        /// <param name="newPlan">PlanNutri Informacion del plan</param>
         public static void InsertarPlan(PlanNutri newPlan)
         {
             try

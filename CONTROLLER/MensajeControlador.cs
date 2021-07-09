@@ -9,6 +9,10 @@ namespace CONTROLLER
 {
     public class MensajeControlador
     {
+        /// <summary>
+        /// Crea el mensaje y lo inserta en la base de datos
+        /// </summary>
+        /// <param name="newMensaje">Mensaje Datos del mensaje a insertar</param>
         public static void InsertarMensaje(Mensaje newMensaje)
         {
             try
@@ -16,18 +20,28 @@ namespace CONTROLLER
                 if (newMensaje.correo != string.Empty || newMensaje.mensaje1 != string.Empty || newMensaje.nombre != string.Empty)
                 {
                     MensajeModel.InsertarMensaje(newMensaje);
+                    
                 }
                 else
                 {
                     throw new Exception("No se admiten campos vacios");
+                  
                 }
             }
             catch (Exception ex)
             {
                 throw new Exception("Hubo un error en la capa del Modelo: " + ex.Message.ToString());
+
             }
+           
         }
 
+        /// <summary>
+        /// Busca en la base de datos los mensajes atraves de los criterios establecidos
+        /// </summary>
+        /// <param name="criterios">string Criterios de busqueda</param>
+        /// <param name="estado">bool Estado del mensaje</param>
+        /// <returns>Retorna los mensajes obtenidos</returns>
         public static List<Mensaje> BuscarMensajeCriterios(string criterios, bool estado)
         {
             try
@@ -40,6 +54,11 @@ namespace CONTROLLER
             }
         }
 
+        /// <summary>
+        /// Busca en la base de datos los mensajes por la ID
+        /// </summary>
+        /// <param name="idMensaje">int Identificador del mensaje</param>
+        /// <returns>Retorna los mensajes obtenidos</returns>
         public static Mensaje BuscarContactoPorID(int idMensaje)
         {
             try
@@ -52,6 +71,10 @@ namespace CONTROLLER
             }
         }
 
+        /// <summary>
+        /// Metodo para guardar la edicion del mensaje
+        /// </summary>
+        /// <param name="mensajeModificado">Mensaje Datos del mensaje modificado</param>
         public static void Modificarmensaje(Mensaje mensajeModificado)
         {
             try
@@ -71,6 +94,10 @@ namespace CONTROLLER
             }
         }
 
+        /// <summary>
+        /// Metodo para cambiar el estado del mensaje activo-innactivo
+        /// </summary>
+        /// <param name="idMensaje">int Identificador del mensaje</param>
         public static void CambiarEstadoMensaje(int idMensaje)
         {
             try
@@ -85,5 +112,7 @@ namespace CONTROLLER
                 throw new Exception("Hubo un error: " + ex.Message.ToString());
             }
         }
+
+      
     }
 }
