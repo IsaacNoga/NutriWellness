@@ -23,6 +23,10 @@ namespace VIEW.Control
         /// <param name="e">Argumento de evento</param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            var resultado = PlatillosControlador.BuscarPlatilloCriterios(string.Empty, true);
+
+            gvPlatillos.DataSource = resultado;
+            gvPlatillos.DataBind();
         }
 
         /// <summary>
@@ -37,41 +41,50 @@ namespace VIEW.Control
         {
             try
             {
-                //Obtener datos de la imagen
-                int tamanio = fuploadImagen.PostedFile.ContentLength;
-                byte[] imagenOriginal = new byte[tamanio];
-                fuploadImagen.PostedFile.InputStream.Read(imagenOriginal, 0, tamanio);
-                Bitmap imagenOriginalBinaria = new Bitmap(fuploadImagen.PostedFile.InputStream);
-                //Crear Thumbnail
-                System.Drawing.Image imgThumbnail;
-                int tamanioThumbnail = 200;
-                imgThumbnail = redimencionarImagen(imagenOriginalBinaria, tamanioThumbnail);
-                byte[] bImagenThumbnail = new byte[tamanioThumbnail];
-                ImageConverter Convertidor = new ImageConverter();
-                bImagenThumbnail = (byte[])Convertidor.ConvertTo(imgThumbnail, typeof(byte[]));
+                if (String.IsNullOrEmpty(txtNombre.Text)||String.IsNullOrEmpty(txtDescripcion.Text))
+                {
+                    lblError.Text = "Error: Todos los campos deben ser llenados"; //Texto del error si algún dato está vacio;
+                    mensajeError.Visible = true;
+                }
+                else
+                {
+                    //Obtener datos de la imagen
+                    int tamanio = fuploadImagen.PostedFile.ContentLength;
+                    byte[] imagenOriginal = new byte[tamanio];
+                    fuploadImagen.PostedFile.InputStream.Read(imagenOriginal, 0, tamanio);
+                    Bitmap imagenOriginalBinaria = new Bitmap(fuploadImagen.PostedFile.InputStream);
+                    //Crear Thumbnail
+                    System.Drawing.Image imgThumbnail;
+                    int tamanioThumbnail = 200;
+                    imgThumbnail = redimencionarImagen(imagenOriginalBinaria, tamanioThumbnail);
+                    byte[] bImagenThumbnail = new byte[tamanioThumbnail];
+                    ImageConverter Convertidor = new ImageConverter();
+                    bImagenThumbnail = (byte[])Convertidor.ConvertTo(imgThumbnail, typeof(byte[]));
 
-                //Insertar en la bd
-                SqlConnection conexionSQL = new SqlConnection(CadenaConexion);
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "INSERT INTO Platillo(imagen, nombre, descripcion) VALUES(@imagen, @nombre, @descripcion)";
-                cmd.Parameters.Add("@imagen", SqlDbType.Image).Value = bImagenThumbnail;
-                cmd.Parameters.Add("@nombre", SqlDbType.Text).Value = txtNombre.Text;
-                cmd.Parameters.Add("@descripcion", SqlDbType.Text).Value = txtDescripcion.Text;
+                    //Insertar en la bd
+                    SqlConnection conexionSQL = new SqlConnection(CadenaConexion);
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "INSERT INTO Platillo(imagen, nombre, descripcion) VALUES(@imagen, @nombre, @descripcion)";
+                    cmd.Parameters.Add("@imagen", SqlDbType.Image).Value = bImagenThumbnail;
+                    cmd.Parameters.Add("@nombre", SqlDbType.Text).Value = txtNombre.Text;
+                    cmd.Parameters.Add("@descripcion", SqlDbType.Text).Value = txtDescripcion.Text;
 
-                cmd.CommandType = CommandType.Text;
-                cmd.Connection = conexionSQL;
-                conexionSQL.Open();
-                cmd.ExecuteNonQuery();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = conexionSQL;
+                    conexionSQL.Open();
+                    cmd.ExecuteNonQuery();
 
-                string imagenDataUrl64 = "data:image/jpg;base64," + Convert.ToBase64String(bImagenThumbnail);
-                imgPreview.ImageUrl = imagenDataUrl64;
+                    string imagenDataUrl64 = "data:image/jpg;base64," + Convert.ToBase64String(bImagenThumbnail);
+                    imgPreview.ImageUrl = imagenDataUrl64;
 
-                var resultado = PlatillosControlador.BuscarPlatilloCriterios(txtCriterios.Text, true);
+                    var resultado = PlatillosControlador.BuscarPlatilloCriterios(txtCriterios.Text, true);
 
-                gvPlatillos.DataSource = resultado;
-                gvPlatillos.DataBind();
-                txtNombre.Text = "";
-                txtDescripcion.Text = "";
+                    gvPlatillos.DataSource = resultado;
+                    gvPlatillos.DataBind();
+                    txtNombre.Text = "";
+                    txtDescripcion.Text = "";
+                }
+                
             }
             catch (Exception ex)
             {
@@ -176,42 +189,50 @@ namespace VIEW.Control
         {
             try
             {
-                //Obtener datos de la imagen
-                int tamanio = fuploadImagenEdit.PostedFile.ContentLength;
-                byte[] imagenOriginal = new byte[tamanio];
-                fuploadImagenEdit.PostedFile.InputStream.Read(imagenOriginal, 0, tamanio);
-                Bitmap imagenOriginalBinaria = new Bitmap(fuploadImagenEdit.PostedFile.InputStream);
-                //Crear Thumbnail
-                System.Drawing.Image imgThumbnail;
-                int tamanioThumbnail = 200;
-                imgThumbnail = redimencionarImagen(imagenOriginalBinaria, tamanioThumbnail);
-                byte[] bImagenThumbnail = new byte[tamanioThumbnail];
-                ImageConverter Convertidor = new ImageConverter();
-                bImagenThumbnail = (byte[])Convertidor.ConvertTo(imgThumbnail, typeof(byte[]));
+                if (String.IsNullOrEmpty(txtNombreEdit.Text) || String.IsNullOrEmpty(txtDescripcionEdit.Text))
+                {
+                    lblError.Text = "Error: Todos los campos deben ser llenados"; //Texto del error si algún dato está vacio;
+                    mensajeError.Visible = true;
+                }
+                else
+                {
+                    //Obtener datos de la imagen
+                    int tamanio = fuploadImagenEdit.PostedFile.ContentLength;
+                    byte[] imagenOriginal = new byte[tamanio];
+                    fuploadImagenEdit.PostedFile.InputStream.Read(imagenOriginal, 0, tamanio);
+                    Bitmap imagenOriginalBinaria = new Bitmap(fuploadImagenEdit.PostedFile.InputStream);
+                    //Crear Thumbnail
+                    System.Drawing.Image imgThumbnail;
+                    int tamanioThumbnail = 200;
+                    imgThumbnail = redimencionarImagen(imagenOriginalBinaria, tamanioThumbnail);
+                    byte[] bImagenThumbnail = new byte[tamanioThumbnail];
+                    ImageConverter Convertidor = new ImageConverter();
+                    bImagenThumbnail = (byte[])Convertidor.ConvertTo(imgThumbnail, typeof(byte[]));
 
-                //Insertar en la bd
-                SqlConnection conexionSQL = new SqlConnection(CadenaConexion);
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "UPDATE Platillo SET nombre=@nombre, descripcion=@descripcion, " +
-                                  "imagen=@imagen WHERE idPlatillo=@idPlatillo";
-                cmd.Parameters.Add("@idPlatillo", SqlDbType.Int).Value = txtId.Text;
-                cmd.Parameters.Add("@imagen", SqlDbType.Image).Value = bImagenThumbnail;
-                cmd.Parameters.Add("@nombre", SqlDbType.Text).Value = txtNombreEdit.Text;
-                cmd.Parameters.Add("@descripcion", SqlDbType.Text).Value = txtDescripcionEdit.Text;
+                    //Insertar en la bd
+                    SqlConnection conexionSQL = new SqlConnection(CadenaConexion);
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "UPDATE Platillo SET nombre=@nombre, descripcion=@descripcion, " +
+                                      "imagen=@imagen WHERE idPlatillo=@idPlatillo";
+                    cmd.Parameters.Add("@idPlatillo", SqlDbType.Int).Value = txtId.Text;
+                    cmd.Parameters.Add("@imagen", SqlDbType.Image).Value = bImagenThumbnail;
+                    cmd.Parameters.Add("@nombre", SqlDbType.Text).Value = txtNombreEdit.Text;
+                    cmd.Parameters.Add("@descripcion", SqlDbType.Text).Value = txtDescripcionEdit.Text;
 
-                cmd.CommandType = CommandType.Text;
-                cmd.Connection = conexionSQL;
-                conexionSQL.Open();
-                cmd.ExecuteNonQuery();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = conexionSQL;
+                    conexionSQL.Open();
+                    cmd.ExecuteNonQuery();
 
-                string imagenDataUrl64 = "data:image/jpg;base64," + Convert.ToBase64String(bImagenThumbnail);
-                imgPreview.ImageUrl = imagenDataUrl64;
+                    string imagenDataUrl64 = "data:image/jpg;base64," + Convert.ToBase64String(bImagenThumbnail);
+                    imgPreview.ImageUrl = imagenDataUrl64;
 
-                pnlEditar.Visible = false;
-                var resultado = PlatillosControlador.BuscarPlatilloCriterios(txtCriterios.Text, true);
+                    pnlEditar.Visible = false;
+                    var resultado = PlatillosControlador.BuscarPlatilloCriterios(txtCriterios.Text, true);
 
-                gvPlatillos.DataSource = resultado;
-                gvPlatillos.DataBind();
+                    gvPlatillos.DataSource = resultado;
+                    gvPlatillos.DataBind();
+                }
             }
             catch (Exception ex)
             {
